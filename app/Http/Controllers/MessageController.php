@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a contact form.
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,64 +26,23 @@ class MessageController extends Controller
 
             $message->save();
 
-            return redirect()->route('contact');
+            return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!');
         }
         return view('message.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a list of all received messages
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function list()
     {
-        //
-    }
+        $messages = Message::orderBy('created_at', 'DESC')->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Message $message)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Message $message)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Message $message)
-    {
-        //
+        return view('message.list', [
+            'messages' => $messages,
+        ]);
     }
 
     /**

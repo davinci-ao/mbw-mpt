@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 
 Route::get('/contact', 'MessageController@index')->name('contact');
+Route::get('/contact/list', 'MessageController@list')->name('contact');
