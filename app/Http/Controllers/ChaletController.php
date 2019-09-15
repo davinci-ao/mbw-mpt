@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chalet;
 use Illuminate\Http\Request;
+use validate;
 
 class ChaletController extends Controller
 {
@@ -14,10 +15,9 @@ class ChaletController extends Controller
      */
     public function index()
     {
+        $chalets = Chalet::all();
 
-
-        var_dump('test');
-        return view('chalets.index');
+        return view('chalets.index',['chaletData' => $chalets]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ChaletController extends Controller
      */
     public function create()
     {
-        //
+        return view('chalets.create');
     }
 
     /**
@@ -38,7 +38,22 @@ class ChaletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'price'=> 'required'
+          ]);
+
+          $chalet = new Chalet([
+            'name' => $request->get('name'),
+            'description'=> $request->get('description'),
+            'price'=> $request->get('price')
+
+          ]);
+
+          $chalet->save();
+          return redirect('/chalets')->with('Gelukt!', 'de Chalet is toegevoegd');        
+        
     }
 
     /**
