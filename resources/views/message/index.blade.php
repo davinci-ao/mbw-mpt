@@ -34,6 +34,8 @@
 	        <br /> 
 	    @endif
 
+	    <h1 style="margin-bottom: 20px;">Contact</h1>
+
 		<form>
 		    @csrf
 		  

@@ -8,18 +8,15 @@ use DB;
 
 class MessageController extends Controller
 {
-    /**
-     * Display a contact form.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {  
+        //USER PAGE
+
         if ($request->has('submitForm')) {
 
             $request->validate([
-                'firstname'=>'required|max:255|alpha',
-                'lastname'=>'required|max:255|alpha',
+                'firstname'=>'required|max:100|alpha',
+                'lastname'=>'required|max:100|alpha',
                 'email'=>'required|email',
                 'phonenumber'=>'required|max:15',
                 'message'=>'required|max:2000',
@@ -40,28 +37,21 @@ class MessageController extends Controller
         return view('message.index');
     }
 
-    /**
-     * Display a list of all received messages
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function list()
     {
-        $messages = Message::orderBy('created_at', 'DESC')->get();
+        //DEV PAGE
+
+        $messages = DB::table('messages')->orderBy('created_at', 'desc')->paginate(8);
 
         return view('message.list', [
             'messages' => $messages,
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Message  $message
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request)
     {
+        //DEV PAGE
+
         $id = $request->get('message');
         $message = Message::find($id);
         $message->delete();

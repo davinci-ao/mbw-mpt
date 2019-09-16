@@ -12,6 +12,13 @@
 <body>
 
     <div class="container" style="margin-top: 25px; font-size: 12px">
+
+        <h1 style="margin-bottom: 20px;">Berichten</h1>
+
+<!--         <div class="form-group">
+            <input style="margin-top: 25px;" class="form-control" type="text" name="searchMessages" placeholder="Zoeken...">
+        </div>
+ -->
         <table class="table table-bordered">
             <tr>
                 <th>Nr.</th>
@@ -36,6 +43,10 @@
             </tr>
             @endforeach
         </table>
+
+        <!-- pagination links -->
+
+        {{ $messages->links() }}
 
     </div>
 
