@@ -93,15 +93,15 @@
         @csrf
           <div class="form-group">
                <label for="name">Chaletnaam </label>
-              <input type="text" class="form-control" name="name" value={{$chaletData->name}} />
+              <input type="text" class="form-control" name="name" value="{{ $chaletData->name }}" />
           </div>
           <div class="form-group">
               <label for="description">Beschrijving</label>
-              <input type="text" class="form-control" name="description" value={{$chaletData->description }} />
+              <input type="text" class="form-control" name="description" value="{{ $chaletData->description }}" />
           </div>
           <div class="form-group">
               <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price" value={{$chaletData->price}} />
+              <input type="text" class="form-control" name="price" value="{{ $chaletData->price }}" />
           </div>          
           <button type="submit" class="btn btn-primary">opslaan</button>
       </form>
