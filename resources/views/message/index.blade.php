@@ -11,13 +11,28 @@
 </head>
 <body>
 
-	@if ($alert = Session::get('alert'))
-        <div class="alert alert-success">
-            <p>{{ $alert }}</p>
-        </div>
-    @endif
-
 	<div class="container" style="margin-top: 25px;">
+
+		<!-- success message -->
+
+		@if ($alert = Session::get('alert'))
+	        <div class="alert alert-success">
+	            <p>{{ $alert }}</p>
+	        </div>
+	    @endif
+
+	    <!-- validation errors -->
+
+	    @if ($errors->any())
+	        <div class="alert alert-danger">
+	            <ul>
+	                @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	                @endforeach
+	            </ul>
+	        </div>
+	        <br /> 
+	    @endif
 
 		<form>
 		    @csrf

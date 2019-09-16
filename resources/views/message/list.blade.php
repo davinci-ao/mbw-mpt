@@ -14,6 +14,7 @@
     <div class="container" style="margin-top: 25px; font-size: 12px">
         <table class="table table-bordered">
             <tr>
+                <th>Nr.</th>
                 <th>Voornaam</th>
                 <th>Achternaam</th>
                 <th>Email</th>
@@ -24,13 +25,14 @@
             </tr>
             @foreach ($messages as $message)
             <tr>
+                <td>{{ $message->id }}</td>
                 <td>{{ $message->firstname }}</td>
                 <td>{{ $message->lastname }}</td>
                 <td>{{ $message->email }}</td>
                 <td>{{ $message->phonenumber }}</td>
                 <td>{{ $message->message }}</td>
                 <td>{{ $message->created_at }}</td>
-                <td><a style="color: red;" href="#">Verwijderen</a></td>
+                <td><a style="color: red;" href="{{ url('contact/delete?message=' . $message->id) }}">Verwijderen</a></td>
             </tr>
             @endforeach
         </table>

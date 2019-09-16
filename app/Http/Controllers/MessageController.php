@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use Illuminate\Http\Request;
+use DB;
 
 class MessageController extends Controller
 {
@@ -15,6 +16,14 @@ class MessageController extends Controller
     public function index(Request $request)
     {  
         if ($request->has('submitForm')) {
+
+            $request->validate([
+                'firstname'=>'required|max:255|alpha',
+                'lastname'=>'required|max:255|alpha',
+                'email'=>'required|email',
+                'phonenumber'=>'required|max:15',
+                'message'=>'required|max:2000',
+            ]);
 
             $message = new Message([
                 'firstname' => $request->get('firstname'),
@@ -51,8 +60,12 @@ class MessageController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('message');
+        $message = Message::find($id);
+        $message->delete();
+
+        return redirect()->back();
     }
 }
