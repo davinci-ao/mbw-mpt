@@ -70,22 +70,43 @@
             </div>
 
 
-
-
-            <h4>Data:</h4><br>
-            @foreach ($chaletData as $chalet)
-             <td> {{ $chalet->name }}</td>
-              <td>{{ $chalet->description}} </td>
-              <td>{{ $chalet->price}}</td>
-               <a href="{{ route('chalets.edit',$chalet->id)}}" class="btn btn-primary">Edit</a></td>
-                @csrf
-              <form action="{{ route('chalets.destroy', $chalet->id)}}" method="post">
-                 @method('DELETE')
-              <button class="btn btn-danger" type="submit">Delete</button>
-              <br>
-           @endforeach
-
-
+<style>
+  .uper {
+    margin-top: 40px;
+  }
+</style>
+<div class="card uper">
+  <div class="card-header">
+    werk Chalet: {{$chaletData->name}} bij
+  </div>
+  <div class="card-body">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+      <form method="post" action="{{ route('chalets.update', $chaletData->id) }}">
+        @method('PATCH')
+        @csrf
+          <div class="form-group">
+               <label for="name">Chaletnaam </label>
+              <input type="text" class="form-control" name="name" value={{$chaletData->name}} />
+          </div>
+          <div class="form-group">
+              <label for="description">Beschrijving</label>
+              <input type="text" class="form-control" name="description" value={{$chaletData->description }} />
+          </div>
+          <div class="form-group">
+              <label for="prijs">prijs</label>
+              <input type="text" class="form-control" name="price" value={{$chaletData->price}} />
+          </div>          
+          <button type="submit" class="btn btn-primary">opslaan</button>
+      </form>
+  </div>
+</div>  
 
 
 
@@ -234,3 +255,5 @@
 <!-- Footer -->
     </body>
 </html>
+
+        

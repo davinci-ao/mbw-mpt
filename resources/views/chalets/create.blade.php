@@ -68,6 +68,9 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
+
+
+            
 <style>
   .uper {
     margin-top: 40px;
@@ -105,6 +108,9 @@
       </form>
   </div>
 </div>
+
+
+
 <footer class="page-footer font-small blue-grey lighten-5">
 
   <div style="background-color: #21d192;">

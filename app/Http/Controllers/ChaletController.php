@@ -73,9 +73,11 @@ class ChaletController extends Controller
      * @param  \App\Chalet  $chalet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chalet $chalet)
+    public function edit($id)
     {
-        //
+         $chalet = Chalet::find($id);
+
+        return view('chalets.edit', ['chaletData' => $chalet]);
     }
 
     /**
@@ -85,9 +87,21 @@ class ChaletController extends Controller
      * @param  \App\Chalet  $chalet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chalet $chalet)
+    public function update(Request $request, $id)
     {
-        //
+         $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'price'=> 'required'
+          ]);
+           $chalet = Chalet::find($id); 
+           $chalet->name = $request->get('name');
+           $chalet->description = $request->get('description');
+           $chalet->price = $request->get('price');
+
+
+          $chalet->save();
+          return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
     }
 
     /**
@@ -96,8 +110,11 @@ class ChaletController extends Controller
      * @param  \App\Chalet  $chalet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chalet $chalet)
+    public function destroy($id)
     {
-        //
+        $chalet = Chalet::find($id);
+        $chalet->delete();
+   
+        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol verwijderd');
     }
 }
