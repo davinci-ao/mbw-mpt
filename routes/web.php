@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
 
 
 Route::get('/contact', 'MessageController@index')->name('contact');
