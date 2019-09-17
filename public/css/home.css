@@ -25,3 +25,10 @@
 .v-application--wrap {
 	min-height: unset !important;
 }
+
+#menu {
+	position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
