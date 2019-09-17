@@ -41,7 +41,7 @@ class ChaletController extends Controller
        $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'price'=> 'required'
+            'price'=> 'required|numeric'
           ]);
 
           $chalet = new Chalet([
@@ -92,7 +92,7 @@ class ChaletController extends Controller
          $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'price'=> 'required'
+            'price'=> 'required|numeric'
           ]);
            $chalet = Chalet::find($id); 
            $chalet->name = $request->get('name');

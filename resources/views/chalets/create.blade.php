@@ -80,16 +80,27 @@
   <div class="card-header">
     Voeg een Chalet toe
   </div>
+      <!-- success message -->
+
+    @if ($alert = Session::get('alert'))
+          <div class="alert alert-success">
+              <p>{{ $alert }}</p>
+          </div>
+      @endif
+
+ <!-- validation errors -->
+
+      @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          <br /> 
+      @endif
   <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
-    @endif
       <form method="post" action="{{ route('chalets.store') }}">
           <div class="form-group">
               @csrf
