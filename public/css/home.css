@@ -1,0 +1,34 @@
+.v-carousel__controls {
+	display: none !important;
+}
+
+.v-carousel {
+	height: 600px !important;
+}
+
+.v-window__container {
+    height: 600px !important;
+}
+
+.v-window-item {
+    height: 600px !important;
+}
+
+.v-responsive {
+    height: 600px !important;	
+}
+
+.v-image__image--cover {
+	background-position: top !important;
+}
+
+.v-application--wrap {
+	min-height: unset !important;
+}
+
+#menu {
+	position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
