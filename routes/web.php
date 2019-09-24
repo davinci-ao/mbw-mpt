@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
 
 Route::resource('/chalets', 'ChaletController');
+
+Route::get('/contact', 'MessageController@index')->name('contact');
+Route::get('/contact/list', 'MessageController@list')->name('contactList');
+Route::get('/contact/delete', 'MessageController@destroy')->name('contactDelete');
