@@ -75,7 +75,8 @@ class ChaletController extends Controller
      */
     public function edit($id)
     {
-         $chalet = Chalet::find($id);
+
+        $chalet = Chalet::find($id);
 
         return view('chalets.edit', ['chaletData' => $chalet]);
     }
@@ -111,7 +112,7 @@ class ChaletController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {      
         $chalet = Chalet::find($id);
         $chalet->delete();
    
