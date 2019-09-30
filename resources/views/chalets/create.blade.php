@@ -1,4 +1,6 @@
-      
+@extends('templates.layout')
+
+@section('content')      
 <style>
   .uper {
     margin-top: 40px;
@@ -49,3 +51,4 @@
 </div>
 
 
+@endsection
