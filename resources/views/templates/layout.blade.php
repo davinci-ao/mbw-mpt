@@ -19,6 +19,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
 
     <!-- Link to JS -->
+
+    <!-- BOOTSTRAP -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -32,9 +37,9 @@
         <div class="flex-grow-1"></div>
   
         <v-toolbar-items>
-          <v-btn text>Home</v-btn>
-          <v-btn text>Chalets</v-btn>
-          <v-btn text>Contact</v-btn>
+          <v-btn text href="{{ url('home') }}">Home</v-btn>
+          <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
+          <v-btn text href="{{ url('contact') }}">Contact</v-btn>
         </v-toolbar-items>
   
         <template v-if="$vuetify.breakpoint.smAndUp">
@@ -59,7 +64,14 @@
   </v-app>
 </div>
 
+<!-- CONTENT -->
+
+
 @yield('content')
+
+
+
+<!-- FOOTER -->
 
 <div id="footer">
   <v-app id="inspire">
@@ -105,6 +117,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
 
 </body>
 </html>
