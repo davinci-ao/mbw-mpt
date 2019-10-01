@@ -1,3 +1,6 @@
+@extends('templates.layout')
+
+@section('content')
 
 <style>
   .uper {
@@ -53,4 +56,4 @@
 </div>  
 
 
-
+@endsection

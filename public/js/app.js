@@ -146,8 +146,8 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/larsgruis/Projects/mbw-mpt/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/larsgruis/Projects/mbw-mpt/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
