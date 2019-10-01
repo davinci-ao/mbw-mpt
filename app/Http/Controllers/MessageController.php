@@ -32,6 +32,8 @@ class MessageController extends Controller
 
             $message->save();
 
+            // Mail function
+
             return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!');
         }
         return view('message.index');
