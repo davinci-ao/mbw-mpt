@@ -115,6 +115,7 @@ new Vue({
     };
   }
 });
+
 new Vue({
   el: '#footer',
   vuetify: new Vuetify(),
