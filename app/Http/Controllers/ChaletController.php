@@ -27,7 +27,7 @@ class ChaletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //DEV PAGE
 
@@ -75,7 +75,7 @@ class ChaletController extends Controller
      * @param  \App\Chalet  $chalet
      * @return \Illuminate\Http\Response
      */
-    public function show(Chalet $chalet)
+    public function show(Chalet $chalet, Request $request)
     {
         //DEV PAGE
 
@@ -90,7 +90,7 @@ class ChaletController extends Controller
      * @param  \App\Chalet  $chalet
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         //DEV PAGE
 
@@ -140,7 +140,7 @@ class ChaletController extends Controller
      * @param  \App\Chalet  $chalet
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {   
         //DEV PAGE
 

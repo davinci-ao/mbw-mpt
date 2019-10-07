@@ -54,7 +54,7 @@ class MessageController extends Controller
         return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!');
     }
 
-    public function list()
+    public function list(Request $request)
     {
         //DEV PAGE
 
