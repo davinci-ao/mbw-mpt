@@ -23,8 +23,8 @@ class MessageController extends Controller
         //USER PAGE
 
         $request->validate([
-            'firstname'=>'required|max:100|alpha',
-            'lastname'=>'required|max:100|alpha',
+            'firstname'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
+            'lastname'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'email'=>'required|email',
             'phonenumber'=>'required|max:15',
             'message'=>'required|max:2000'
