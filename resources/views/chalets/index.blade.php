@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h4>Data:</h4><br>
+<h4>Data:</h4>
 
 <!-- only show create button when logged in -->
 
