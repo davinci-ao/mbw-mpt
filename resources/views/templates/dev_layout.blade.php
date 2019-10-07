@@ -28,6 +28,17 @@
 
     <script src="https://kit.fontawesome.com/a1912e8d76.js" crossorigin="anonymous"></script>
 
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -37,17 +48,21 @@
     <div>
       <v-toolbar>
         <v-toolbar-title>Mooiplekjetexel.nl</v-toolbar-title>
-  
+   
         <div class="flex-grow-1"></div>
   
         <v-toolbar-items>
+
           <v-btn text href="{{ url('home') }}">Home</v-btn>
-          <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
-          <v-btn text href="{{ url('contact') }}">Contact</v-btn>
-          @if (Auth::check())
-          <v-btn text href="{{ url('account') }}">Dev</v-btn>         
-          <v-btn text href="{{ url('account') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
-          @endif
+          <v-btn text href="{{ url('contact/list') }}">Messages</v-btn>
+          <v-btn text href="{{ url('#') }}">Actionlog</v-btn>
+          <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>  
+
+<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
         </v-toolbar-items>
 
@@ -56,17 +71,6 @@
   </v-app>
 </div>
 
-<div id="slider">
-  <v-app id="inspire">
-    <v-carousel>
-      <v-carousel-item
-        v-for="(item,i) in items"
-        :key="i"
-        :src="item.src"
-      ></v-carousel-item>
-    </v-carousel>
-  </v-app>
-</div>
 
 <!-- CONTENT -->
 
