@@ -41,13 +41,17 @@
         <div class="flex-grow-1"></div>
   
         <v-toolbar-items>
-
-          <v-btn text href="{{ url('home') }}">Home</v-btn>
-          <v-btn text href="{{ url('contact/list') }}">Messages</v-btn>
-          <v-btn text href="{{ url('#') }}">Actionlog</v-btn>
-          <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>  
-          <v-btn text href="{{ url('#') }}"><i class="fas fa-sign-out-alt"></i></v-btn>  
-
+          @if (Auth::check())
+            <v-btn text href="{{ url('home') }}">Home</v-btn>
+            <v-btn text href="{{ url('contact/list') }}">Messages</v-btn>
+            <v-btn text href="{{ url('#') }}">Actionlog</v-btn>
+            <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>  
+            <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>   
+          @else
+            <v-btn text href="{{ url('home') }}">Home</v-btn>
+            <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
+            <v-btn text href="{{ url('contact') }}">Contact</v-btn>
+          @endif
         </v-toolbar-items>
 
       </v-toolbar>

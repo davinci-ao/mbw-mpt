@@ -22,4 +22,6 @@ Route::get('/contact', 'MessageController@index')->name('contact');
 Route::post('/contact/store', 'MessageController@store')->name('contactStore');
 Route::get('/contact/list', 'MessageController@list')->name('contactList');
 Route::get('/contact/delete', 'MessageController@destroy')->name('contactDelete');
+
 Auth::routes();
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');

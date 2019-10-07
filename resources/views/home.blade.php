@@ -17,6 +17,11 @@
                     @endif
 
                     You are logged in as {{ Auth::user()->name }}!
+
+                    <br><br>
+
+                    <a href="{{ url('/register') }}">Register new account</a>
+
                 </div>
             </div>
         </div>

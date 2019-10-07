@@ -45,8 +45,8 @@
           <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
           <v-btn text href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
-          <v-btn text href="{{ url('account') }}">Dev</v-btn>         
-          <v-btn text href="{{ url('account') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
+          <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>         
+          <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
           @endif
 
         </v-toolbar-items>
