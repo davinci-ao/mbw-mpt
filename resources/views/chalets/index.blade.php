@@ -5,9 +5,9 @@
 <div id="calendar">
   <v-app id="inspire">
     <v-row class="fill-height">
-      <v-col>
-        <v-sheet height="64">
-          <v-toolbar flat color="white">
+      <v-col align-center>
+        <v-sheet height="64" max-width= "850">
+          <v-toolbar flat color="white" max-width= "850">
             <v-btn outlined class="mr-4" @click="setToday">
               Vandaag
             </v-btn>
@@ -43,7 +43,7 @@
             </v-menu>
           </v-toolbar>
         </v-sheet>
-        <v-sheet height="600">
+        <v-sheet height="500" max-width="850">
           <v-calendar
             ref="calendar"
             v-model="focus"
@@ -53,6 +53,7 @@
             :event-margin-bottom="3"
             :now="today"
             :type="type"
+            locale="nl"
             @click:event="showEvent"
             @click:more="viewDay"
             @click:date="viewDay"
