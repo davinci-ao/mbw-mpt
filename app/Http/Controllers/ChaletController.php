@@ -15,6 +15,8 @@ class ChaletController extends Controller
      */
     public function index()
     {
+        //USER PAGE
+
         $chalets = Chalet::all();
 
         return view('chalets.index',['chaletData' => $chalets]);
@@ -27,6 +29,12 @@ class ChaletController extends Controller
      */
     public function create()
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         return view('chalets.create');
     }
 
@@ -38,22 +46,27 @@ class ChaletController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
             'name'=>'required',
             'description'=>'required',
             'price'=> 'required|numeric'
-          ]);
+        ]);
 
-          $chalet = new Chalet([
+        $chalet = new Chalet([
             'name' => $request->get('name'),
             'description'=> $request->get('description'),
             'price'=> $request->get('price')
 
-          ]);
+        ]);
 
-          $chalet->save();
-          return redirect('/chalets')->with('Gelukt!', 'de Chalet is toegevoegd');        
-        
+        $chalet->save();
+        return redirect('/chalets')->with('Gelukt!', 'de Chalet is toegevoegd');     
     }
 
     /**
@@ -64,7 +77,11 @@ class ChaletController extends Controller
      */
     public function show(Chalet $chalet)
     {
-        //
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
     }
 
     /**
@@ -75,6 +92,11 @@ class ChaletController extends Controller
      */
     public function edit($id)
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
 
         $chalet = Chalet::find($id);
 
@@ -90,19 +112,26 @@ class ChaletController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $request->validate([
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
             'name'=>'required',
             'description'=>'required',
             'price'=> 'required|numeric'
-          ]);
-           $chalet = Chalet::find($id); 
-           $chalet->name = $request->get('name');
-           $chalet->description = $request->get('description');
-           $chalet->price = $request->get('price');
+        ]);
 
+        $chalet = Chalet::find($id); 
+        $chalet->name = $request->get('name');
+        $chalet->description = $request->get('description');
+        $chalet->price = $request->get('price');
 
-          $chalet->save();
-          return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
+        $chalet->save();
+
+        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
     }
 
     /**
@@ -112,7 +141,13 @@ class ChaletController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {      
+    {   
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }  
+
         $chalet = Chalet::find($id);
         $chalet->delete();
    

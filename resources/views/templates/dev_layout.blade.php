@@ -28,17 +28,6 @@
 
     <script src="https://kit.fontawesome.com/a1912e8d76.js" crossorigin="anonymous"></script>
 
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
@@ -57,12 +46,7 @@
           <v-btn text href="{{ url('contact/list') }}">Messages</v-btn>
           <v-btn text href="{{ url('#') }}">Actionlog</v-btn>
           <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>  
-
-<a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+          <v-btn text href="{{ url('#') }}"><i class="fas fa-sign-out-alt"></i></v-btn>  
 
         </v-toolbar-items>
 

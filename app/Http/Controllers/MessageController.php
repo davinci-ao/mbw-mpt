@@ -19,7 +19,6 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
-
         //USER PAGE
 
         $request->validate([
@@ -59,6 +58,10 @@ class MessageController extends Controller
     {
         //DEV PAGE
 
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         $messages = DB::table('messages')->orderBy('created_at', 'desc')->paginate(8);
 
         return view('message.list', [
@@ -69,6 +72,10 @@ class MessageController extends Controller
     public function destroy(Request $request)
     {
         //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
 
         $id = $request->get('message');
         $message = Message::find($id);

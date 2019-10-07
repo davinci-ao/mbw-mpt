@@ -9,6 +9,12 @@ class HomeController extends Controller
 
     public function accountAction(Request $request)
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         return view('home');
     }
 
@@ -19,6 +25,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        //USER PAGE
 
         return view('home.index');
     }
