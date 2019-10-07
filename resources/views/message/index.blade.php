@@ -28,9 +28,8 @@
 
     <h1 style="margin-bottom: 20px;">Contact</h1>
 
-	<form>
-	    @csrf
-	  
+	<form method="post" action="{{ url('/contact/store') }}">
+	    @csrf  
 	     <div class="row">
 	        <div class="col-xs-12 col-sm-12 col-md-12">
 	            <div class="form-group">
