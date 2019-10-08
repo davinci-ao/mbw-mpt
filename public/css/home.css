@@ -1,6 +1,23 @@
 ﻿* {
-        padding: 0px;
-        margin: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+h1 {
+    color: #2196F3;
+    font-size: 2.1rem !important;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1::after {
+    content: url(../icon/blue-line-small.png);
+    display: block;
+    position: relative;
+    top: -20px;
 }
 
 .controls {
@@ -50,14 +67,14 @@ position: relative;
 }
 
 .carousel-item img {
-        height: 550px;
-        object-fit: cover;
-        object-position: top;
+    height: 700px;
+    object-fit: cover;
+    object-position: top;
 }
 
 .slider-menu {
-        background-color: transparent !important;
-        position: absolute;
+    background-color: transparent !important;
+    position: absolute;
     top: 0px;
     z-index: 1;
     width: 100%;
@@ -68,19 +85,19 @@ position: relative;
 }
 
 .v-carousel {
-	height: 600px !important;
+	height: 700px !important;
 }
 
 .v-window__container {
-    height: 600px !important;
+    height: 700px !important;
 }
 
 .v-window-item {
-    height: 600px !important;
+    height: 700px !important;
 }
 
 .v-responsive {
-    height: 600px !important;	
+    height: 700px !important;	
 }
 
 .v-image__image--cover {
@@ -92,8 +109,66 @@ position: relative;
 }
 
 #menu {
-	position: fixed;
+	position: absolute;
     top: 0;
     z-index: 1;
     width: 100%;
+}
+
+.contact_form {
+    width: 100% !important;
+}
+
+.alert ul li {
+    list-style-type: none;
+}
+
+.v-counter {
+    color: #2196F3 !important;
+}
+
+.default-button {
+    background-color: #2196F3 !important;
+    color: white !important;
+    text-transform: none;
+    font-size: 1rem !important;
+}
+
+.main-color {
+    background-color: #2196F3 !important;
+}
+
+.header-title {
+    position: relative;
+    top: 10px;
+    left: 5px;
+    color: white;
+    font-size: 3.2rem;
+    font-family: 'Caveat Brush', cursive;
+}
+
+.v-window__next, .v-window__prev {
+    display: none !important;
+}
+
+#menu {
+    background: transparent;
+}
+
+header {
+    background: transparent;
+}
+
+.header-menu {
+    background: transparent !important;
+}
+
+.v-toolbar {
+    box-shadow: none;
+}
+
+.menu-items {
+    color: white !important;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 1.6rem !important;
 }

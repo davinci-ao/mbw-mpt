@@ -18,9 +18,6 @@ new Vue({
         {
           src: 'images/slide1.jpg',
         },
-        {
-          src: 'images/slide2.jpg',
-        },
       ],
     }
   },
@@ -31,7 +28,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: () => ({
     links: [
-      'Home',
+      '/home',
       'Chalets',
       'Contact',
     ],
@@ -174,4 +171,39 @@ new Vue({
         : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][d % 10]
     },
   },
+})
+
+new Vue ({
+    el: '#form',
+    vuetify: new Vuetify(),
+    data: () => ({
+      valid: true,
+      firstname: '',
+      firstnameRules: [
+        v => !!v || 'Voornaam is verplicht',
+        v => (v && v.length <= 50) || 'Voornaam moet minder dan 50 karakters zijn',
+      ],
+      lastname: '',
+      lastnameRules: [
+        v => !!v || 'Achternaam is verplicht',
+        v => (v && v.length <= 50) || 'Achternaam moet minder dan 50 karakters zijn',
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is verplicht',
+        v => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn',
+      ],
+      phone: '',
+      phoneRules: [
+        v => !!v || 'Telefoonummer is verplicht',
+        v => (v && v.length <= 15) || 'Telefoonnummer moet geldig zijn',
+      ],
+      subject: '',
+      subjectRules: [
+        v => !!v || 'Onderwerp is verplicht',
+        v => (v && v.length <= 300) || 'Onderwerp moet minder dan 300 karakters zijn',
+      ],      
+      checkbox: false,
+      lazy: false,
+  }),
 })
