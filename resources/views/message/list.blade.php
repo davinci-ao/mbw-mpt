@@ -1,8 +1,8 @@
-@extends('templates.layout')
+@extends('templates.dev_layout')
 
 @section('content')
 
-<div class="container" style="margin-top: 25px; font-size: 12px">
+<div class="container" style="margin-top: 75px; font-size: 12px">
 
     <h1 style="margin-bottom: 20px;">Berichten</h1>
 
