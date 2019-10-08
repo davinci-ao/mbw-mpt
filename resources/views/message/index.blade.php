@@ -28,7 +28,7 @@
     <v-form
       class="contact_form"
       method="post"
-      action="{{ url('/contact/store') }}">
+      action="{{ url('/contact/store') }}"
     >
 
       <v-text-field
