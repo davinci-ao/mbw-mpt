@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
     public function accountAction(Request $request)
     {
         //DEV PAGE

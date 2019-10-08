@@ -17,8 +17,15 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
+    <link rel="shortcut icon" type="image/png" href="favicon/favicon.png"/>
 
     <!-- Link to JS -->
+
+    <!-- Google fonts -->
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
     <!-- BOOTSTRAP -->
 
@@ -33,10 +40,10 @@
 <body>
 
 <div id="menu">
-  <v-app id="inspire">
+  <v-app id="inspire" class="header-menu">
     <div>
-      <v-toolbar>
-        <v-toolbar-title>Mooiplekjetexel.nl</v-toolbar-title>
+      <v-toolbar class="header-menu">
+        <v-toolbar-title class="header-title" href="{{ url('home') }}">Mooiplekjetexel.nl</v-toolbar-title>
   
         <div class="flex-grow-1"></div>
   
@@ -50,7 +57,6 @@
           @endif
 
         </v-toolbar-items>
-
       </v-toolbar>
     </div>
   </v-app>
@@ -80,7 +86,7 @@
 <div id="footer">
   <v-app id="inspire">
     <v-footer
-      color="primary lighten-1"
+      color="main-color lighten-1"
       padless
     >
       <v-row
@@ -108,7 +114,7 @@
           </v-btn>
         </v-card-text> -->
         <v-col
-          class="primary lighten-2 py-4 text-center white--text"
+          class="main-color lighten-2 py-4 text-center white--text"
           cols="12"
         >
           @{{ new Date().getFullYear() }} — <strong>Mooiplekjetexel.nl</strong>
@@ -121,6 +127,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+
 
 
 </body>

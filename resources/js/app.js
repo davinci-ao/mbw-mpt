@@ -1,32 +1,78 @@
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+* First, we will load all of this project's Javascript utilities and other
+* dependencies. Then, we will be ready to develop a robust and powerful
+* application frontend using useful Laravel and JavaScript libraries.
+*/
 
-require('./bootstrap');
+new Vue({
+  el: '#menu',
+  vuetify: new Vuetify(),
+})
 
-window.Vue = require('vue');
+new Vue({
+  el: '#slider',
+  vuetify: new Vuetify(),
+  data () {
+    return {
+      items: [
+        {
+          src: 'images/slide1.jpg',
+        },
+      ],
+    }
+  },
+})
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+new Vue({
+  el: '#footer',
+  vuetify: new Vuetify(),
+  data: () => ({
+    links: [
+      '/home',
+      'Chalets',
+      'Contact',
+    ],
+    icons: [
+      'fab fa-facebook',
+      'fab fa-twitter',
+      'fab fa-google-plus',
+      'fab fa-linkedin',
+      'fab fa-instagram',
+    ],
+  }),
+})
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-});
+new Vue({
+    el: '#form',
+    vuetify: new Vuetify(),
+    data: () => ({
+      valid: true,
+      firstname: '',
+      firstnameRules: [
+        v => !!v || 'Voornaam is verplicht',
+        v => (v && v.length <= 50) || 'Voornaam moet minder dan 50 karakters zijn',
+      ],
+      lastname: '',
+      lastnameRules: [
+        v => !!v || 'Achternaam is verplicht',
+        v => (v && v.length <= 50) || 'Achternaam moet minder dan 50 karakters zijn',
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is verplicht',
+        v => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn',
+      ],
+      phone: '',
+      phoneRules: [
+        v => !!v || 'Telefoonummer is verplicht',
+        v => (v && v.length <= 15) || 'Telefoonnummer moet geldig zijn',
+      ],
+      subject: '',
+      subjectRules: [
+        v => !!v || 'Onderwerp is verplicht',
+        v => (v && v.length <= 300) || 'Onderwerp moet minder dan 300 karakters zijn',
+      ],      
+      checkbox: false,
+      lazy: false,
+  }),
+})
