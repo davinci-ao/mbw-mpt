@@ -2,10 +2,7 @@
 
 @section('content')
 
-
-<div class="container" style="margin-top: 25px;">
-
-	<!-- success message -->
+<div class="container" style="padding-top: 25px; padding-bottom: 30px;">
 
 	@if ($alert = Session::get('alert'))
         <div class="alert alert-success">
@@ -13,68 +10,61 @@
         </div>
     @endif
 
-    <!-- validation errors -->
-
     @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>
+            <ul style="margin-bottom: 0;">
                 @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li style="list-style-type: none;">{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
         <br /> 
     @endif
 
-    <h1 style="margin-bottom: 20px;">Contact</h1>
+	<h1>Neem contact met ons op</h1>
 
-	<form>
-	    @csrf
-	  
-	     <div class="row">
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	            <div class="form-group">
-	                <strong>Voornaam</strong>
-	                <input type="text" name="firstname" class="form-control" placeholder="Voornaam">
-	            </div>
-	        </div>
+<div id="form">
+	@csrf
+    <v-form
+      class="contact_form"
+    >
 
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	            <div class="form-group">
-	                <strong>Achternaam</strong>
-	                <input type="text" name="lastname" class="form-control" placeholder="Achternaam">
-	            </div>
-	        </div>
+      <v-text-field
+        v-model="firstname"
+        :counter="50"
+        label="Voornaam"
+        name="firstname"
+      ></v-text-field>
 
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	            <div class="form-group">
-	                <strong>Email</strong>
-	                <input type="text" name="email" class="form-control" placeholder="Email">
-	            </div>
-	        </div>
+      <v-text-field
+        v-model="lastname"
+        :counter="50"
+        label="Achternaam"
+        name="lastname"
+      ></v-text-field>
 
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	            <div class="form-group">
-	                <strong>Telefoon</strong>
-	                <input type="text" name="phonenumber" class="form-control" placeholder="Telefoon">
-	            </div>
-	        </div>
+      <v-text-field
+        v-model="email"
+        label="E-mail"
+        name="email"
+      ></v-text-field>
 
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	            <div class="form-group">
-	                <strong>Bericht</strong>
-	                <textarea class="form-control" style="height:150px" name="message" placeholder="Bericht"></textarea>
-	            </div>
-	        </div>
+      <v-text-field
+        v-model="phone"
+        label="Telefoonnummer"
+        name="phonenumber"
+      ></v-text-field>
 
-
-
-	        <div class="col-xs-12 col-sm-12 col-md-12">
-	                <button type="submit" name="submitForm" class="btn btn-primary">Verzenden</button>
-	        </div>
-	    </div>
-	   
-	</form>
+      <v-textarea
+        v-model="subject"
+        :counter="300"
+        label="Onderwerp"
+        name="message"
+      ></v-textarea>
+	
+      <v-btn class="default-button" name="submitForm" type="submit">Versturen</v-btn>
+    </v-form>
+</div>
 
 </div>
 
