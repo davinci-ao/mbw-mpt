@@ -24,12 +24,12 @@
 	<h1>Neem contact met ons op</h1>
 
 <div id="form">
-	@csrf
     <v-form
       class="contact_form"
       method="post"
-      action="{{ url('/contact/store') }}">
+      action="{{ url('/contact/store') }}"
     >
+    @csrf
 
       <v-text-field
         v-model="firstname"
