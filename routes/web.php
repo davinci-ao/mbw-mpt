@@ -15,6 +15,7 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account', 'HomeController@accountAction')->name('account');
+Route::post('/account/delete', 'HomeController@deleteAccount')->name('deleteAccount');
 
 Route::resource('/chalets', 'ChaletController');
 
