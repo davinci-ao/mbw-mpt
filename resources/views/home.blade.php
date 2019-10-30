@@ -54,7 +54,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Created at</th>
-                            <th></th>
+                 
                         </tr>
 
                     @foreach ($users as $user)
@@ -62,6 +62,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d-m-Y H:i:s') }}</td>
+                            <td><a href="{{ url('account/edit?account=' . $user->id) }}" style="color:yellow; cursor: pointer;">Wijzigen</a></td>
                             <td><a onclick="hiddenValue({{ $user->id }})" style="color: red; cursor: pointer;" data-toggle="modal" data-target="#myModal">Verwijderen</a></td>
                         </tr>
                     @endforeach
@@ -91,7 +92,7 @@
             <form method="post" action="{{ url('/account/delete') }}">
                 @csrf
                 <input id="hiddenvalue" type="hidden" name="userId">
-                <input class="form-control" type="password" name="password" placeholder="Wachtwoord">
+                <input required class="form-control" type="password" name="password" placeholder="Wachtwoord">
                 <br>
                 <button type="submit" class="btn btn-danger" name="delete">Verwijderen</button>
             </form>

@@ -52,6 +52,38 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function editAccount(Request $request)
+    {
+        $accountId = $request->get('account');
+        $account = User::find($accountId);
+
+        return view('auth.edit',['account' => $account]);
+    }
+
+    public function storeAccount(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'unique:users|email|required'
+        ]);
+
+        $accountId = $request->get('account');
+        $account = User::find($accountId);
+        $account->name = $request->get('name');
+        $account->email = $request->get('email');
+        $account->save();
+
+        return redirect('/home')->with('gelukt!', 'account:'. $account->name .'is succesvol bijgwerkt');
+
+    }
+
+
+    public function changePassAccount()
+    {
+
+    }
+
+
     /**
      * Show the application dashboard.
      *
