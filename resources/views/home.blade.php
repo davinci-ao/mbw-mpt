@@ -45,18 +45,6 @@
                         </div>
                     @endif
 
-                    @if ($lastUser = Session::get('lastUser'))
-                        <div class="alert alert-danger">
-                            <p>{{ $lastUser }}</p>
-                        </div>
-                    @endif
-
-                    @if ($wrongPass = Session::get('wrongPass'))
-                        <div class="alert alert-danger">
-                            <p>{{ $wrongPass }}</p>
-                        </div>
-                    @endif
-
                     You are logged in as {{ Auth::user()->name }}!
 
                     <br><br>

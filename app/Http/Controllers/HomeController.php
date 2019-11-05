@@ -26,6 +26,12 @@ class HomeController extends Controller
 
     public function deleteAccount(Request $request)
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         $accountId = $request->get('userId');
         $users = User::all();
 
@@ -35,7 +41,7 @@ class HomeController extends Controller
         }
 
         if ($count == 1) {
-            return redirect()->back()->with('lastUser', 'Kan de laatste gebruiker niet verwijderen');
+            return redirect()->back()->with('alertDanger', 'Kan de laatste gebruiker niet verwijderen');
         }
 
         $request->validate([
@@ -47,7 +53,7 @@ class HomeController extends Controller
         if ($hasher->check($request->get('password'), $account->password)){
             $account->delete();
         } else {
-            return redirect()->back()->with('wrongPass', 'Het ingevoerde wachtwoord is onjuist');
+            return redirect()->back()->with('alertDanger', 'Het ingevoerde wachtwoord is onjuist');
         }
         
         return redirect()->back();
@@ -55,6 +61,12 @@ class HomeController extends Controller
 
     public function editAccount(Request $request)
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         $accountId = $request->get('account');
         $account = User::find($accountId);
 
@@ -63,6 +75,12 @@ class HomeController extends Controller
 
     public function storeAccount(Request $request)
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         $accountId = $request->get('account');
         $account = User::find($accountId);
 
@@ -90,6 +108,12 @@ class HomeController extends Controller
 
     public function changePassAccount(Request $request)
     {
+        //DEV PAGE
+
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         $accountId = $request->get('account');
         $account = User::find($accountId);
 
