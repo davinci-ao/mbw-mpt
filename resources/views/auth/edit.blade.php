@@ -4,6 +4,16 @@
 
 <div class="container" style="margin-top: 75px;">
 
+	 @if ($errors->any())
+		<div class="alert alert-danger">
+		    <ul>
+		        @foreach ($errors->all() as $error)
+		            <li>{{ $error }}</li>
+		        @endforeach
+		    </ul>
+		</div>
+    @endif
+
 	<h5>Edit Account</h5>
 
 	<form method="post" action="{{url('account/store?account=' . $account->id)}}">

@@ -62,19 +62,28 @@ class HomeController extends Controller
 
     public function storeAccount(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'email'=>'unique:users|email|required'
-        ]);
-
         $accountId = $request->get('account');
         $account = User::find($accountId);
-        $account->name = $request->get('name');
-        $account->email = $request->get('email');
+
+        if ($account->name !== $request->get('name')) {
+            $request->validate([
+                'name' => 'unique:users|required',
+            ]);
+
+            $account->name = $request->get('name');
+        }
+
+        if ($account->email !== $request->get('email')) {
+            $request->validate([
+                'email' => 'unique:users|required',
+            ]);
+
+            $account->email = $request->get('email');
+        }
+
         $account->save();
 
-        return redirect('/home')->with('gelukt!', 'account:'. $account->name .'is succesvol bijgwerkt');
-
+        return redirect('/account')->with('gelukt!', 'account:'. $account->name .'is succesvol bijgwerkt');
     }
 
 
