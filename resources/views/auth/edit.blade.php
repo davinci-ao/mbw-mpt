@@ -14,6 +14,18 @@
 		</div>
     @endif
 
+    @if ($alert = Session::get('alertSuccess'))
+        <div class="alert alert-success">
+            <p>{{ $alert }}</p>
+        </div>
+    @endif
+
+    @if ($alert = Session::get('alertDanger'))
+        <div class="alert alert-danger">
+            <p>{{ $alert }}</p>
+        </div>
+    @endif
+
 	<h5>Edit Account</h5>
 
 	<form method="post" action="{{url('account/store?account=' . $account->id)}}">
@@ -27,11 +39,11 @@
 
 <!-- 	name
  -->
-	<form method="post" action="{{url('account/changepass')}}">
+	<form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
 		@csrf
-		<input required type="password" class="form-control" placeholder="Old password">
-		<input required type="password" class="form-control" placeholder="New password">
-		<input required type="password" class="form-control" placeholder="Retype new password">
+		<input required type="password" name="oldPass" class="form-control" placeholder="Old password">
+		<input required type="password" name="newPass1" class="form-control" placeholder="New password">
+		<input required type="password" name="newPass2" class="form-control" placeholder="Retype new password">
 		<button class="btn btn-primary" type="submit">Wijzig</button>
 	</form>
 

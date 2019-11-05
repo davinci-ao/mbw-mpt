@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use Auth;
+use Illuminate\Support\Facades\Hash;
 Use App\User;
 
 
@@ -83,13 +84,33 @@ class HomeController extends Controller
 
         $account->save();
 
-        return redirect('/account')->with('gelukt!', 'account:'. $account->name .'is succesvol bijgwerkt');
+        return redirect('/account')->with('alertSuccess', 'account:'. $account->name .'is succesvol bijgwerkt');
     }
 
 
-    public function changePassAccount()
+    public function changePassAccount(Request $request)
     {
+        $accountId = $request->get('account');
+        $account = User::find($accountId);
 
+        $oldPass = $request->get('oldPass');
+        $newPass1 = $request->get('newPass1');
+        $newPass2 = $request->get('newPass2');
+
+        $hasher = app('hash');
+
+        if ($hasher->check($request->get('oldPass'), $account->password)) {
+            if ($newPass1 == $newPass2) {
+                $account->password = Hash::make($newPass1);
+                $account->save();
+
+                return redirect('/account')->with('alertSuccess', 'account:'. $account->name .'is succesvol bijgwerkt');
+            } else {
+                return redirect('/account/edit?account=' . $accountId)->with('alertDanger', 'De nieuw ingevoerde wachtwoorden komen niet overeen!');
+            }
+        } else {
+            return redirect('/account/edit?account=' . $accountId)->with('alertDanger', 'Het oude wachtwoord komt niet overeen!');
+        }
     }
 
 

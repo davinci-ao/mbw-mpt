@@ -27,6 +27,18 @@
                         <br/> 
                     @endif
 
+                    @if ($alert = Session::get('alertSuccess'))
+                        <div class="alert alert-success">
+                            <p>{{ $alert }}</p>
+                        </div>
+                    @endif
+
+                    @if ($alert = Session::get('alertDanger'))
+                        <div class="alert alert-danger">
+                            <p>{{ $alert }}</p>
+                        </div>
+                    @endif
+
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
