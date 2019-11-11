@@ -172,3 +172,16 @@ header {
     font-family: 'Caveat Brush', cursive;
     font-size: 1.6rem !important;
 }
+
+.content_container {
+    padding: 25px;
+}
+
+.holidaypark-title {
+    font-weight: 700;
+}
+
+.holidaypark-card {
+    display: inline-block !important;
+    width: 20%;
+}
