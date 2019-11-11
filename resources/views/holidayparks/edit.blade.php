@@ -9,7 +9,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    werk Chalet: {{$chaletData->name}} bij
+    Werk Vakantiepark: {{$holidaypark->name}} bij:
   </div>
     <!-- success message -->
 
@@ -34,23 +34,22 @@
 
 
   <div class="card-body">
-   
-      <form method="post" action="{{ route('chalets.update', $chaletData->id) }}">
+      <form method="post" action="{{ route('holidayparks.update', $holidaypark->id) }}">
         @method('PATCH')
         @csrf
           <div class="form-group">
-               <label for="name">Chaletnaam </label>
-              <input type="text" class="form-control" name="name" value="{{ $chaletData->name }}" />
+               <label for="name">Naam vakantiepark: </label>
+              <input type="text" class="form-control" name="name" value="{{ $holidaypark->name }}" />
           </div>
           <div class="form-group">
-              <label for="description">Beschrijving</label>
-              <input type="text" class="form-control" name="description" value="{{ $chaletData->description }}" />
+              <label for="description">Beschrijving vakantiepark:</label>
+              <input type="text" class="form-control" name="description" value="{{ $holidaypark->description }}" />
           </div>
           <div class="form-group">
-              <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price" value="{{ $chaletData->price }}" />
+              <label for="chalet">Chalets vakantiepark:</label>
+              <input type="text" class="form-control" name="chalet" value="{{ $holidaypark->chalet }}" />
           </div>          
-          <button type="submit" class="btn btn-primary">opslaan</button>
+          <button type="submit" class="btn btn-primary">Werk bij</button>
       </form>
   </div>
 </div>  

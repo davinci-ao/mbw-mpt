@@ -2,9 +2,7 @@
 
 @section('content')
 
-<!-- @foreach ($chaletData as $chalet) -->
-
-<!-- <div id="calendar">
+<div id="calendar">
   <v-app id="inspire">
     <v-row class="fill-height">
       <v-col align-center>
@@ -56,7 +54,6 @@
             :now="today"
             :type="type"
             locale="nl"
-            format="24hr"
             @click:event="showEvent"
             @click:more="viewDay"
             @click:date="viewDay"
@@ -108,10 +105,9 @@
       </v-col>
     </v-row>
   </v-app>
-</div> -->
-<!-- @endforeach -->
+</div>
 
-<h4>Chalet Data:</h4>
+<h4>Data:</h4>
 
 <!-- only show create button when logged in -->
 
@@ -121,29 +117,16 @@
 @endif
 
 @foreach ($chaletData as $chalet)
-  
-  <td>Chaletnaam: {{ $chalet->name }}</td><br>
-  <td>Beschijving: {{ $chalet->description}}</td><br> 
-  <td>Prijs: {{ $chalet->price}}</td><br>
-  <td>Land: {{ $chalet->country}}</td><br>
-  <td>Huisnummer: {{ $chalet->housenr }}{{ $chalet->addition }}</td><br>
-  <td>Straat: {{ $chalet->street}}</td><br>
-  <td>Plaats: {{ $chalet->place}}</td><br>
-  <td>lengtegraad: {{ $chalet->longitude}}</td><br>
-  <td>breedtegraad: {{ $chalet->latitude}}</td><br>
-    <?php
-   $name = $chalet->name;
-   $country = $chalet->country;
-   $housenr = $chalet->housenr;
-   $street = $chalet->street;
-   $place = $chalet->place;
-
-   ?>
+  <td>{{ $chalet->name }}</td>
+  <td>{{ $chalet->description}}</td>
+  <td>{{ $chalet->price}}</td>
 
   <!-- only show edit button when logged in -->
+
   @if (Auth::check())
     <a href="{{ route('chalets.edit',$chalet->id)}}" class="btn btn-primary">Edit</a>
   @endif  
+
 
   <!-- only show delete button when logged in -->
 
@@ -158,15 +141,21 @@
 
 @endforeach
 
+<main style="text-align: center;" >
 
- <main style="text-align: center;" >
+  <div class="mapouter">
+      <h3> Chalet Strand & Zee</h3>
+    <div style="width: 600px;position: relative; padding: 10px; display: inline-block">
+      <iframe width="600" height="500" src="https://maps.google.com/maps?width=600&amp;height=500&amp;hl=nl&amp;q=53.098650%2C%204.805590+(Chalet%20Zee)&amp;ie=UTF8&amp;t=&amp;z=18&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+      <div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color:#000;text-align: center;">
+      </div>
 
-  <div style="width: 720px">
-  <iframe width="720" height="600" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street?>%20<?=$housenr?>%2C%20<?=$place?>%2C%20<?=$country?>s+(<?=$name?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-  </iframe></div><br />
- </main>
-  
- 
+      <style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />  
+    </div>
+  </div>
+
+
+</main>
 @endsection
 
 

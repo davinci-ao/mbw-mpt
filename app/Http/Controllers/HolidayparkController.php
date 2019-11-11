@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Chalet;
+use App\Holidaypark;
 use Illuminate\Http\Request;
-use validate;
 
-class ChaletController extends Controller
+class HolidayparkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,9 @@ class ChaletController extends Controller
      */
     public function index()
     {
-        //USER PAGE
+        $holidayparks = Holidaypark::all();
 
-        $chalets = Chalet::all();
-
-        return view('chalets.index',['chaletData' => $chalets]);
+        return view('holidayparks.index',['holidayparks' => $holidayparks]);
     }
 
     /**
@@ -29,13 +26,11 @@ class ChaletController extends Controller
      */
     public function create(Request $request)
     {
-        //DEV PAGE
-
         if (!$request->user()) {
             return redirect()->route('login');
         }
 
-        return view('chalets.create');
+        return view('holidayparks.create');
     }
 
     /**
@@ -46,8 +41,6 @@ class ChaletController extends Controller
      */
     public function store(Request $request)
     {
-        //DEV PAGE
-
         if (!$request->user()) {
             return redirect()->route('login');
         }
@@ -55,65 +48,56 @@ class ChaletController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'price'=> 'required|numeric'
+            'chalet'=> 'required'
         ]);
-
-        $chalet = new Chalet([
+        $holidaypark = new Holidaypark([
             'name' => $request->get('name'),
             'description'=> $request->get('description'),
-            'price'=> $request->get('price')
+            'chalet'=> $request->get('chalet')
 
         ]);
 
-        $chalet->save();
-        return redirect('/chalets')->with('Gelukt!', 'de Chalet is toegevoegd');     
+        $holidaypark->save();
+        return redirect('/holidayparks')->with('Gelukt!', 'het vakantiepark is toegevoegd');  
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Chalet  $chalet
+     * @param  \App\Holidaypark  $holidaypark
      * @return \Illuminate\Http\Response
      */
-    public function show(Chalet $chalet, Request $request)
+    public function show(Holidaypark $holidaypark)
     {
-        //DEV PAGE
-
-        if (!$request->user()) {
-            return redirect()->route('login');
-        }
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Chalet  $chalet
+     * @param  \App\Holidaypark  $holidaypark
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $request)
+    public function edit(Request $request, $id)
     {
-        //DEV PAGE
-
         if (!$request->user()) {
             return redirect()->route('login');
         }
 
-        $chalet = Chalet::find($id);
+        $holidaypark = Holidaypark::find($id);
 
-        return view('chalets.edit', ['chaletData' => $chalet]);
+        return view('holidayparks.edit', ['holidaypark' => $holidaypark]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chalet  $chalet
+     * @param  \App\Holidaypark  $holidaypark
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //DEV PAGE
-
         if (!$request->user()) {
             return redirect()->route('login');
         }
@@ -121,36 +105,34 @@ class ChaletController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'price'=> 'required|numeric'
+            'chalet'=> 'required'
         ]);
 
-        $chalet = Chalet::find($id); 
-        $chalet->name = $request->get('name');
-        $chalet->description = $request->get('description');
-        $chalet->price = $request->get('price');
+        $holidaypark = Holidaypark::find($id); 
+        $holidaypark->name = $request->get('name');
+        $holidaypark->description = $request->get('description');
+        $holidaypark->chalet = $request->get('chalet');
 
-        $chalet->save();
+        $holidaypark->save();
 
-        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
+        return redirect('/holidayparks')->with('gelukt!', 'Vakantiepark:'. $holidaypark->name .'is succesvol bijgwerkt');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Chalet  $chalet
+     * @param  \App\Holidaypark  $holidaypark
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Request $request)
-    {   
-        //DEV PAGE
-
+    public function destroy(Request $request, $id)
+    {
         if (!$request->user()) {
             return redirect()->route('login');
         }  
 
-        $chalet = Chalet::find($id);
-        $chalet->delete();
-   
-        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol verwijderd');
+        $holidaypark = Holidaypark::find($id);
+        $holidaypark->delete();
+
+        return redirect('/holidayparks')->with('Gelukt', 'Het vakantiepark is verwijderd!');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateChaletsTable extends Migration
+class CreateHolidayparksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateChaletsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chalets', function (Blueprint $table) {
+        Schema::create('holidayparks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('description'); 
-            $table->integer('price');
+            $table->text('description');
+            $table->string('chalet');
             $table->timestamps();
-            
         });
     }
 
@@ -30,6 +29,6 @@ class CreateChaletsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chalets');
+        Schema::dropIfExists('holidayparks');
     }
 }

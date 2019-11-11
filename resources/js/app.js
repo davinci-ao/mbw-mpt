@@ -48,7 +48,6 @@ new Vue({
   data: () => ({
     today: 'locales',
     focus: 'locales',
-    format: '24hr',
     type: 'month',
     typeToLabel: {
       month: 'Maand',

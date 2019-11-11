@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Chalet extends Model
+class Holidaypark extends Model
 {
     protected $fillable = [
         'id',
       	'name',
-      	'description',
-      	'price'
-      ];    
+        'description',
+        'chalet'  
+      ]; 
 }
