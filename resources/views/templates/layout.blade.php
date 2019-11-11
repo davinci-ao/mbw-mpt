@@ -48,9 +48,9 @@
         <div class="flex-grow-1"></div>
   
         <v-toolbar-items>
-          <v-btn text class="menu-items" href="{{ url('home') }}">Home</v-btn>
-          <v-btn text class="menu-items" href="{{ url('chalets') }}">Chalets</v-btn>
-          <v-btn text class="menu-items" href="{{ url('contact') }}">Contact</v-btn>
+          <v-btn text href="{{ url('home') }}">Home</v-btn>
+          <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
+          <v-btn text href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
           <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>         
           <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
@@ -75,11 +75,12 @@
 </div>
 
 <!-- CONTENT -->
-<div class="content_container">
+
 
 @yield('content')
 
-</div>
+
+
 <!-- FOOTER -->
 
 <div id="footer">
@@ -92,9 +93,26 @@
         justify="center"
         no-gutters
       >
-        <v-btn class="my-2 primary" href="/home" rounded white--text>Home</v-btn>
-        <v-btn class="my-2 primary" href="/chalets" rounded>Chalets</v-btn>
-        <v-btn class="my-2 primary" href="/contact" rounded>Contact</v-btn>
+        <v-btn
+          v-for="link in links"
+          :key="link"
+          color="white"
+          text
+          rounded
+          class="my-2"
+        >
+          @{{ link }}
+        </v-btn>
+<!--         <v-card-text>
+          <v-btn
+            v-for="icon in icons"
+            :key="icon"
+            class="mx-4 white--text"
+            icon
+          >
+            <v-icon size="24px" color="white">@{{ icon }}</v-icon>
+          </v-btn>
+        </v-card-text> -->
         <v-col
           class="main-color lighten-2 py-4 text-center white--text"
           cols="12"

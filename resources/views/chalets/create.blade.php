@@ -44,27 +44,7 @@
           <div class="form-group">
               <label for="prijs">prijs</label>
               <input type="text" class="form-control" name="price"/>
-          </div>
-          <div class="form-group">
-              <label for="land">land</label>
-              <input type="text" class="form-control" name="country"/>
-          </div>
-          <div class="form-group">
-              <label for="huisnummer">huisnummer</label>
-              <input type="text" class="form-control" name="housenr"/>
-          </div>
-          <div class="form-group">
-              <label for="toevoeging">toevoeging</label>
-              <input type="text" class="form-control" name="addition"/>
-          </div> 
-          <div class="form-group">
-              <label for="straat">straat</label>
-              <input type="text" class="form-control" name="street"/>
-          </div>
-          <div class="form-group">
-              <label for="plaats">plaats</label>
-              <input type="text" class="form-control" name="place"/>
-          </div>                                                      
+          </div>          
           <button type="submit" class="btn btn-primary">Voeg toe</button>
       </form>
   </div>
