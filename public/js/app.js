@@ -130,6 +130,7 @@ new Vue({
     return {
       today: 'locales',
       focus: 'locales',
+      format: '24hr',
       type: 'month',
       typeToLabel: {
         month: 'Maand',
