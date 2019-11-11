@@ -48,9 +48,11 @@ class HomeController extends Controller
             'password'=>'required',
         ]);
 
+        $user = auth()->user()->password;
+
         $account = User::find($accountId);
         $hasher = app('hash');
-        if ($hasher->check($request->get('password'), $account->password)){
+        if ($hasher->check($request->get('password'), $user)){
             $account->delete();
         } else {
             return redirect()->back()->with('alertDanger', 'Het ingevoerde wachtwoord is onjuist');
@@ -92,7 +94,15 @@ class HomeController extends Controller
             $account->name = $request->get('name');
         }
 
+        if ($account->email !== $request->get('email')) {
+            $request->validate([
+                'email' => 'unique:users|required',
+            ]);
 
+            $account->email = $request->get('email');
+        }
+
+        $account->save();
 
         return redirect('/account')->with('alertSuccess', 'account:'. $account->name .'is succesvol bijgwerkt');
     }
