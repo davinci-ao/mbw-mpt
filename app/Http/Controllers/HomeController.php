@@ -92,15 +92,7 @@ class HomeController extends Controller
             $account->name = $request->get('name');
         }
 
-        if ($account->email !== $request->get('email')) {
-            $request->validate([
-                'email' => 'unique:users|required',
-            ]);
 
-            $account->email = $request->get('email');
-        }
-
-        $account->save();
 
         return redirect('/account')->with('alertSuccess', 'account:'. $account->name .'is succesvol bijgwerkt');
     }
