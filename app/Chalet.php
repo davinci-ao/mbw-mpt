@@ -10,6 +10,13 @@ class Chalet extends Model
         'id',
       	'name',
       	'description',
-      	'price'
+        'price',
+        'country',
+        'housenr',
+        'addition',
+        'street',
+        'place',
+        'longitude',
+        'latitude'
       ];    
 }

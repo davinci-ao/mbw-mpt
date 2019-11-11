@@ -18,7 +18,8 @@ class ChaletController extends Controller
         //USER PAGE
 
         $chalets = Chalet::all();
-
+        
+        
         return view('chalets.index',['chaletData' => $chalets]);
     }
 
@@ -53,15 +54,40 @@ class ChaletController extends Controller
         }
 
         $request->validate([
-            'name'=>'required',
-            'description'=>'required',
-            'price'=> 'required|numeric'
+            'name'=>'bail|required',
+            'description'=>'bail|required',
+            'price'=> 'bail|required|numeric',
+            'country' =>'bail|required|alpha',
+            'housenr'=> 'bail|required|numeric',
+            'addition' => 'nullable|alpha',
+            'street' =>'bail|required',
+            'place' => 'bail|required'
         ]);
+
+        $housenr = $request->get('housenr');
+        $street = urlencode($request->get('street'));
+        $place = urlencode($request->get('place'));
+
+        $geocode = file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=FjWI9Q1KoivEL4R45gVG&app_code=xBR0McoMEQlNkeNK8rJoJg&searchtext=' . $housenr . '+' . $street . '+' . $place);
+        $geoData = json_decode($geocode,true);
+
+        $lng = $geoData['Response']['View'][0]['Result'][0]['Location']['NavigationPosition'][0]['Longitude']; //lengtegraad
+        $ltd = $geoData['Response']['View'][0]['Result'][0]['Location']['NavigationPosition'][0]['Latitude'];  // breedtegraad
+            
+        $longitude = $lng;
+        $latitude = $ltd;
 
         $chalet = new Chalet([
             'name' => $request->get('name'),
             'description'=> $request->get('description'),
-            'price'=> $request->get('price')
+            'price'=> $request->get('price'),
+            'country'=> $request->get('country'),
+            'housenr'=> $request->get('housenr'),
+            'addition'=> $request->get('addition'),
+            'street'=> $request->get('street'),
+            'place'=> $request->get('place'),
+            'longitude' => $longitude,
+            'latitude' => $latitude,
 
         ]);
 
@@ -121,13 +147,39 @@ class ChaletController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'price'=> 'required|numeric'
+            'price'=> 'required|numeric',
+            'country' =>'required|alpha',
+            'housenr'=> 'required|numeric',
+            'addition' => 'nullable|alpha',
+            'street' =>'required',
+            'place' => 'required'
         ]);
 
         $chalet = Chalet::find($id); 
         $chalet->name = $request->get('name');
         $chalet->description = $request->get('description');
         $chalet->price = $request->get('price');
+        $chalet->country = $request->get('country');
+        $chalet->housenr = $request->get('housenr');
+        $chalet->addition = $request->get('addition');
+        $chalet->street = $request->get('street');
+        $chalet->place = $request->get('place');
+
+        $housenr =  $chalet->housenr;
+        $street = urlencode($chalet->street);
+        $place = urlencode($chalet->place);
+
+        $geocode = file_get_contents('https://geocoder.api.here.com/6.2/geocode.json?app_id=FjWI9Q1KoivEL4R45gVG&app_code=xBR0McoMEQlNkeNK8rJoJg&searchtext=' . $housenr . '+' . $street . '+' . $place);
+        $geoData = json_decode($geocode,true);
+
+        $lng = $geoData['Response']['View'][0]['Result'][0]['Location']['NavigationPosition'][0]['Longitude']; //lengtegraad
+        $ltd = $geoData['Response']['View'][0]['Result'][0]['Location']['NavigationPosition'][0]['Latitude'];  // breedtegraad
+
+        $longitudeNew = $lng;
+        $latitudeNew = $ltd;
+        
+        $chalet->longitude = $longitudeNew;
+        $chalet->latitude =   $latitudeNew;
 
         $chalet->save();
 

@@ -118,8 +118,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: function data() {
     return {
-      links: ['/home', 'Chalets', 'Contact'],
-      icons: ['fab fa-facebook', 'fab fa-twitter', 'fab fa-google-plus', 'fab fa-linkedin', 'fab fa-instagram']
+      links: ['Home', 'Chalets', 'Contact']
     };
   }
 });
@@ -130,6 +129,7 @@ new Vue({
     return {
       today: 'locales',
       focus: 'locales',
+      format: '24hr',
       type: 'month',
       typeToLabel: {
         month: 'Maand',
