@@ -28,16 +28,9 @@ new Vue({
   vuetify: new Vuetify(),
   data: () => ({
     links: [
-      '/home',
+      'Home',
       'Chalets',
       'Contact',
-    ],
-    icons: [
-      'fab fa-facebook',
-      'fab fa-twitter',
-      'fab fa-google-plus',
-      'fab fa-linkedin',
-      'fab fa-instagram',
     ],
   }),
 })
