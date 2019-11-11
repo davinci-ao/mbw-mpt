@@ -18,6 +18,13 @@ class CreateChaletsTable extends Migration
             $table->string('name');
             $table->text('description'); 
             $table->integer('price');
+            $table->string('country');
+            $table->integer('housenr');
+            $table->string('addition')->nullable();
+            $table->string('street');
+            $table->string('place');
+            $table->float('longitude', 8, 6);
+            $table->float('latitude', 8, 6);
             $table->timestamps();
             
         });
