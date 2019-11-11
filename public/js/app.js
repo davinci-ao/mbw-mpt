@@ -118,8 +118,7 @@ new Vue({
   vuetify: new Vuetify(),
   data: function data() {
     return {
-      links: ['Home', 'Chalets', 'Contact'],
-      icons: ['fab fa-facebook', 'fab fa-twitter', 'fab fa-google-plus', 'fab fa-linkedin', 'fab fa-instagram']
+      links: ['Home', 'Chalets', 'Contact']
     };
   }
 });
@@ -325,8 +324,8 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/larsgruis/Projects/mbw-mpt/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/larsgruis/Projects/mbw-mpt/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
