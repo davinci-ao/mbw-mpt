@@ -15,6 +15,10 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account', 'HomeController@accountAction')->name('account');
+Route::get('/account/edit', 'HomeController@editAccount')->name('editAccount');
+Route::post('/account/delete', 'HomeController@deleteAccount')->name('deleteAccount');
+Route::post('/account/store', 'HomeController@storeAccount')->name('storeAccount');
+Route::post('/account/changepass', 'HomeController@changePassAccount')->name('changePassAccount');
 
 Route::resource('/chalets', 'ChaletController');
 
@@ -25,14 +29,3 @@ Route::get('/contact/delete', 'MessageController@destroy')->name('contactDelete'
 
 Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-// Vakantiepark
-Route::resource('/holidayparks', 'HolidayparkController');
-
-// Route::get('/holidayparks', 'HolidayparkController@index')->name('holidayparks');
-// Route::get('/holidayparks/create', 'HolidayparkController@create')->name('holidayparksCreate');
-// Route::post('/holidayparks', 'HolidayparkController@store')->name('holidayparksStore');
-
-// Route::patch('/holidayparks/store', ['as' => 'holidayparks.store', 'uses' => 'HolidayparkController@store']);
-// Route::post('/store', "HolidayparkController@store");
-// Route::patch('/holidayparks/create', ['as' => 'holidayparks.create', 'uses' => 'HolidayparkController@create']);
