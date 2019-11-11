@@ -1,0 +1,187 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+h1 {
+    color: #2196F3;
+    font-size: 2.1rem !important;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1::after {
+    content: url(../icon/blue-line-small.png);
+    display: block;
+    position: relative;
+    top: -20px;
+}
+
+.controls {
+position: relative;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.carousel-item img {
+    height: 700px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.slider-menu {
+    background-color: transparent !important;
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+}
+
+.v-carousel__controls {
+	display: none !important;
+}
+
+.v-carousel {
+	height: 700px !important;
+}
+
+.v-window__container {
+    height: 700px !important;
+}
+
+.v-window-item {
+    height: 700px !important;
+}
+
+.v-responsive {
+    height: 700px !important;	
+}
+
+.v-image__image--cover {
+	background-position: top !important;
+}
+
+.v-application--wrap {
+	min-height: unset !important;
+}
+
+#menu {
+	position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+.contact_form {
+    width: 100% !important;
+}
+
+.alert ul li {
+    list-style-type: none;
+}
+
+.v-counter {
+    color: #2196F3 !important;
+}
+
+.default-button {
+    background-color: #2196F3 !important;
+    color: white !important;
+    text-transform: none;
+    font-size: 1rem !important;
+}
+
+.main-color {
+    background-color: #2196F3 !important;
+}
+
+.header-title {
+    position: relative;
+    top: 10px;
+    left: 5px;
+    color: white;
+    font-size: 3.2rem;
+    font-family: 'Caveat Brush', cursive;
+}
+
+.v-window__next, .v-window__prev {
+    display: none !important;
+}
+
+#menu {
+    background: transparent;
+}
+
+header {
+    background: transparent;
+}
+
+.header-menu {
+    background: transparent !important;
+}
+
+.v-toolbar {
+    box-shadow: none;
+}
+
+.menu-items {
+    color: white !important;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 1.6rem !important;
+}
+
+.content_container {
+    padding: 25px;
+}
+
+.holidaypark-title {
+    font-weight: 700;
+}
+
+.holidaypark-card {
+    display: inline-block !important;
+    width: 20%;
+}
