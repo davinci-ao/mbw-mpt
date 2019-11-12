@@ -33,6 +33,6 @@
     </form>
     <hr>
   @endif
-@endforeach
+@endforeach 
 
-@endsection
+@endsection 
