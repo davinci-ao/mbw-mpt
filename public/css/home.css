@@ -183,5 +183,37 @@ header {
 
 .holidaypark-card {
     display: inline-block !important;
-    width: 20%;
+    width: calc(25% - (15px * 3) / 4);
+    margin-right: 15px;
+    float: left;
+}
+
+.holidaypark-card:nth-child(4n+0) {
+    margin-right: 0;
+}
+
+.chalet-add-btn {
+    display: block !important;
+    width: 25%;
+}
+
+#footer {
+    margin-top: 25px;
+    width: 100%;
+    float: left;
+}
+
+.holidaypark-btn {
+    width: 48%;
+    float: left;
+}
+
+.holidaypark-edit {
+    float: right;
+    width: 48%;
+}
+
+.holidaypark-delete {
+    width: 100%;
+    margin-top: 10px;
 }
