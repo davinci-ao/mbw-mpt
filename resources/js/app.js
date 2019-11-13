@@ -201,3 +201,23 @@ new Vue ({
       lazy: false,
   }),
 })
+
+new Vue({
+  el: '#formAccountEdit',
+  vuetify: new Vuetify(),
+  data: function data() {
+    return {
+      valid: true,
+      name: 'name',
+      nameRules: [function (v) {
+        return !!v || 'Naam is verplicht';
+      }],
+      email: 'email',
+      emailRules: [function (v) {
+        return !!v || 'E-mail is verplicht';
+      }, function (v) {
+        return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn';
+      }]
+    };
+  }
+});

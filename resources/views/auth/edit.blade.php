@@ -28,16 +28,19 @@
 
 	<h5>Edit Account</h5>
 
-	<form method="post" action="{{url('account/store?account=' . $account->id)}}">
-		@csrf
-		<input required type="text" class="form-control" name="name" value="{{$account->name}}">
-		<input required type="text" class="form-control" name="email" value="{{$account->email}}">
-		<button class="btn btn-primary" type="submit">Wijzig</button>
-	</form>
+	<div id="formAccountEdit">
+	    <v-form class="contact_form" method="post" action="{{url('account/store?account=' . $account->id)}}">
+	    @csrf
+	      	<v-text-field v-model="name" label="Naam" name="name"></v-text-field>
+	      	<v-text-field v-model="email" label="Email" name="email"></v-text-field>
+      		<v-btn class="default-button" type="submit">Wijzig</v-btn>
+    	</v-form>
+	</div>
 
 	<h5>Change Password</h5>
 
 <!-- 	name
+
  -->
 	<form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
 		@csrf

@@ -303,6 +303,25 @@ new Vue({
     };
   }
 });
+new Vue({
+  el: '#formAccountEdit',
+  vuetify: new Vuetify(),
+  data: function data() {
+    return {
+      valid: true,
+      name: 'name',
+      nameRules: [function (v) {
+        return !!v || 'Naam is verplicht';
+      }],
+      email: 'email',
+      emailRules: [function (v) {
+        return !!v || 'E-mail is verplicht';
+      }, function (v) {
+        return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn';
+      }]
+    };
+  }
+});
 
 /***/ }),
 
@@ -324,8 +343,8 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/mbw-mpt/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/mbw-mpt/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
