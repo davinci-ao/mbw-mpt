@@ -34,7 +34,7 @@
       <form method="post" action="{{ route('chalets.store') }}">
           <div class="form-group">
               @csrf
-               <label for="name">Chaletnaam</label>
+               <label for="name">naam</label>
               <input type="text" class="form-control" name="name"/>
           </div>
           <div class="form-group">

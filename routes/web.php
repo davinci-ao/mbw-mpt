@@ -12,7 +12,7 @@
 */
 
 // Route::get('/{any}', 'SinglePageController@index')->where('any', '.*'); 
-
+Route::resource('/bookings', 'BookingController');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/account', 'HomeController@accountAction')->name('account');
 Route::get('/account/edit', 'HomeController@editAccount')->name('editAccount');
