@@ -62,7 +62,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d-m-Y H:i:s') }}</td>
-                            <td><a href="{{ url('account/edit?account=' . $user->id) }}" style="color:yellow; cursor: pointer;">Wijzigen</a></td>
+                            <td><a href="{{ url('account/edit?account=' . $user->id) }}" style="color:gold; cursor: pointer;">Wijzigen</a></td>
                             <td><a onclick="hiddenValue({{ $user->id }})" style="color: red; cursor: pointer;" data-toggle="modal" data-target="#myModal">Verwijderen</a></td>
                         </tr>
                     @endforeach
