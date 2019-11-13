@@ -52,8 +52,8 @@
               <a class="dropdown-item" href="{{ url('#') }}">Actie log</a>
             </div>
           </div>
-            <v-btn text href="{{ url('account') }}">Account &nbsp;<i class="far fa-user-circle"></i></v-btn>  
-            <v-btn text href="{{ url('logout') }}">Uitloggen &nbsp;<i class="fas fa-sign-out-alt"></i></v-btn>   
+            <v-btn text href="{{ url('account') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>  
+            <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>   
           @else
             <v-btn text href="{{ url('home') }}">Home</v-btn>
             <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
