@@ -36,7 +36,7 @@
   <v-app id="inspire">
     <div>
       <v-toolbar>
-        <v-toolbar-title>Mooiplekjetexel.nl</v-toolbar-title>
+        <v-toolbar-title><a style="color: black; text-decoration: none;" href="{{ url('home') }}">Mooiplekjetexel.nl</a></v-toolbar-title>
    
         <div class="flex-grow-1"></div>
   
