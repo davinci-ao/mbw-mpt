@@ -308,17 +308,23 @@ new Vue({
   vuetify: new Vuetify(),
   data: function data() {
     return {
-      valid: true,
-      name: 'name',
-      nameRules: [function (v) {
-        return !!v || 'Naam is verplicht';
-      }],
-      email: 'email',
-      emailRules: [function (v) {
-        return !!v || 'E-mail is verplicht';
-      }, function (v) {
-        return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn';
-      }]
+      rules: {
+        required: function required(value) {
+          return !!value || 'Dit is een verplicht veld.';
+        },
+        email: function email(value) {
+          return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn.';
+        }
+      }
+    };
+  }
+});
+new Vue({
+  el: '#formAccountDelete',
+  vuetify: new Vuetify(),
+  data: function data() {
+    return {
+      rules: {}
     };
   }
 });

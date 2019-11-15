@@ -202,22 +202,29 @@ new Vue ({
   }),
 })
 
+
 new Vue({
   el: '#formAccountEdit',
   vuetify: new Vuetify(),
-  data: function data() {
+  data () {
     return {
-      valid: true,
-      name: 'name',
-      nameRules: [function (v) {
-        return !!v || 'Naam is verplicht';
-      }],
-      email: 'email',
-      emailRules: [function (v) {
-        return !!v || 'E-mail is verplicht';
-      }, function (v) {
-        return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn';
-      }]
-    };
-  }
-});
+      rules: {
+        required: value => !!value || 'Dit is een verplicht veld.',
+        email: value => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn.',
+      },
+    }
+  },
+})
+
+new Vue({
+  el: '#formAccountDelete',
+  vuetify: new Vuetify(),
+  data () {
+    return {
+      rules: {
+      },
+    }
+  },
+})
+
+

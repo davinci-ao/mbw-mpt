@@ -31,25 +31,48 @@
 	<div id="formAccountEdit">
 	    <v-form class="contact_form" method="post" action="{{url('account/store?account=' . $account->id)}}">
 	    @csrf
-	      	<v-text-field v-model="name" label="Naam" name="name"></v-text-field>
-	      	<v-text-field v-model="email" label="Email" name="email"></v-text-field>
+	      	<v-text-field 
+	      		value="{{$account->name}}" 
+	      		label="Naam" 
+	      		name="name">		
+	      	</v-text-field>
+
+	      	<v-text-field 
+	      		value="{{$account->email}}" 
+	      		label="Email" 
+	      		name="email">		
+	      	</v-text-field>
+
       		<v-btn class="default-button" type="submit">Wijzig</v-btn>
     	</v-form>
 	</div>
 
-	<h5>Change Password</h5>
+	<h5 style="margin-top: 25px;">Change Password</h5>
 
-<!-- 	name
+	<div id="formAccountDelete">
+		<v-form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
+			@csrf
+			<v-text-field 
+				type="password" 
+				name="oldPass" 
+				label="Old password">
+			</v-text-field>
 
- -->
-	<form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
-		@csrf
-		<input required type="password" name="oldPass" class="form-control" placeholder="Old password">
-		<input required type="password" name="newPass1" class="form-control" placeholder="New password">
-		<input required type="password" name="newPass2" class="form-control" placeholder="Retype new password">
-		<button class="btn btn-primary" type="submit">Wijzig</button>
-	</form>
+			<v-text-field 
+				type="password" 
+				name="newPass1" 
+				label="New password">
+			</v-text-field>
 
+			<v-text-field 
+				type="password"
+				name="newPass2" 
+				label="Retype new password">
+			</v-text-field>
+
+			<v-btn class="default-button" type="submit">Wijzig</v-btn>
+		</v-form>
+	</div>
 </div>
 
 @endsection
