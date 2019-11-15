@@ -43,7 +43,7 @@ class MessageController extends Controller
 
         $message->save(); 
 
-        return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!')->withInput();
+        return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!');
     }
 
     public function list(Request $request)
