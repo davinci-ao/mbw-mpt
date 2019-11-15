@@ -187,13 +187,13 @@ new Vue ({
         v => !!v || 'E-mail is verplicht',
         v => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn',
       ],
-      phone: '',
-      phoneRules: [
+      phonenumber: '',
+      phonenumberRules: [
         v => !!v || 'Telefoonummer is verplicht',
         v => (v && v.length <= 15) || 'Telefoonnummer moet geldig zijn',
       ],
-      subject: '',
-      subjectRules: [
+      message: '',
+      messageRules: [
         v => !!v || 'Onderwerp is verplicht',
         v => (v && v.length <= 300) || 'Onderwerp moet minder dan 300 karakters zijn',
       ],      

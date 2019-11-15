@@ -286,14 +286,14 @@ new Vue({
       }, function (v) {
         return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn';
       }],
-      phone: '',
-      phoneRules: [function (v) {
+      phonenumber: '',
+      phonenumberRules: [function (v) {
         return !!v || 'Telefoonummer is verplicht';
       }, function (v) {
         return v && v.length <= 15 || 'Telefoonnummer moet geldig zijn';
       }],
-      subject: '',
-      subjectRules: [function (v) {
+      message: '',
+      messageRules: [function (v) {
         return !!v || 'Onderwerp is verplicht';
       }, function (v) {
         return v && v.length <= 300 || 'Onderwerp moet minder dan 300 karakters zijn';

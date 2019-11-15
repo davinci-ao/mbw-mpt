@@ -23,51 +23,56 @@
 
 	<h1>Neem contact met ons op</h1>
 
-<div id="form">
-    <v-form
-      class="contact_form"
-      method="post"
-      action="{{ url('/contact/store') }}"
-    >
-    @csrf
+  <div id="form">
+      <v-form
+        class="contact_form"
+        method="post"
+        action="{{ url('/contact/store') }}"
+      >
+      @csrf
 
-      <v-text-field
-        v-model="firstname"
-        :counter="50"
-        label="Voornaam"
-        name="firstname"
-      ></v-text-field>
+        <v-text-field
+          value="{{ old('firstname') }}"
+          :counter="50"
+          label="Voornaam"
+          name="firstname"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="lastname"
-        :counter="50"
-        label="Achternaam"
-        name="lastname"
-      ></v-text-field>
+        <v-text-field
+          value="{{ old('lastname') }}"
+          :counter="50"
+          label="Achternaam"
+          name="lastname"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="email"
-        label="E-mail"
-        name="email"
-      ></v-text-field>
+        <v-text-field
+          value="{{ old('email') }}"
+          label="E-mail"
+          name="email"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="phone"
-        label="Telefoonnummer"
-        name="phonenumber"
-      ></v-text-field>
+        <v-text-field
+          value="{{ old('phonenumber') }}"
+          label="Telefoonnummer"
+          name="phonenumber"
+        ></v-text-field>
 
-      <v-textarea
-        v-model="subject"
-        :counter="300"
-        label="Onderwerp"
-        name="message"
-      ></v-textarea>
-	
-      <v-btn class="default-button" name="submitForm" type="submit">Versturen</v-btn>
+        <v-textarea
+          value="{{ old('message') }}"
+          :counter="300"
+          label="Onderwerp"
+          name="message"
+        ></v-textarea>
+  	
+        <v-btn onclick="test()" class="default-button" name="submitForm" type="submit">Versturen</v-btn>
     </v-form>
+  </div>
 </div>
 
-</div>
+<script>
+  function test(){
+
+  }
+</script>
 
 @endsection
