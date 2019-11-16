@@ -100,9 +100,15 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit($id, Request $request)
     {
-        //
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
+        $booking = Booking::find($id);
+
+        return view('bookings.edit', ['bookingData' => $booking]);
     }
 
     /**
@@ -112,9 +118,36 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, $id)
     {
-        //
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
+            'check_in'=>'required',
+            'check_out'=>'required',
+            'arrival'=> 'required',
+            'departure' =>'required',
+            'people'=> 'required|numeric',
+            'pets' => 'nullable',
+            'price' =>'required',
+            'chalet' => 'required'
+        ]);
+
+        $booking = Booking::find($id); 
+        $booking->check_in = $request->get('check_in');
+        $booking->check_out = $request->get('check_out');
+        $booking->arrival = $request->get('arrival');
+        $booking->departure = $request->get('departure');
+        $booking->people = $request->get('people');
+        $booking->pets = $request->get('pets');
+        $booking->price = $request->get('price');
+        $booking->chalet = $request->get('chalet');
+
+        $booking->save();
+
+        return redirect('/bookings')->with('gelukt!', 'booking is bijgwerkt');
     }
 
     /**
@@ -128,11 +161,11 @@ class BookingController extends Controller
         if (!$request->user()) {
             return redirect()->route('login');
         }  
-
+         
         $id = $request->get('booking');
-        $booking= Booking::find($id);
+        $booking = Booking::find($id);
         $booking->delete();
-
-        return redirect()->back();
+   
+        return redirect('/bookings')->with('gelukt!', 'de boeking is succesvol verwijderd');
     }
 }

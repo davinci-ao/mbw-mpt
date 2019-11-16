@@ -31,7 +31,8 @@
             <td>{{ $data->pets }}</td>
             <td>{{ $data->price }}</td>
             <td>{{ $data->chalet }}</td>
-            <td><a style="color: red;" href="{{ url('bookings/delete?bookings=' . $data->id) }}">Verwijderen</a></td>
+            <td><a style="color: orange;" href="{{ route('bookings.edit',$data->id)}}">bewerk</a></td>
+            <td><a style="color: red;" href="{{ url('booking/delete?booking=' . $data->id) }}">Verwijderen</a></td>
         </tr>
         @endforeach
     </table>
