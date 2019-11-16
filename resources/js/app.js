@@ -202,7 +202,6 @@ new Vue ({
   }),
 })
 
-
 new Vue({
   el: '#formAccountEdit',
   vuetify: new Vuetify(),
