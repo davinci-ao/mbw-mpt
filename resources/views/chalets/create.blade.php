@@ -5,6 +5,16 @@
   .uper {
     margin-top: 40px;
   }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
 </style>
 <div class="card uper">
   <div class="card-header">
@@ -43,7 +53,7 @@
           </div>
           <div class="form-group">
               <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price"/>
+              <input type="number" min="0" step="any" class="form-control" name="price"/>
           </div>
           <div class="form-group">
               <label for="land">land</label>

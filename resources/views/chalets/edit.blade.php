@@ -48,7 +48,7 @@
           </div>
           <div class="form-group">
               <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price" value="{{ $chaletData->price }}" />
+              <input type="number" min="0" step="any" class="form-control" name="price" value="{{ $chaletData->price }}" />
           </div>
           <div class="form-group">
               <label for="land">land</label>
