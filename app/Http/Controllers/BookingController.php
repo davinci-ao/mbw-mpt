@@ -43,6 +43,10 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'firstname'=> 'required',
+            'lastname'=> 'required',
+            'email'=> 'required',
+            'telephone_number'=> 'required',
             'check_in'=>'required',
             'check_out'=>'required',
             'arrival'=> 'required',
@@ -54,6 +58,10 @@ class BookingController extends Controller
         ]);
 
         $booking = new Booking([
+            'firstname' => $request->get('firstname'),
+            'lastname' => $request->get('lastname'),
+            'email' => $request->get('email'),
+            'telephone_number' => $request->get('telephone_number'),
             'check_in' => $request->get('check_in'),
             'check_out'=> $request->get('check_out'),
             'arrival'=> $request->get('arrival'),
@@ -67,6 +75,10 @@ class BookingController extends Controller
         //mail
 
         $data = array(
+            'firstname' => $request->get('firstname'),
+            'lastname' => $request->get('lastname'),
+            'email' => $request->get('email'),
+            'telephone_number' => $request->get('telephone_number'),
             'check_in' => $request->get('check_in'),
             'check_out'=> $request->get('check_out'),
             'arrival'=> $request->get('arrival'),
@@ -76,8 +88,10 @@ class BookingController extends Controller
             'price'=> $request->get('price'),
             'chalet'=> $request->get('chalet'),
         );
+        $subject = 'Bevestiginsmail';
+        $view = 'confirmation_email_template';
 
-        Mail::to($request->get('email'))->send(new ContactMail($data));
+        Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
 
         $booking->save();
         return redirect('/chalets')->with('Gelukt!', 'de boeking is toegevoegd');
@@ -125,6 +139,10 @@ class BookingController extends Controller
         }
 
         $request->validate([
+            'firstname'=> 'required',
+            'lastname'=> 'required',
+            'email'=> 'required',
+            'telephone_number'=> 'required',
             'check_in'=>'required',
             'check_out'=>'required',
             'arrival'=> 'required',
@@ -136,6 +154,10 @@ class BookingController extends Controller
         ]);
 
         $booking = Booking::find($id); 
+        $booking->firstname = $request->get('firstname');
+        $booking->lastname = $request->get('lastname');
+        $booking->email = $request->get('email');
+        $booking->telephone_number = $request->get('telephone_number');
         $booking->check_in = $request->get('check_in');
         $booking->check_out = $request->get('check_out');
         $booking->arrival = $request->get('arrival');

@@ -12,6 +12,10 @@
 -->
     <table class="table table-bordered">
         <tr>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>email</th>
+            <th>telefoonnummer</th>
             <th>Check-in tijd</th>
             <th>Check-uit tijd</th>
             <th>aankomst</th>
@@ -23,6 +27,10 @@
         </tr>
         @foreach ($bookingData as $data)
         <tr>
+            <td>{{ $data->firstname}}</td>
+            <td>{{ $data->lastname }}</td>
+            <td>{{ $data->email }}</td>
+            <td>{{ $data->telephone_number}}</td>
             <td>{{ $data->check_in }}</td>
             <td>{{ $data->check_out }}</td>
             <td>{{ $data->arrival }}</td>

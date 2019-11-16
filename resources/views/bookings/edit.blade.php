@@ -43,18 +43,25 @@ input[type=number] {
 
 
   <div class="card-body">
-  <!--         'check_in',
-        'check_out',
-      	'arrival',
-        'departure',
-        'people',
-        'pets',
-        'price',
-        'chalet' -->
-   
       <form method="post" action="{{ route('bookings.update', $bookingData->id) }}">
         @method('PATCH')
         @csrf
+        <div class="form-group">           
+               <label for="voornaam">Voornaam</label>
+              <input type="text" class="form-control" name="firstname" value="{{ $bookingData->firstname }}"/>
+          </div>
+          <div class="form-group">
+              <label for="achternaam">Achternaam</label>
+              <input type="text" class="form-control" name="lastname" value="{{ $bookingData->lastname }}"/>
+          </div> 
+          <div class="form-group">
+              <label for="mail">E-mail adres</label>
+              <input type="text" class="form-control" name="email" value="{{ $bookingData->email }}"/>
+          </div> 
+          <div class="form-group">
+              <label for="nummer">telefoonnummer</label>
+              <input type="text" class="form-control" name="telephone_number" value="{{ $bookingData->telephone_number}}"/>
+          </div> 
           <div class="form-group">
                <label for="Check-in">check-in tijd</label>
               <input type="time" class="form-control" name="check_in" value="{{ $bookingData->check_in }}" />

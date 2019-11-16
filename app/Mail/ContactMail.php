@@ -23,6 +23,8 @@ class ContactMail extends Mailable
     public function __construct($data, $subject, $view)
     {
         $this->data = $data;
+        $this->subject = $subject;
+        $this->view = $view;
     }
 
     /**
@@ -32,6 +34,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        return $this->from('mpt.test.1.email@gmail.com')->subject('Nieuw bericht van MPT')->view('contact_email_template')->with('data', $this->data);
+        return $this->from('mpt.test.1.email@gmail.com')->subject($this->subject)->view($this->view)->with('data', $this->data);
     }
 }

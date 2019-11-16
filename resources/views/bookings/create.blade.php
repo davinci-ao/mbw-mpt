@@ -43,8 +43,24 @@ input[type=number] {
 
   <div class="card-body">
       <form method="post" action="{{ route('bookings.store') }}">
+      @csrf   
+          <div class="form-group">           
+               <label for="voornaam">Voornaam</label>
+              <input type="text" class="form-control" name="firstname"/>
+          </div>
           <div class="form-group">
-              @csrf
+              <label for="achternaam">Achternaam</label>
+              <input type="text" class="form-control" name="lastname"/>
+          </div> 
+          <div class="form-group">
+              <label for="mail">E-mail adres</label>
+              <input type="text" class="form-control" name="email"/>
+          </div> 
+          <div class="form-group">
+              <label for="nummer">telefoonnummer</label>
+              <input type="text" class="form-control" name="telephone_number"/>
+          </div> 
+          <div class="form-group">             
                <label for="check-in">Check-in tijd</label>
               <input type="time" class="form-control" name="check_in"/>
           </div>
