@@ -37,7 +37,7 @@
             <td>{{ $data->departure }}</td>
             <td>{{ $data->people }}</td>
             <td>{{ $data->pets }}</td>
-            <td>{{ $data->price }}</td>
+            <td>€{{ $data->price }}</td>
             <td>{{ $data->chalet }}</td>
             <td><a style="color: orange;" href="{{ route('bookings.edit',$data->id)}}">bewerk</a></td>
             <td><a style="color: red;" href="{{ url('booking/delete?booking=' . $data->id) }}">Verwijderen</a></td>

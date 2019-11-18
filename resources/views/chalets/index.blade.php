@@ -1,7 +1,11 @@
 @extends('templates.layout')
 
 @section('content')
-
+@if ($alert = Session::get('alert'))
+        <div class="alert alert-success">
+            <p>{{ $alert }}</p>
+        </div>
+    @endif
 <!-- @foreach ($chaletData as $chalet) -->
 
 <!-- <div id="calendar">
@@ -114,10 +118,10 @@
 <h4>Chalet Data:</h4>
 
 <!-- only show create button when logged in -->
-
+<a class="btn btn-primary" href="{{ URL::to('bookings/create') }}">Boeken</a>
 @if (Auth::check())
   <a class="btn btn-primary" href="{{ URL::to('chalets/create') }}">voeg Chalet toe</a>
-  <a class="btn btn-primary" href="{{ URL::to('bookings/create') }}">Boeken</a>
+  
   <hr>
 @endif
 
