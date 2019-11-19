@@ -16,9 +16,12 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
+        if (!$request->user()) {
+            return redirect()->route('login');
+        }
+
         $bookings = DB::table('bookings')->paginate(10);
 
         return view('bookings.index',['bookingData' => $bookings]);
