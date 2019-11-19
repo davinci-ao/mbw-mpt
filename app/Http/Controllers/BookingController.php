@@ -45,8 +45,8 @@ class BookingController extends Controller
         $request->validate([
             'firstname'=> 'required',
             'lastname'=> 'required',
-            'email'=> 'required',
-            'telephone_number'=> 'required',
+            'email'=> 'required|email',
+            'telephone_number'=> 'required|max:15',
             'check_in'=>'required',
             'check_out'=>'required',
             'arrival'=> 'required',
@@ -141,8 +141,8 @@ class BookingController extends Controller
         $request->validate([
             'firstname'=> 'required',
             'lastname'=> 'required',
-            'email'=> 'required',
-            'telephone_number'=> 'required',
+            'email'=> 'required|email',
+            'telephone_number'=> 'required|max:15',
             'check_in'=>'required',
             'check_out'=>'required',
             'arrival'=> 'required',

@@ -46,51 +46,51 @@ input[type=number] {
       @csrf   
           <div class="form-group">           
                <label for="voornaam">Voornaam</label>
-              <input type="text" class="form-control" name="firstname"/>
+              <input type="text" class="form-control" name="firstname" value="{{ old('firstname') }}"/>
           </div>
           <div class="form-group">
               <label for="achternaam">Achternaam</label>
-              <input type="text" class="form-control" name="lastname"/>
+              <input type="text" class="form-control" name="lastname" value="{{ old('lastname') }}"/>
           </div> 
           <div class="form-group">
               <label for="mail">E-mail adres</label>
-              <input type="text" class="form-control" name="email"/>
+              <input type="text" class="form-control" name="email" value="{{ old('email') }}"/>
           </div> 
           <div class="form-group">
               <label for="nummer">telefoonnummer</label>
-              <input type="text" class="form-control" name="telephone_number"/>
+              <input type="text" class="form-control" name="telephone_number" value="{{ old('telephone_number') }}"/>
           </div> 
           <div class="form-group">             
                <label for="check-in">Check-in tijd</label>
-              <input type="time" class="form-control" name="check_in"/>
+              <input type="time" class="form-control" name="check_in" value="{{ old('check_in') }}"/>
           </div>
           <div class="form-group">
               <label for="check-uit">Check-uit tijd </label>
-              <input type="time" class="form-control" name="check_out"/>
+              <input type="time" class="form-control" name="check_out" value="{{ old('check_out') }}"/>
           </div>
           <div class="form-group">
               <label for="aankomst">Aankomst</label>
-              <input type="date" class="form-control" name="arrival"/>
+              <input type="date" class="form-control" name="arrival" value="{{ old('arrival') }}"/>
           </div>
           <div class="form-group">
               <label for="vertrek">Vertrek</label>
-              <input type="date" class="form-control" name="departure"/>
+              <input type="date" class="form-control" name="departure" value="{{ old('departure') }}"/>
           </div>
           <div class="form-group">
               <label for="personen">Aantal personen</label>
-              <input type="text" class="form-control" name="people"/>
+              <input type="text" class="form-control" name="people" value="{{ old('people') }}"/>
           </div>
           <div class="form-group">
               <label for="huisdieren">Huisdieren</label>
-              <input type="text" class="form-control" name="pets"/>
+              <input type="text" class="form-control" name="pets" value="{{ old('pets') }}"/>
           </div> 
           <div class="form-group">
               <label for="prijs">Prijs</label>
-              <input type="number" min="0" step="any" class="form-control" name="price"/>
+              <input type="number" min="0" step="any" class="form-control" name="price" value="{{ old('price') }}"/>
           </div>
           <div class="form-group">
               <label for="chalet">Chalet</label>
-              <input type="text" class="form-control" name="chalet"/>
+              <input type="text" class="form-control" name="chalet" value="{{ old('chalet') }}"/>
           </div>                                                      
           <button type="submit" class="btn btn-primary">boeken</button>
       </form>
