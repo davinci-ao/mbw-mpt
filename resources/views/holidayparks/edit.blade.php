@@ -49,10 +49,9 @@
               <label for="chalet">Chalets vakantiepark:</label>
               <input type="text" class="form-control" name="chalet" value="{{ $holidaypark->chalet }}" />
           </div>          
-          <button type="submit" class="btn btn-primary">Werk bij</button>
+          <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Werk bij</button>
       </form>
   </div>
 </div>  
-
 
 @endsection

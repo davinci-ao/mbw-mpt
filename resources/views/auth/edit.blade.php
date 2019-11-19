@@ -43,7 +43,7 @@
 	      		name="email">		
 	      	</v-text-field>
 
-      		<v-btn class="default-button" type="submit">Wijzig</v-btn>
+      		<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
     	</v-form>
 	</div>
 
@@ -70,7 +70,7 @@
 				label="Retype new password">
 			</v-text-field>
 
-			<v-btn class="default-button" type="submit">Wijzig</v-btn>
+			<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
 		</v-form>
 	</div>
 </div>

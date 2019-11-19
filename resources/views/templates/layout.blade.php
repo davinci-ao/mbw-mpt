@@ -114,3 +114,10 @@
 
 </body>
 </html>
+
+<script>
+  function checkSubmit(btn){
+    btn.disabled = true;
+    btn.form.submit();
+  }
+</script>

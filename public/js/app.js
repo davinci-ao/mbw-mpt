@@ -266,66 +266,51 @@ new Vue({
   el: '#form',
   vuetify: new Vuetify(),
   data: function data() {
-    return {
-      valid: true,
-      firstname: '',
-      firstnameRules: [function (v) {
-        return !!v || 'Voornaam is verplicht';
-      }, function (v) {
-        return v && v.length <= 50 || 'Voornaam moet minder dan 50 karakters zijn';
-      }],
-      lastname: '',
-      lastnameRules: [function (v) {
-        return !!v || 'Achternaam is verplicht';
-      }, function (v) {
-        return v && v.length <= 50 || 'Achternaam moet minder dan 50 karakters zijn';
-      }],
-      email: '',
-      emailRules: [function (v) {
-        return !!v || 'E-mail is verplicht';
-      }, function (v) {
-        return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn';
-      }],
-      phonenumber: '',
-      phonenumberRules: [function (v) {
-        return !!v || 'Telefoonummer is verplicht';
-      }, function (v) {
-        return v && v.length <= 15 || 'Telefoonnummer moet geldig zijn';
-      }],
-      message: '',
-      messageRules: [function (v) {
-        return !!v || 'Onderwerp is verplicht';
-      }, function (v) {
-        return v && v.length <= 300 || 'Onderwerp moet minder dan 300 karakters zijn';
-      }],
-      checkbox: false,
-      lazy: false
-    };
+    return {};
   }
-});
+}); //   data: () => ({
+//     valid: true,
+//     firstname: '',
+//     firstnameRules: [
+//       v => !!v || 'Voornaam is verplicht',
+//       v => (v && v.length <= 50) || 'Voornaam moet minder dan 50 karakters zijn',
+//     ],
+//     lastname: '',
+//     lastnameRules: [
+//       v => !!v || 'Achternaam is verplicht',
+//       v => (v && v.length <= 50) || 'Achternaam moet minder dan 50 karakters zijn',
+//     ],
+//     email: '',
+//     emailRules: [
+//       v => !!v || 'E-mail is verplicht',
+//       v => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn',
+//     ],
+//     phonenumber: '',
+//     phonenumberRules: [
+//       v => !!v || 'Telefoonummer is verplicht',
+//       v => (v && v.length <= 15) || 'Telefoonnummer moet geldig zijn',
+//     ],
+//     message: '',
+//     messageRules: [
+//       v => !!v || 'Onderwerp is verplicht',
+//       v => (v && v.length <= 300) || 'Onderwerp moet minder dan 300 karakters zijn',
+//     ],      
+//     checkbox: false,
+//     lazy: false,
+// }),
+
 new Vue({
   el: '#formAccountEdit',
   vuetify: new Vuetify(),
   data: function data() {
-    return {
-      rules: {
-        required: function required(value) {
-          return !!value || 'Dit is een verplicht veld.';
-        },
-        email: function email(value) {
-          return /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn.';
-        }
-      }
-    };
+    return {};
   }
 });
 new Vue({
   el: '#formAccountDelete',
   vuetify: new Vuetify(),
   data: function data() {
-    return {
-      rules: {}
-    };
+    return {};
   }
 });
 

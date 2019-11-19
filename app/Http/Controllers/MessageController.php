@@ -27,7 +27,7 @@ class MessageController extends Controller
             'email'=>'required|email',
             'phonenumber'=>'required|max:15',
             'message'=>'required|max:2000'
-        ]);
+        ]);  
 
         $message = new Message([
             'firstname' => $request->get('firstname'),
@@ -37,10 +37,7 @@ class MessageController extends Controller
             'message' => $request->get('message')
         ]); 
 
-        // Mail function
-
         Mail::to($request->get('email'))->send(new ContactMail($valData));
-
         $message->save(); 
 
         return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!');

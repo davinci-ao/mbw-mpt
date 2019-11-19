@@ -64,15 +64,9 @@
           name="message"
         ></v-textarea>
   	
-        <v-btn onclick="test()" class="default-button" name="submitForm" type="submit">Versturen</v-btn>
+        <v-btn onclick="checkSubmit(this)" class="default-button" type="button">Versturen</v-btn>
     </v-form>
   </div>
 </div>
-
-<script>
-  function test(){
-
-  }
-</script>
 
 @endsection
