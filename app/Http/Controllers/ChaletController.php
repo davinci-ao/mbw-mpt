@@ -102,7 +102,7 @@ class ChaletController extends Controller
         ]);
 
         $chalet->save();
-        return redirect('/chalets')->with('Gelukt!', 'de Chalet is toegevoegd');     
+        return redirect('/holidayparks')->with('Gelukt!', 'de Chalet is toegevoegd');     
     }
 
     /**

@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Edit chalet')
 @section('content')
 
 <style>

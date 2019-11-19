@@ -20,6 +20,13 @@ h1::after {
     top: -20px;
 }
 
+h4::after {
+    content: url(../icon/blue-line-small.png);
+    display: block;
+    position: relative;
+    top: -20px;
+}
+
 .controls {
 position: relative;
 }
@@ -183,9 +190,10 @@ header {
 
 .holidaypark-card {
     display: inline-block !important;
-    width: calc(25% - (15px * 3) / 4);
-    margin-right: 15px;
+    /* width: calc(25% - (15px * 3) / 4);
+    margin-right: 15px; */
     float: left;
+    margin-bottom: 25px;
 }
 
 .holidaypark-card:nth-child(4n+0) {
@@ -205,7 +213,6 @@ header {
 
 .holidaypark-btn {
     width: 48%;
-    float: left;
 }
 
 .holidaypark-edit {
@@ -216,4 +223,55 @@ header {
 .holidaypark-delete {
     width: 100%;
     margin-top: 10px;
+}
+
+.holidaypark-description {
+    height: 50px;
+}
+
+.chalet-text {
+    width: 50%;
+    float: left;
+}
+
+.maps {
+    width: 50%;
+    float: right;
+}
+
+.chalet-buttons {
+    width: 50%;
+    float: left;
+    display: block;
+    margin-top: 25px;
+}
+
+.chalet-edit-btn {
+    width: 46%;
+    display: inline-block;
+    float: left;
+}
+
+.chalet-delete-btn {
+    width: 46%;
+    display: inline-block;
+    float: right;
+    margin-right: 25px;
+}
+
+.chalet-card {
+    margin-bottom: 25px;
+}
+
+.add-btn-chalets {
+    margin-bottom: 15px;
+}
+
+.chalet-title {
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.card {
+    border-radius: 10px !important;
 }

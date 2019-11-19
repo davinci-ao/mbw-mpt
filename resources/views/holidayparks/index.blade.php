@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Vakantieparken')
 @section('content')
 
 <h1>Vakantieparken</h1>
@@ -10,10 +11,10 @@
 
 @foreach ($holidayparks as $holidaypark)
 
-<div class="card holidaypark-card">
+<div class="card w-25 holidaypark-card">
   <div class="card-body">
     <h5 class="card-title holidaypark-title">{{ $holidaypark->holidaypark_name }}</h5>
-    <p class="card-text">{{ $holidaypark->description }}</p>
+    <p class="card-text holidaypark-description">{{ $holidaypark->description }}</p>
 
     <a href="{{ url('chalets?holidaypark=' . $holidaypark->id)}}" class="btn btn-primary holidaypark-btn">Bekijk chalets</a>
 

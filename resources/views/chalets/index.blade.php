@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Chalets')
 @section('content')
 
 <!-- @foreach ($chaletData as $chalet) -->
@@ -111,61 +112,69 @@
 </div> -->
 <!-- @endforeach -->
 
-<h4>Chalet Data:</h4>
+<h1>Chalets</h1>
 
 <!-- only show create button when logged in -->
 
 @if (Auth::check())
-  <a class="btn btn-primary" href="{{ URL::to('chalets/create') }}">voeg Chalet toe</a>
-  <hr>
+  <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
 @foreach ($chaletData as $chalet)
   
-  <td>Chaletnaam: {{ $chalet->name }}</td><br>
-  <td>Beschijving: {{ $chalet->description}}</td><br> 
-  <td>Prijs: {{ $chalet->price}}</td><br>
-  <td>Land: {{ $chalet->country}}</td><br>
-  <td>Huisnummer: {{ $chalet->housenr }}{{ $chalet->addition }}</td><br>
-  <td>Straat: {{ $chalet->street}}</td><br>
-  <td>Plaats: {{ $chalet->place}}</td><br>
-  <td>lengtegraad: {{ $chalet->longitude}}</td><br>
-  <td>breedtegraad: {{ $chalet->latitude}}</td><br>
-    <?php
-   $name = $chalet->name;
-   $country = $chalet->country;
-   $housenr = $chalet->housenr;
-   $street  = $chalet->street;
-   $place = $chalet->place;
+  <div class="card w-100 chalet-card">
+    <div class="card-body">
+      <div class="chalet-text">
+        <h5 class="card-title chalet-title">Chaletnaam: {{ $chalet->name }}</h5>
+        <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
+        <p class="card-text">Prijs: {{ $chalet->price}}</p>
+        <p class="card-text">Straat: {{ $chalet->street}}</p>
+        <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
+        <p class="card-text">Plaats: {{ $chalet->place}}</p>
+        <p class="card-text">Land: {{ $chalet->country}}</p>
+        <a href="#" class="btn btn-primary" style="margin-top: 10px;">Boeken</a>
+      </div>
 
-   ?>
+      <?php
+    $name = $chalet->name;
+    $country = $chalet->country;
+    $housenr = $chalet->housenr;
+    $street  = $chalet->street;
+    $place = $chalet->place;
+  ?>
+
+      <div class="maps">
+        <iframe width="100%" height="350" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+        </iframe>
+      </div>
+
+        <!-- Code voor het Google maps kaartje -->   
 
   <!-- only show edit button when logged in -->
-  @if (Auth::check())
-    <a href="{{ route('chalets.edit',$chalet->id)}}" class="btn btn-primary">Edit</a>
-  @endif  
+
+    <div class="chalet-buttons">
+
+      @if (Auth::check())
+        <a href="{{ route('chalets.edit',$chalet->id)}}" class="btn btn-primary chalet-edit-btn">Edit</a>
+      @endif  
 
   <!-- only show delete button when logged in -->
 
-  @if (Auth::check())
-    <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
-      @csrf
-      @method('DELETE') 
-      <button class="btn btn-danger" type="submit">Delete</button>
-    </form>
-    <hr>
-  @endif
+      @if (Auth::check())
+        <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
+          @csrf
+          @method('DELETE') 
+          <button class="btn btn-danger chalet-delete-btn" type="submit">Delete</button>
+        </form>
+      @endif
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Code voor het Google maps kaartje -->   
 
 @endforeach
-
-
- <main style="text-align: center;" >
-
-  <div style="width: 720px">
-  <iframe width="720" height="600" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-  </iframe></div><br />
- </main>
-  
  
 @endsection
 
