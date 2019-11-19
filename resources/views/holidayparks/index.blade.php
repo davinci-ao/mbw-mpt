@@ -15,9 +15,9 @@
 
 <div class="card holidaypark-card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title holidaypark-title">{{ $holidaypark->name }}</h5>
+    <h5 class="card-title holidaypark-title">{{ $holidaypark->holidaypark_name }}</h5>
     <p class="card-text">{{ $holidaypark->description }}</p>
-    <a href="#" class="btn btn-primary">Bekijk chalets</a>
+    <a href="{{ url('chalets?holidaypark=' . $holidaypark->id)}}" class="btn btn-primary">Bekijk chalets</a>
   </div>
 </div>
 

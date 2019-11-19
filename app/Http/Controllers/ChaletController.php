@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Chalet;
+use App\Holidaypark;
 use Illuminate\Http\Request;
 use validate;
+use DB;
 
 class ChaletController extends Controller
 {
@@ -13,12 +15,16 @@ class ChaletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //USER PAGE
 
+        $id = $request->get('holidaypark');
+
         $chalets = Chalet::all();
-        
+        if ($id !== null) {
+            $chalets = DB::table('chalets')->where('holidaypark_id', $id)->get();
+        }
         
         return view('chalets.index',['chaletData' => $chalets]);
     }
@@ -28,7 +34,7 @@ class ChaletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, $holidaypark_id = 0)
     {
         //DEV PAGE
 
@@ -36,7 +42,9 @@ class ChaletController extends Controller
             return redirect()->route('login');
         }
 
-        return view('chalets.create');
+        $holidayparks = Holidaypark::all();
+
+        return view('chalets.create',['holidayparks' => $holidayparks]);
     }
 
     /**
@@ -55,6 +63,7 @@ class ChaletController extends Controller
 
         $request->validate([
             'name'=>'bail|required',
+            'holidaypark_id'=>'bail|required',
             'description'=>'bail|required',
             'price'=> 'bail|required|numeric',
             'country' =>'bail|required|alpha',
@@ -79,6 +88,7 @@ class ChaletController extends Controller
 
         $chalet = new Chalet([
             'name' => $request->get('name'),
+            'holidaypark_id' => $request->input('holidaypark_id'),
             'description'=> $request->get('description'),
             'price'=> $request->get('price'),
             'country'=> $request->get('country'),
