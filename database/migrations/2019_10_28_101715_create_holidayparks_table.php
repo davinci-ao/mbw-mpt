@@ -15,7 +15,7 @@ class CreateHolidayparksTable extends Migration
     {
         Schema::create('holidayparks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('holidaypark_name');
             $table->text('description');
             $table->string('chalet');
             $table->timestamps();

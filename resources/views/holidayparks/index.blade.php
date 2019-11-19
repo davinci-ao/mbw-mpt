@@ -12,9 +12,10 @@
 
 <div class="card holidaypark-card">
   <div class="card-body">
-    <h5 class="card-title holidaypark-title">{{ $holidaypark->name }}</h5>
+    <h5 class="card-title holidaypark-title">{{ $holidaypark->holidaypark_name }}</h5>
     <p class="card-text">{{ $holidaypark->description }}</p>
-    <a href="#" class="btn btn-primary holidaypark-btn">Bekijk chalets</a>
+
+    <a href="{{ url('chalets?holidaypark=' . $holidaypark->id)}}" class="btn btn-primary holidaypark-btn">Bekijk chalets</a>
 
     @if (Auth::check())
       <a href="{{ route('holidayparks.edit',$holidaypark->id)}}" class="btn btn-primary holidaypark-edit">Edit</a>

@@ -37,6 +37,20 @@
                <label for="name">Chaletnaam</label>
               <input type="text" class="form-control" name="name"/>
           </div>
+
+          <div class="form-group">
+              <label for="sel1">Vakantiepark</label>
+              <select class="form-control" name="holidaypark_id" id="sel1">
+
+
+                @foreach($holidayparks as $holidaypark)
+
+                  <option value="{{ $holidaypark->id }}">{{ $holidaypark->holidaypark_name }}</option>
+
+                @endforeach
+              </select>
+          </div> 
+
           <div class="form-group">
               <label for="description">Beschrijving</label>
               <input type="text" class="form-control" name="description"/>
@@ -64,7 +78,8 @@
           <div class="form-group">
               <label for="plaats">plaats</label>
               <input type="text" class="form-control" name="place"/>
-          </div>                                                      
+          </div>
+                                                    
           <button type="submit" class="btn btn-primary">Voeg toe</button>
       </form>
   </div>
