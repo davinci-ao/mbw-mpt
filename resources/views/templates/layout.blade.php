@@ -10,8 +10,6 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>Mooiplekjetexel.nl</title>
-
     <!-- Vuetify CSS -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
@@ -34,6 +32,10 @@
     <!-- FONTAWESOME -->
 
     <script src="https://kit.fontawesome.com/a1912e8d76.js" crossorigin="anonymous"></script>
+
+    <!-- Name of the page -->
+
+    <title>@yield('title', 'Mooiplekjetexel.nl')</title>
 
 </head>
 

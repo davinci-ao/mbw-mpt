@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Vakantieparken')
 @section('content')
 
 <h1>Vakantieparken</h1>

@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Create vakantiepark')
 @section('content')
 
 <div class="card uper">

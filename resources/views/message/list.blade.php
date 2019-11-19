@@ -1,5 +1,6 @@
 @extends('templates.dev_layout')
 
+@section('title', 'Berichtenlijst')
 @section('content')
 
 <div class="container" style="margin-top: 75px; font-size: 12px">

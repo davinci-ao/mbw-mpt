@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Chalets')
 @section('content')
 
 <!-- @foreach ($chaletData as $chalet) -->

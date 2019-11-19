@@ -28,6 +28,10 @@
 
     <script src="https://kit.fontawesome.com/a1912e8d76.js" crossorigin="anonymous"></script>
 
+    <!-- Name of the page -->
+
+    <title>@yield('title', 'Mooiplekjetexel.nl')</title>
+
 </head>
 
 <body>
