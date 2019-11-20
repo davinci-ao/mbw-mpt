@@ -57,17 +57,9 @@ input[type=number] {
               <input type="text" class="form-control" name="email" value="{{ old('email') }}"/>
           </div> 
           <div class="form-group">
-              <label for="nummer">telefoonnummer</label>
+              <label for="nummer">Telefoonnummer</label>
               <input type="text" class="form-control" name="telephone_number" value="{{ old('telephone_number') }}"/>
           </div> 
-          <div class="form-group">             
-               <label for="check-in">Check-in tijd</label>
-              <input type="time" class="form-control" name="check_in" value="{{ old('check_in') }}"/>
-          </div>
-          <div class="form-group">
-              <label for="check-uit">Check-uit tijd </label>
-              <input type="time" class="form-control" name="check_out" value="{{ old('check_out') }}"/>
-          </div>
           <div class="form-group">
               <label for="aankomst">Aankomst</label>
               <input type="date" class="form-control" name="arrival" value="{{ old('arrival') }}"/>
@@ -84,14 +76,8 @@ input[type=number] {
               <label for="huisdieren">Huisdieren</label>
               <input type="text" class="form-control" name="pets" value="{{ old('pets') }}"/>
           </div> 
-          <div class="form-group">
-              <label for="prijs">Prijs</label>
-              <input type="number" min="0" step="any" class="form-control" name="price" value="{{ old('price') }}"/>
-          </div>
-          <div class="form-group">
-              <label for="chalet">Chalet</label>
-              <input type="text" class="form-control" name="chalet" value="{{ old('chalet') }}"/>
-          </div>                                                      
+          <input type="hidden" name="chaletId" value="{{ $chalet }}">
+                            
           <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >boeken</button>
       </form>
   </div>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Chalet;
 Use Auth;
 use Illuminate\Support\Facades\Hash;
 Use App\User;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class HomeController extends Controller

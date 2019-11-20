@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Chalet;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
@@ -32,9 +33,11 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('bookings.create');
+        $chalet = $request->get('chalet');
+
+        return view('bookings.create', ['chalet' => $chalet]);
     }
 
     /**
@@ -45,19 +48,20 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+
+        $chaletId = $request->get('chaletId');
+
+        $chalet = Chalet::find($chaletId);
+
+        $data = $request->validate([
             'firstname'=> 'required',
             'lastname'=> 'required',
             'email'=> 'required|email',
             'telephone_number'=> 'required|max:15',
-            'check_in'=>'required',
-            'check_out'=>'required',
             'arrival'=> 'required',
             'departure' =>'required',
             'people'=> 'required|numeric',
-            'pets' => 'nullable',
-            'price' =>'required',
-            'chalet' => 'required'
+            'pets' => 'nullable'
         ]);
 
         $booking = new Booking([
@@ -65,32 +69,14 @@ class BookingController extends Controller
             'lastname' => $request->get('lastname'),
             'email' => $request->get('email'),
             'telephone_number' => $request->get('telephone_number'),
-            'check_in' => $request->get('check_in'),
-            'check_out'=> $request->get('check_out'),
             'arrival'=> $request->get('arrival'),
             'departure'=> $request->get('departure'),
             'people'=> $request->get('people'),
             'pets'=> $request->get('pets'),
-            'price'=> $request->get('price'),
-            'chalet'=> $request->get('chalet'),
+            'price' => $chalet->price,
+            'chalet' => $chalet->name
         ]);
 
-        //mail
-
-        $data = array(
-            'firstname' => $request->get('firstname'),
-            'lastname' => $request->get('lastname'),
-            'email' => $request->get('email'),
-            'telephone_number' => $request->get('telephone_number'),
-            'check_in' => $request->get('check_in'),
-            'check_out'=> $request->get('check_out'),
-            'arrival'=> $request->get('arrival'),
-            'departure'=> $request->get('departure'),
-            'people'=> $request->get('people'),
-            'pets'=> $request->get('pets'),
-            'price'=> $request->get('price'),
-            'chalet'=> $request->get('chalet'),
-        );
         $subject = 'Bevestiginsmail';
         $view = 'confirmation_email_template';
 
@@ -146,14 +132,10 @@ class BookingController extends Controller
             'lastname'=> 'required',
             'email'=> 'required|email',
             'telephone_number'=> 'required|max:15',
-            'check_in'=>'required',
-            'check_out'=>'required',
             'arrival'=> 'required',
             'departure' =>'required',
             'people'=> 'required|numeric',
-            'pets' => 'nullable',
-            'price' =>'required',
-            'chalet' => 'required'
+            'pets' => 'nullable'
         ]);
 
         $booking = Booking::find($id); 
@@ -161,18 +143,14 @@ class BookingController extends Controller
         $booking->lastname = $request->get('lastname');
         $booking->email = $request->get('email');
         $booking->telephone_number = $request->get('telephone_number');
-        $booking->check_in = $request->get('check_in');
-        $booking->check_out = $request->get('check_out');
         $booking->arrival = $request->get('arrival');
         $booking->departure = $request->get('departure');
         $booking->people = $request->get('people');
         $booking->pets = $request->get('pets');
-        $booking->price = $request->get('price');
-        $booking->chalet = $request->get('chalet');
 
         $booking->save();
 
-        return redirect('/bookings')->with('gelukt!', 'booking is bijgwerkt');
+        return redirect('/bookings')->with('gelukt!', 'Boeking is bijgewerkt');
     }
 
     /**
