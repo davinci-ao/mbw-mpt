@@ -3,6 +3,7 @@
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'mpt.test.1.email@gmail.com',
             'password' => bcrypt('Testtest123'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
     }
 } 

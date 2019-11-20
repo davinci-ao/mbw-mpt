@@ -31,7 +31,7 @@
               <label for="quantity">Chalets in dit vakantiepark:</label>
               <input type="text" class="form-control" name="chalet"/>
           </div>
-          <button type="submit" class="btn btn-primary">Voeg toe</button>
+          <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
       </form>
   </div>
 </div>
