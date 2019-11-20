@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Berichten')
 @section('content')
 
 <div class="container" style="padding-top: 25px; padding-bottom: 30px;">

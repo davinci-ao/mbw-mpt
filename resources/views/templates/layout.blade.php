@@ -10,8 +10,6 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <title>Mooiplekjetexel.nl</title>
-
     <!-- Vuetify CSS -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
@@ -35,6 +33,10 @@
 
     <script src="https://kit.fontawesome.com/a1912e8d76.js" crossorigin="anonymous"></script>
 
+    <!-- Name of the page -->
+
+    <title>@yield('title', 'Mooiplekjetexel.nl')</title>
+
 </head>
 
 <body>
@@ -49,7 +51,7 @@
   
         <v-toolbar-items>
           <v-btn text class="menu-items" href="{{ url('home') }}">Home</v-btn>
-          <v-btn text class="menu-items" href="{{ url('chalets') }}">Chalets</v-btn>
+          <v-btn text class="menu-items" href="{{ url('holidayparks') }}">Vakantieparken</v-btn>
           <v-btn text class="menu-items" href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
           <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>         
@@ -93,7 +95,7 @@
         no-gutters
       >
         <v-btn class="my-2 primary" href="/home" rounded white--text>Home</v-btn>
-        <v-btn class="my-2 primary" href="/chalets" rounded>Chalets</v-btn>
+        <v-btn class="my-2 primary" href="/holidayparks" rounded>Vakantieparken</v-btn>
         <v-btn class="my-2 primary" href="/contact" rounded>Contact</v-btn>
         <v-col
           class="main-color lighten-2 py-4 text-center white--text"

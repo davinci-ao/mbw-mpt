@@ -46,12 +46,12 @@ class HolidayparkController extends Controller
         }
 
         $request->validate([
-            'name'=>'required',
+            'holidaypark_name'=>'required',
             'description'=>'required',
             'chalet'=> 'required'
         ]);
         $holidaypark = new Holidaypark([
-            'name' => $request->get('name'),
+            'holidaypark_name' => $request->get('holidaypark_name'),
             'description'=> $request->get('description'),
             'chalet'=> $request->get('chalet')
 

@@ -16,6 +16,7 @@ class CreateChaletsTable extends Migration
         Schema::create('chalets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('holidaypark_id');
             $table->text('description'); 
             $table->decimal('price');
             $table->string('country');
