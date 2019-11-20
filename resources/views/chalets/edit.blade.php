@@ -70,7 +70,7 @@
               <label for="place">place</label>
               <input type="text" class="form-control" name="place" value="{{ $chaletData->place }}" />
           </div>           
-          <button type="submit" class="btn btn-primary">opslaan</button>
+          <button type="button" onclick="checkSubmit(this)" class="btn btn-primary">opslaan</button>
       </form>
   </div>
 </div>  

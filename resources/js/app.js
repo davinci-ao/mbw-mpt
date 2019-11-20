@@ -168,36 +168,62 @@ new Vue({
 })
 
 new Vue ({
-    el: '#form',
-    vuetify: new Vuetify(),
-    data: () => ({
-      valid: true,
-      firstname: '',
-      firstnameRules: [
-        v => !!v || 'Voornaam is verplicht',
-        v => (v && v.length <= 50) || 'Voornaam moet minder dan 50 karakters zijn',
-      ],
-      lastname: '',
-      lastnameRules: [
-        v => !!v || 'Achternaam is verplicht',
-        v => (v && v.length <= 50) || 'Achternaam moet minder dan 50 karakters zijn',
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is verplicht',
-        v => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn',
-      ],
-      phone: '',
-      phoneRules: [
-        v => !!v || 'Telefoonummer is verplicht',
-        v => (v && v.length <= 15) || 'Telefoonnummer moet geldig zijn',
-      ],
-      subject: '',
-      subjectRules: [
-        v => !!v || 'Onderwerp is verplicht',
-        v => (v && v.length <= 300) || 'Onderwerp moet minder dan 300 karakters zijn',
-      ],      
-      checkbox: false,
-      lazy: false,
-  }),
+  el: '#form',
+  vuetify: new Vuetify(),
+  data () {
+    return {
+    }
+  }
 })
+
+  //   data: () => ({
+  //     valid: true,
+  //     firstname: '',
+  //     firstnameRules: [
+  //       v => !!v || 'Voornaam is verplicht',
+  //       v => (v && v.length <= 50) || 'Voornaam moet minder dan 50 karakters zijn',
+  //     ],
+  //     lastname: '',
+  //     lastnameRules: [
+  //       v => !!v || 'Achternaam is verplicht',
+  //       v => (v && v.length <= 50) || 'Achternaam moet minder dan 50 karakters zijn',
+  //     ],
+  //     email: '',
+  //     emailRules: [
+  //       v => !!v || 'E-mail is verplicht',
+  //       v => /.+@.+\..+/.test(v) || 'E-mail moet geldig zijn',
+  //     ],
+  //     phonenumber: '',
+  //     phonenumberRules: [
+  //       v => !!v || 'Telefoonummer is verplicht',
+  //       v => (v && v.length <= 15) || 'Telefoonnummer moet geldig zijn',
+  //     ],
+  //     message: '',
+  //     messageRules: [
+  //       v => !!v || 'Onderwerp is verplicht',
+  //       v => (v && v.length <= 300) || 'Onderwerp moet minder dan 300 karakters zijn',
+  //     ],      
+  //     checkbox: false,
+  //     lazy: false,
+  // }),
+
+
+new Vue({
+  el: '#formAccountEdit',
+  vuetify: new Vuetify(),
+  data () {
+    return {
+    }
+  },
+})
+
+new Vue({
+  el: '#formAccountDelete',
+  vuetify: new Vuetify(),
+  data () {
+    return {
+    }
+  },
+})
+
+

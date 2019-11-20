@@ -65,10 +65,9 @@
               <label for="plaats">plaats</label>
               <input type="text" class="form-control" name="place"/>
           </div>                                                      
-          <button type="submit" class="btn btn-primary">Voeg toe</button>
+          <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
       </form>
   </div>
 </div>
-
 
 @endsection
