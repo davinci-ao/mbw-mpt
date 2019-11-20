@@ -51,6 +51,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{{ url('home') }}">Home</a>
               <a class="dropdown-item" href="{{ url('contact/list') }}">Berichten</a>
+              <a class="dropdown-item" href="{{ url('boekingen') }}">boekingen</a>
               <a class="dropdown-item" href="{{ url('#') }}">Actie log</a>
             </div>
           </div>
@@ -60,7 +61,6 @@
             <v-btn text href="{{ url('home') }}">Home</v-btn>
             <v-btn text href="{{ url('chalets') }}">Chalets</v-btn>
             <v-btn text href="{{ url('contact') }}">Contact</v-btn>
-            <v-btn text href="{{ url('bookings') }}">Boekingen</v-btn>
           @endif
         </v-toolbar-items>
 
