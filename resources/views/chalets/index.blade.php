@@ -2,7 +2,11 @@
 
 @section('title', 'Chalets')
 @section('content')
-
+@if ($alert = Session::get('alert'))
+        <div class="alert alert-success">
+            <p>{{ $alert }}</p>
+        </div>
+    @endif
 <!-- @foreach ($chaletData as $chalet) -->
 
 <!-- <div id="calendar">
@@ -115,13 +119,32 @@
 <h1>Chalets</h1>
 
 <!-- only show create button when logged in -->
-
+<a class="btn btn-primary" href="{{ URL::to('bookings/create') }}">Boeken</a>
 @if (Auth::check())
-  <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
+   <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
 @foreach ($chaletData as $chalet)
   
+
+  <td>Chaletnaam: {{ $chalet->name }}</td><br>
+  <td>Beschijving: {{ $chalet->description}}</td><br> 
+  <td>Prijs: {{ $chalet->price}}</td><br>
+  <td>Land: {{ $chalet->country}}</td><br>
+  <td>Huisnummer: {{ $chalet->housenr }}{{ $chalet->addition }}</td><br>
+  <td>Straat: {{ $chalet->street}}</td><br>
+  <td>Plaats: {{ $chalet->place}}</td><br>
+  <td>lengtegraad: {{ $chalet->longitude}}</td><br>
+  <td>breedtegraad: {{ $chalet->latitude}}</td><br>
+    <?php
+   $name = $chalet->name;
+   $country = $chalet->country;
+   $housenr = $chalet->housenr;
+   $street  = $chalet->street;
+   $place = $chalet->place;
+
+   ?>
+
   <div class="card w-100 chalet-card">
     <div class="card-body">
       <div class="chalet-text">
@@ -150,6 +173,7 @@
 
         <!-- Code voor het Google maps kaartje -->   
 
+
   <!-- only show edit button when logged in -->
 
     <div class="chalet-buttons">
@@ -172,10 +196,7 @@
     </div>
   </div>
 
-  <!-- Code voor het Google maps kaartje -->   
-
 @endforeach
- 
 @endsection
 
 

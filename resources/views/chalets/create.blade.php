@@ -6,10 +6,20 @@
   .uper {
     margin-top: 40px;
   }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
 </style>
 <div class="card uper">
   <div class="card-header">
-    Voeg een Chalet toe
+    <h1>Voeg een Chalet toe</h1>
   </div>
       <!-- success message -->
 
@@ -35,7 +45,7 @@
       <form method="post" action="{{ route('chalets.store') }}">
           <div class="form-group">
               @csrf
-               <label for="name">Chaletnaam</label>
+               <label for="name">naam</label>
               <input type="text" class="form-control" name="name"/>
           </div>
 
@@ -58,7 +68,7 @@
           </div>
           <div class="form-group">
               <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price" value="{{ old('price') }}"/>
+              <input type="number" min="0" step="any" class="form-control" name="price" value="{{ old('price') }}"/>
           </div>
           <div class="form-group">
               <label for="land">land</label>
@@ -79,9 +89,8 @@
           <div class="form-group">
               <label for="plaats">plaats</label>
               <input type="text" class="form-control" name="place" value="{{ old('place') }}"/>
-          </div>
-                                                    
-          <button type="submit" class="btn btn-primary">Voeg toe</button>
+          </div>                                                                                                          
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >Voeg toe</button>
       </form>
   </div>
 </div>

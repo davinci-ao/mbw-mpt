@@ -18,7 +18,7 @@ class CreateChaletsTable extends Migration
             $table->string('name');
             $table->integer('holidaypark_id');
             $table->text('description'); 
-            $table->integer('price');
+            $table->decimal('price');
             $table->string('country');
             $table->integer('housenr');
             $table->string('addition')->nullable();
