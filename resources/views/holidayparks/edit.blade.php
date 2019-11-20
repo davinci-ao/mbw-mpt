@@ -45,11 +45,7 @@
           <div class="form-group">
               <label for="description">Beschrijving vakantiepark:</label>
               <input type="text" class="form-control" name="description" value="{{ $holidaypark->description }}" />
-          </div>
-          <div class="form-group">
-              <label for="chalet">Chalets vakantiepark:</label>
-              <input type="text" class="form-control" name="chalet" value="{{ $holidaypark->chalet }}" />
-          </div>          
+          </div>        
           <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Werk bij</button>
       </form>
   </div>

@@ -9,8 +9,7 @@ class Holidaypark extends Model
     protected $fillable = [
         'id',
       	'holidaypark_name',
-        'description',
-        'chalet'  
+        'description'
       ]; 
 
       public function holidayparks() 

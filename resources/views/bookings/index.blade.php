@@ -31,14 +31,14 @@
             <td>{{ $data->lastname }}</td>
             <td>{{ $data->email }}</td>
             <td>{{ $data->telephone_number}}</td>
-            <td>{{ Carbon\Carbon::createFromFormat('H:i:s',$data->check_in)->format('H:i') }}</td>
-            <td>{{ Carbon\Carbon::createFromFormat('H:i:s',$data->check_out)->format('H:i') }}</td>
+            <td>11 uur</td>
+            <td>12 uur</td>
             <td>{{ Carbon\Carbon::parse($data->arrival)->format('d-m-Y') }}</td>
             <td>{{ Carbon\Carbon::parse($data->departure)->format('d-m-Y') }}</td>
             <td>{{ $data->people }}</td>
             <td>{{ $data->pets }}</td>
-            <td>€{{ $data->price }}</td>
-            <td>{{ $data->chalet }}</td>
+            <td>€55</td>
+            <td>Zeezicht</td>
             <td><a style="color: orange;" href="{{ route('bookings.edit',$data->id)}}">bewerk</a></td>
             <td><a style="color: red;" onclick="return confirm('Weet je het zeker dat je deze boeking wil verwijderen?');" href="{{ url('booking/delete?booking=' . $data->id) }}">Verwijderen</a></td>
         </tr>
