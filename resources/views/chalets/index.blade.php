@@ -2,7 +2,11 @@
 
 @section('title', 'Chalets')
 @section('content')
-
+@if ($alert = Session::get('alert'))
+        <div class="alert alert-success">
+            <p>{{ $alert }}</p>
+        </div>
+    @endif
 <!-- @foreach ($chaletData as $chalet) -->
 
 <!-- <div id="calendar">
@@ -114,14 +118,12 @@
 
 <h1>Chalets</h1>
 
-<!-- only show create button when logged in -->
-
 @if (Auth::check())
-  <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
+   <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
 @foreach ($chaletData as $chalet)
-  
+
   <div class="card w-100 chalet-card">
     <div class="card-body">
       <div class="chalet-text">
@@ -132,7 +134,7 @@
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
         <p class="card-text">Plaats: {{ $chalet->place}}</p>
         <p class="card-text">Land: {{ $chalet->country}}</p>
-        <a href="#" class="btn btn-primary" style="margin-top: 10px;">Boeken</a>
+        <a href="{{ url('bookings/create?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">Boeken</a>
       </div>
 
       <?php
@@ -149,6 +151,7 @@
       </div>
 
         <!-- Code voor het Google maps kaartje -->   
+
 
   <!-- only show edit button when logged in -->
 
@@ -172,10 +175,7 @@
     </div>
   </div>
 
-  <!-- Code voor het Google maps kaartje -->   
-
 @endforeach
- 
 @endsection
 
 

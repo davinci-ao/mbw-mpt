@@ -21,13 +21,13 @@ class MessageController extends Controller
     {
         //USER PAGE
 
-        $request->validate([
+        $data = $request->validate([
             'firstname'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'lastname'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'email'=>'required|email',
             'phonenumber'=>'required|max:15',
             'message'=>'required|max:2000'
-        ]);
+        ]);  
 
         $message = new Message([
             'firstname' => $request->get('firstname'),
@@ -37,17 +37,9 @@ class MessageController extends Controller
             'message' => $request->get('message')
         ]); 
 
-        // Mail function
-
-        $data = array(
-            'firstname' => $request->get('firstname'),
-            'lastname' => $request->get('lastname'),
-            'email' => $request->get('email'),
-            'phonenumber' => $request->get('phonenumber'),
-            'message' => $request->get('message'),
-        );
-
-        Mail::to($request->get('email'))->send(new ContactMail($data));
+         $subject = 'contact mail';
+         $view = 'contact_email_template';
+        Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
 
         $message->save(); 
 

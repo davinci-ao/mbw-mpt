@@ -5,7 +5,7 @@
 
 <div class="card uper">
   <div class="card-header">
-    Voeg hier een vakantiepark toe
+    <h1>Voeg hier een vakantiepark toe</h1>
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -27,11 +27,7 @@
               <label for="price">Beschrijving vakantiepark:</label>
               <input type="text" class="form-control" name="description"/>
           </div>
-          <div class="form-group">
-              <label for="quantity">Chalets in dit vakantiepark:</label>
-              <input type="text" class="form-control" name="chalet"/>
-          </div>
-          <button type="submit" class="btn btn-primary">Voeg toe</button>
+          <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
       </form>
   </div>
 </div>

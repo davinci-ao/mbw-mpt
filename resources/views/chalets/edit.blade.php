@@ -10,7 +10,7 @@
 </style>
 <div class="card uper">
   <div class="card-header">
-    werk Chalet: {{$chaletData->name}} bij
+    Werk chalet: {{$chaletData->name}} bij
   </div>
     <!-- success message -->
 
@@ -48,30 +48,30 @@
               <input type="text" class="form-control" name="description" value="{{ $chaletData->description }}" />
           </div>
           <div class="form-group">
-              <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price" value="{{ $chaletData->price }}" />
+              <label for="prijs">Prijs</label>
+              <input type="number" min="0" step="any" class="form-control" name="price" value="{{ $chaletData->price }}" />
           </div>
           <div class="form-group">
-              <label for="land">land</label>
+              <label for="land">Land</label>
               <input type="text" class="form-control" name="country" value="{{ $chaletData->country }}" />
           </div> 
           <div class="form-group">
-              <label for="huisnummer">huisnummer</label>
+              <label for="huisnummer">Huisnummer</label>
               <input type="text" class="form-control" name="housenr" value="{{ $chaletData->housenr }}" />
           </div> 
           <div class="form-group">
-              <label for="toevoeging">toevoeging</label>
+              <label for="toevoeging">Toevoeging</label>
               <input type="text" class="form-control" name="addition" value="{{ $chaletData->addition }}" />
           </div> 
           <div class="form-group">
-              <label for="straat">straat</label>
+              <label for="straat">Straat</label>
               <input type="text" class="form-control" name="street" value="{{ $chaletData->street }}" />
           </div> 
           <div class="form-group">
-              <label for="place">place</label>
+              <label for="place">Plaats</label>
               <input type="text" class="form-control" name="place" value="{{ $chaletData->place }}" />
           </div>           
-          <button type="submit" class="btn btn-primary">opslaan</button>
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary">Opslaan</button>
       </form>
   </div>
 </div>  

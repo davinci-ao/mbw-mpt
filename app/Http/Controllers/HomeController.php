@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Chalet;
 Use Auth;
 use Illuminate\Support\Facades\Hash;
 Use App\User;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class HomeController extends Controller
@@ -104,7 +106,7 @@ class HomeController extends Controller
 
         $account->save();
 
-        return redirect('/account')->with('alertSuccess', 'account:'. $account->name .'is succesvol bijgwerkt');
+        return redirect('/account')->with('alertSuccess', 'Account: '. $account->name .' is succesvol bijgwerkt');
     }
 
 
@@ -130,7 +132,7 @@ class HomeController extends Controller
                 $account->password = Hash::make($newPass1);
                 $account->save();
 
-                return redirect('/account')->with('alertSuccess', 'account:'. $account->name .'is succesvol bijgwerkt');
+                return redirect('/account')->with('alertSuccess', 'account: '. $account->name .' is succesvol bijgwerkt');
             } else {
                 return redirect('/account/edit?account=' . $accountId)->with('alertDanger', 'De nieuw ingevoerde wachtwoorden komen niet overeen!');
             }

@@ -26,27 +26,53 @@
         </div>
     @endif
 
-	<h5>Edit Account</h5>
+	<h5>Account Wijzigen</h5>
 
-	<form method="post" action="{{url('account/store?account=' . $account->id)}}">
-		@csrf
-		<input required type="text" class="form-control" name="name" value="{{$account->name}}">
-		<input required type="text" class="form-control" name="email" value="{{$account->email}}">
-		<button class="btn btn-primary" type="submit">Wijzig</button>
-	</form>
+	<div id="formAccountEdit">
+	    <v-form class="contact_form" method="post" action="{{url('account/store?account=' . $account->id)}}">
+	    @csrf
+	      	<v-text-field 
+	      		value="{{$account->name}}" 
+	      		label="Naam" 
+	      		name="name">		
+	      	</v-text-field>
 
-	<h5>Change Password</h5>
+	      	<v-text-field 
+	      		value="{{$account->email}}" 
+	      		label="Email" 
+	      		name="email">		
+	      	</v-text-field>
 
-<!-- 	name
- -->
-	<form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
-		@csrf
-		<input required type="password" name="oldPass" class="form-control" placeholder="Old password">
-		<input required type="password" name="newPass1" class="form-control" placeholder="New password">
-		<input required type="password" name="newPass2" class="form-control" placeholder="Retype new password">
-		<button class="btn btn-primary" type="submit">Wijzig</button>
-	</form>
+      		<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
+    	</v-form>
+	</div>
 
+	<h5 style="margin-top: 25px;">Wachtwoord wijzigen</h5>
+
+	<div id="formAccountDelete">
+		<v-form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
+			@csrf
+			<v-text-field 
+				type="password" 
+				name="oldPass" 
+				label="Oud wachtwoord">
+			</v-text-field>
+
+			<v-text-field 
+				type="password" 
+				name="newPass1" 
+				label="Nieuw wachtwoord">
+			</v-text-field>
+
+			<v-text-field 
+				type="password"
+				name="newPass2" 
+				label="Herhaal nieuw wachtwoord">
+			</v-text-field>
+
+			<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
+		</v-form>
+	</div>
 </div>
 
 @endsection

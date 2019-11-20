@@ -17,7 +17,6 @@ class CreateHolidayparksTable extends Migration
             $table->bigIncrements('id');
             $table->string('holidaypark_name');
             $table->text('description');
-            $table->string('chalet');
             $table->timestamps();
         });
     }
