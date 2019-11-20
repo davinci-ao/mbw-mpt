@@ -92,7 +92,7 @@ input[type=number] {
               <label for="chalet">Chalet</label>
               <input type="text" class="form-control" name="chalet" value="{{ old('chalet') }}"/>
           </div>                                                      
-          <button type="submit" class="btn btn-primary">boeken</button>
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >boeken</button>
       </form>
   </div>
 </div>

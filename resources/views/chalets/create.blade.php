@@ -18,7 +18,7 @@ input[type=number] {
 </style>
 <div class="card uper">
   <div class="card-header">
-    Voeg een Chalet toe
+    <h1>Voeg een Chalet toe</h1>
   </div>
       <!-- success message -->
 
@@ -75,7 +75,7 @@ input[type=number] {
               <label for="plaats">plaats</label>
               <input type="text" class="form-control" name="place"/>
           </div>                                                      
-          <button type="submit" class="btn btn-primary">Voeg toe</button>
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >Voeg toe</button>
       </form>
   </div>
 </div>

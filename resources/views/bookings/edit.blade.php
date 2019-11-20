@@ -94,7 +94,7 @@ input[type=number] {
               <label for="chalet">chalet</label>
               <input type="text" class="form-control" name="chalet" value="{{ $bookingData->chalet }}" />
           </div>           
-          <button type="submit" class="btn btn-primary">opslaan</button>
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >opslaan</button>
       </form>
   </div>
 </div>  
