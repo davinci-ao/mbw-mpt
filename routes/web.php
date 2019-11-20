@@ -40,3 +40,7 @@ Route::resource('/holidayparks', 'HolidayparkController');
 // Route::patch('/holidayparks/store', ['as' => 'holidayparks.store', 'uses' => 'HolidayparkController@store']);
 // Route::post('/store', "HolidayparkController@store");
 // Route::patch('/holidayparks/create', ['as' => 'holidayparks.create', 'uses' => 'HolidayparkController@create']);
+
+//bookings
+Route::resource('/bookings', 'BookingController');
+Route::get('/booking/delete', 'BookingController@destroy')->name('bookingDelete');

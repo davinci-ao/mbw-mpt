@@ -1,7 +1,11 @@
 @extends('templates.layout')
 
 @section('content')
-
+@if ($alert = Session::get('alert'))
+        <div class="alert alert-success">
+            <p>{{ $alert }}</p>
+        </div>
+    @endif
 <!-- @foreach ($chaletData as $chalet) -->
 
 <!-- <div id="calendar">
@@ -114,9 +118,10 @@
 <h4>Chalet Data:</h4>
 
 <!-- only show create button when logged in -->
-
+<a class="btn btn-primary" href="{{ URL::to('bookings/create') }}">Boeken</a>
 @if (Auth::check())
   <a class="btn btn-primary" href="{{ URL::to('chalets/create') }}">voeg Chalet toe</a>
+  
   <hr>
 @endif
 
@@ -135,7 +140,7 @@
    $name = $chalet->name;
    $country = $chalet->country;
    $housenr = $chalet->housenr;
-   $street = $chalet->street;
+   $street  = $chalet->street;
    $place = $chalet->place;
 
    ?>
@@ -162,11 +167,10 @@
  <main style="text-align: center;" >
 
   <div style="width: 720px">
-  <iframe width="720" height="600" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street?>%20<?=$housenr?>%2C%20<?=$place?>%2C%20<?=$country?>s+(<?=$name?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+  <iframe width="720" height="600" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
   </iframe></div><br />
  </main>
   
- 
 @endsection
 
 

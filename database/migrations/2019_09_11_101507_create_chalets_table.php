@@ -17,7 +17,7 @@ class CreateChaletsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description'); 
-            $table->integer('price');
+            $table->decimal('price');
             $table->string('country');
             $table->integer('housenr');
             $table->string('addition')->nullable();

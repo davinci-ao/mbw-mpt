@@ -48,7 +48,7 @@
           </div>
           <div class="form-group">
               <label for="prijs">prijs</label>
-              <input type="text" class="form-control" name="price" value="{{ $chaletData->price }}" />
+              <input type="number" min="0" step="any" class="form-control" name="price" value="{{ $chaletData->price }}" />
           </div>
           <div class="form-group">
               <label for="land">land</label>
@@ -70,7 +70,7 @@
               <label for="place">place</label>
               <input type="text" class="form-control" name="place" value="{{ $chaletData->place }}" />
           </div>           
-          <button type="submit" class="btn btn-primary">opslaan</button>
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >opslaan</button>
       </form>
   </div>
 </div>  

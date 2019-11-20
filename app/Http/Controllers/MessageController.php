@@ -46,8 +46,9 @@ class MessageController extends Controller
             'phonenumber' => $request->get('phonenumber'),
             'message' => $request->get('message'),
         );
-
-        Mail::to($request->get('email'))->send(new ContactMail($data));
+         $subject = 'contact mail';
+         $view = 'contact_email_template';
+        Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
 
         $message->save(); 
 
