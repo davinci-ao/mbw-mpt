@@ -118,32 +118,11 @@
 
 <h1>Chalets</h1>
 
-<!-- only show create button when logged in -->
-<a class="btn btn-primary" href="{{ URL::to('bookings/create') }}">Boeken</a>
 @if (Auth::check())
    <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
 @foreach ($chaletData as $chalet)
-  
-
-  <td>Chaletnaam: {{ $chalet->name }}</td><br>
-  <td>Beschijving: {{ $chalet->description}}</td><br> 
-  <td>Prijs: {{ $chalet->price}}</td><br>
-  <td>Land: {{ $chalet->country}}</td><br>
-  <td>Huisnummer: {{ $chalet->housenr }}{{ $chalet->addition }}</td><br>
-  <td>Straat: {{ $chalet->street}}</td><br>
-  <td>Plaats: {{ $chalet->place}}</td><br>
-  <td>lengtegraad: {{ $chalet->longitude}}</td><br>
-  <td>breedtegraad: {{ $chalet->latitude}}</td><br>
-    <?php
-   $name = $chalet->name;
-   $country = $chalet->country;
-   $housenr = $chalet->housenr;
-   $street  = $chalet->street;
-   $place = $chalet->place;
-
-   ?>
 
   <div class="card w-100 chalet-card">
     <div class="card-body">
@@ -155,7 +134,7 @@
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
         <p class="card-text">Plaats: {{ $chalet->place}}</p>
         <p class="card-text">Land: {{ $chalet->country}}</p>
-        <a href="#" class="btn btn-primary" style="margin-top: 10px;">Boeken</a>
+        <a href="{{ url('bookings/create?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">Boeken</a>
       </div>
 
       <?php

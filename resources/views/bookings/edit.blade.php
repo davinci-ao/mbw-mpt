@@ -18,7 +18,7 @@ input[type=number] {
 </style>
 <div class="card uper">
   <div class="card-header">
-    <h1>boeken</h1>
+    <h1>Boeking wijzigen</h1>
   </div>
     <!-- success message -->
 
@@ -59,42 +59,26 @@ input[type=number] {
               <input type="text" class="form-control" name="email" value="{{ $bookingData->email }}"/>
           </div> 
           <div class="form-group">
-              <label for="nummer">telefoonnummer</label>
+              <label for="nummer">Telefoonnummer</label>
               <input type="text" class="form-control" name="telephone_number" value="{{ $bookingData->telephone_number}}"/>
           </div> 
           <div class="form-group">
-               <label for="Check-in">check-in tijd</label>
-              <input type="time" class="form-control" name="check_in" value="{{ $bookingData->check_in }}" />
-          </div>
-          <div class="form-group">
-              <label for="check-out">check-uit tijd</label>
-              <input type="time" class="form-control" name="check_out" value="{{ $bookingData->check_out }}" />
-          </div>
-          <div class="form-group">
-              <label for="aankomst">aankomst</label>
+              <label for="aankomst">Aankomst</label>
               <input type="date" min="0" step="any" class="form-control" name="arrival" value="{{ $bookingData->arrival }}" />
           </div>
           <div class="form-group">
-              <label for="vertrek">vertrek</label>
+              <label for="vertrek">Vertrek</label>
               <input type="date" class="form-control" name="departure" value="{{ $bookingData->departure }}" />
           </div> 
           <div class="form-group">
-              <label for="personen">aantal personen</label>
+              <label for="personen">Aantal personen</label>
               <input type="text" class="form-control" name="people" value="{{ $bookingData->people }}" />
           </div> 
           <div class="form-group">
-              <label for="huisdieren">huisdieren</label>
+              <label for="huisdieren">Huisdieren</label>
               <input type="text" class="form-control" name="pets" value="{{ $bookingData->pets}}" />
           </div> 
-          <div class="form-group">
-              <label for="prijs">Prijs</label>
-              <input type="number" class="form-control" name="price" value="{{ $bookingData->price }}" />
-          </div> 
-          <div class="form-group">
-              <label for="chalet">chalet</label>
-              <input type="text" class="form-control" name="chalet" value="{{ $bookingData->chalet }}" />
-          </div>           
-          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >opslaan</button>
+          <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >Opslaan</button>
       </form>
   </div>
 </div>  

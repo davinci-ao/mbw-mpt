@@ -47,14 +47,11 @@ class HolidayparkController extends Controller
 
         $request->validate([
             'holidaypark_name'=>'required',
-            'description'=>'required',
-            'chalet'=> 'required'
+            'description'=>'required'
         ]);
         $holidaypark = new Holidaypark([
             'holidaypark_name' => $request->get('holidaypark_name'),
-            'description'=> $request->get('description'),
-            'chalet'=> $request->get('chalet')
-
+            'description'=> $request->get('description')
         ]);
 
         $holidaypark->save();
@@ -105,13 +102,11 @@ class HolidayparkController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'chalet'=> 'required'
         ]);
 
         $holidaypark = Holidaypark::find($id); 
         $holidaypark->name = $request->get('name');
         $holidaypark->description = $request->get('description');
-        $holidaypark->chalet = $request->get('chalet');
 
         $holidaypark->save();
 

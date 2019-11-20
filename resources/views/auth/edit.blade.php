@@ -26,7 +26,7 @@
         </div>
     @endif
 
-	<h5>Edit Account</h5>
+	<h5>Account Wijzigen</h5>
 
 	<div id="formAccountEdit">
 	    <v-form class="contact_form" method="post" action="{{url('account/store?account=' . $account->id)}}">
@@ -47,7 +47,7 @@
     	</v-form>
 	</div>
 
-	<h5 style="margin-top: 25px;">Change Password</h5>
+	<h5 style="margin-top: 25px;">Wachtwoord wijzigen</h5>
 
 	<div id="formAccountDelete">
 		<v-form method="post" action="{{url('account/changepass?account=' . $account->id)}}">
@@ -55,19 +55,19 @@
 			<v-text-field 
 				type="password" 
 				name="oldPass" 
-				label="Old password">
+				label="Oud wachtwoord">
 			</v-text-field>
 
 			<v-text-field 
 				type="password" 
 				name="newPass1" 
-				label="New password">
+				label="Nieuw wachtwoord">
 			</v-text-field>
 
 			<v-text-field 
 				type="password"
 				name="newPass2" 
-				label="Retype new password">
+				label="Herhaal nieuw wachtwoord">
 			</v-text-field>
 
 			<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
