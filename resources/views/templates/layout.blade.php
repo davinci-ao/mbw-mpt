@@ -45,7 +45,7 @@
   <v-app id="inspire" class="header-menu">
     <div>
       <v-toolbar class="header-menu">
-        <v-toolbar-title class="header-title" href="{{ url('home') }}">Mooiplekjetexel.nl</v-toolbar-title>
+        <v-toolbar-title class="header-title"><a style="color: white; text-decoration: none;" href="{{ url('home') }}">Mooiplekjetexel.nl</a></v-toolbar-title>
   
         <div class="flex-grow-1"></div>
   
@@ -54,7 +54,7 @@
           <v-btn text class="menu-items" href="{{ url('holidayparks') }}">Vakantieparken</v-btn>
           <v-btn text class="menu-items" href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
-          <v-btn text href="{{ url('account') }}"><i class="far fa-user-circle"></i></v-btn>         
+          <v-btn text href="{{ url('account') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>         
           <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
           @endif
 
@@ -116,3 +116,10 @@
 
 </body>
 </html>
+
+<script>
+  function checkSubmit(btn){
+    btn.disabled = true;
+    btn.form.submit();
+  }
+</script>

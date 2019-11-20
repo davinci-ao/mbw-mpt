@@ -95,5 +95,4 @@ input[type=number] {
   </div>
 </div>
 
-
 @endsection
