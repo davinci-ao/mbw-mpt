@@ -8,8 +8,13 @@ class Holidaypark extends Model
 {
     protected $fillable = [
         'id',
-      	'name',
+      	'holidaypark_name',
         'description',
         'chalet'  
       ]; 
+
+      public function holidayparks() 
+      {
+        return $this->hasMany('App\Chalet');
+      }
 }

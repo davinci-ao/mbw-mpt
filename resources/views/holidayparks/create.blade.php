@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Create vakantiepark')
 @section('content')
 
 <div class="card uper">
@@ -19,8 +20,8 @@
       <form method="post" action="{{ route('holidayparks.store') }}">
           <div class="form-group">
               @csrf
-              <label for="name">Naam vakantiepark:</label>
-              <input type="text" class="form-control" name="name"/>
+              <label for="holidaypark_name">Naam vakantiepark:</label>
+              <input type="text" class="form-control" name="holidaypark_name"/>
           </div>
           <div class="form-group">
               <label for="price">Beschrijving vakantiepark:</label>

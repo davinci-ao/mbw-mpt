@@ -21,7 +21,7 @@ class MessageController extends Controller
     {
         //USER PAGE
 
-        $valData = $request->validate([
+        $data = $request->validate([
             'firstname'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'lastname'=>'required|max:50|regex:/^[\pL\s\-]+$/u',
             'email'=>'required|email',
@@ -37,7 +37,10 @@ class MessageController extends Controller
             'message' => $request->get('message')
         ]); 
 
-        Mail::to($request->get('email'))->send(new ContactMail($valData));
+         $subject = 'contact mail';
+         $view = 'contact_email_template';
+        Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
+
         $message->save(); 
 
         return redirect()->back()->with('alert','Uw bericht is succesvol verzonden!');

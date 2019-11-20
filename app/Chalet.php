@@ -8,6 +8,7 @@ class Chalet extends Model
 {
     protected $fillable = [
         'id',
+        'holidaypark_id',
       	'name',
       	'description',
         'price',
@@ -18,5 +19,10 @@ class Chalet extends Model
         'place',
         'longitude',
         'latitude'
-      ];    
+      ];
+      
+      public function chalet()
+      {
+        return $this->belongsTo('App\Holidaypark');
+      }
 }

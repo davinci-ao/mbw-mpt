@@ -1,5 +1,6 @@
 @extends('templates.layout')
 
+@section('title', 'Edit vakantiepark')
 @section('content')
 
 <style>
