@@ -146,11 +146,9 @@
   ?>
 
   <div class="calendarPeriods">
-    <select name="period">
-      <option value="weekend {{$chalet->price}}">Weekend</option>
-      <option value="midweek {{$chalet->price}}">Midweek</option>
-      <option value="week {{$chalet->price}}">Week</option>
-    </select> 
+    <p>Weekend: {{$priceArray[$chalet->id]['weekend']}}</p>
+    <p>Midweek: {{$priceArray[$chalet->id]['midweek']}}</p>
+    <p>Week: {{$priceArray[$chalet->id]['week']}}</p>
   </div>
 
       <div class="maps">

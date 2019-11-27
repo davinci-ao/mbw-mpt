@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chalet;
 use App\Holidaypark;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use validate;
 use DB;
 
@@ -26,17 +27,40 @@ class ChaletController extends Controller
             $chalets = DB::table('chalets')->where('holidaypark_id', $id)->get();
         }
 
-        $period = null;
-
         $now = Carbon::now();
+        $year = Carbon::now()->year;
 
-        dd($now);
+        $winter = Carbon::create($year, 12, 21);
+        $lente = Carbon::create($year, 3, 21);
+        $zomer = Carbon::create($year, 6, 21);
+        $herfst = Carbon::create($year, 9, 21);
+
+        $periodMultiplier = null;
+
+        //Herfst
+        if ($now >= $herfst && $now < $winter) {
+            $periodMultiplier = 0.75;
+        }
+
+        //Winter
+        if ($now >= $winter && $now < $lente) {
+            $periodMultiplier = 1;
+        }
+
+        //Lente
+        if ($now >= $lente && $now < $zomer) {
+            $periodMultiplier = 1.5;
+        }
+
+        //Zomer
+        if ($now >= $zomer && $now < $herfst) {
+            $periodMultiplier = 1.2;
+        }
 
         $priceArray;
         foreach ($chalets as $chalet) {
-            $priceArray[$chalet->id] = array('weekend' => $chalet->price * 2, 'midweek' => $chalet->price * 5, 'week' => $chalet->price * 7);
+            $priceArray[$chalet->id] = array('weekend' => $chalet->price * 2 * $periodMultiplier, 'midweek' => $chalet->price * 5 * $periodMultiplier, 'week' => $chalet->price * 7 * $periodMultiplier);
         }
-        dd($priceArray);
 
         return view('chalets.index',['chaletData' => $chalets, 'priceArray' => $priceArray]);
     }
