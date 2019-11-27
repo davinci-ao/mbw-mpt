@@ -145,6 +145,14 @@
     $place = $chalet->place;
   ?>
 
+  <div class="calendarPeriods">
+    <select name="period">
+      <option value="weekend {{$chalet->price}}">Weekend</option>
+      <option value="midweek {{$chalet->price}}">Midweek</option>
+      <option value="week {{$chalet->price}}">Week</option>
+    </select> 
+  </div>
+
       <div class="maps">
         <iframe width="100%" height="350" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
         </iframe>

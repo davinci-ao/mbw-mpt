@@ -25,8 +25,20 @@ class ChaletController extends Controller
         if ($id !== null) {
             $chalets = DB::table('chalets')->where('holidaypark_id', $id)->get();
         }
-        
-        return view('chalets.index',['chaletData' => $chalets]);
+
+        $period = null;
+
+        $now = Carbon::now();
+
+        dd($now);
+
+        $priceArray;
+        foreach ($chalets as $chalet) {
+            $priceArray[$chalet->id] = array('weekend' => $chalet->price * 2, 'midweek' => $chalet->price * 5, 'week' => $chalet->price * 7);
+        }
+        dd($priceArray);
+
+        return view('chalets.index',['chaletData' => $chalets, 'priceArray' => $priceArray]);
     }
 
     /**
