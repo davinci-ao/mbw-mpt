@@ -92,9 +92,11 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(Request $request)
     {
-        //
+        $chalet = $request->get('chalet');
+         var_dump($chalet);
+        return view('bookings.test-page', ['chalet' => $chalet]);
     }
 
     /**
