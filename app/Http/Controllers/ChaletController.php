@@ -58,11 +58,28 @@ class ChaletController extends Controller
         }
 
         $priceArray;
+        $showPrice;
         foreach ($chalets as $chalet) {
             $priceArray[$chalet->id] = array('weekend' => $chalet->price * 2 * $periodMultiplier, 'midweek' => $chalet->price * 5 * $periodMultiplier, 'week' => $chalet->price * 7 * $periodMultiplier);
         }
 
-        return view('chalets.index',['chaletData' => $chalets, 'priceArray' => $priceArray]);
+        foreach ($chalets as $chalet) {
+            $showPrice[$chalet->id] = $priceArray[$chalet->id]['weekend'];
+        }
+
+
+        if ($request->get('periodSelect')) {
+            $period = $request->get('periodSelect');
+
+            $explode = explode("_",$period);
+
+            $period = $explode[0];
+            $id = $explode[1];
+  
+            $showPrice[$id] = $priceArray[$id][$period];
+        }
+
+        return view('chalets.index',['chaletData' => $chalets, 'showPrice' => $showPrice]);
     }
 
     /**

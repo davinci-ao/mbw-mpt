@@ -9,6 +9,7 @@ use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use DB;
 use validate;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -35,9 +36,47 @@ class BookingController extends Controller
      */
     public function create(Request $request)
     {
-        $chalet = $request->get('chalet');
+        $chaletId = $request->get('chalet');
+        $chalet = Chalet::find($chaletId);
 
-        return view('bookings.create', ['chalet' => $chalet]);
+        $price = $chalet->price;
+
+        $period = $request->get('periodSelect');
+
+        $now = Carbon::now();
+        $year = Carbon::now()->year;
+
+        $winter = Carbon::create($year, 12, 21);
+        $lente = Carbon::create($year, 3, 21);
+        $zomer = Carbon::create($year, 6, 21);
+        $herfst = Carbon::create($year, 9, 21);
+
+        $periodMultiplier = null;
+
+        //Herfst
+        if ($now >= $herfst && $now < $winter) {
+            $periodMultiplier = 0.75;
+        }
+
+        //Winter
+        if ($now >= $winter && $now < $lente) {
+            $periodMultiplier = 1;
+        }
+
+        //Lente
+        if ($now >= $lente && $now < $zomer) {
+            $periodMultiplier = 1.5;
+        }
+
+        //Zomer
+        if ($now >= $zomer && $now < $herfst) {
+            $periodMultiplier = 1.2;
+        }
+
+
+        $showPrice = $price * $period * $periodMultiplier;
+
+        return view('bookings.create', ['chalet' => $chalet, 'showPrice' => $showPrice]);
     }
 
     /**

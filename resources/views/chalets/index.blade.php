@@ -129,7 +129,15 @@
       <div class="chalet-text">
         <h5 class="card-title chalet-title">Chaletnaam: {{ $chalet->name }}</h5>
         <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
-        <p class="card-text">Prijs: {{ $chalet->price}}</p>
+        <form>
+          <select onchange="this.form.submit()" name="periodSelect" class="form-control" style="margin-bottom: 15px; width: 120px;">
+            <option value="weekend_{{$chalet->id}}">Weekend</option>
+            <option value="midweek_{{$chalet->id}}">Midweek</option>
+            <option value="week_{{$chalet->id}}">Week</option>
+          </select>
+        </form>
+        <p class="card-text">Prijs: {{$showPrice[$chalet->id]}}</p>
+
         <p class="card-text">Straat: {{ $chalet->street}}</p>
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
         <p class="card-text">Plaats: {{ $chalet->place}}</p>
@@ -145,11 +153,7 @@
     $place = $chalet->place;
   ?>
 
-  <div class="calendarPeriods">
-    <p>Weekend: {{$priceArray[$chalet->id]['weekend']}}</p>
-    <p>Midweek: {{$priceArray[$chalet->id]['midweek']}}</p>
-    <p>Week: {{$priceArray[$chalet->id]['week']}}</p>
-  </div>
+
 
       <div class="maps">
         <iframe width="100%" height="350" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
