@@ -18,7 +18,7 @@ class ChaletController extends Controller
      */
     public function index(Request $request)
     {
-        //USER PAGE 
+        //USER PAGE
 
         $id = $request->get('holidaypark');
 
