@@ -2,19 +2,21 @@
 
 @section('title', 'Chalets')
 @section('content')
+
 @if ($alert = Session::get('alert'))
         <div class="alert alert-success">
             <p>{{ $alert }}</p>
         </div>
     @endif
+
 <h1>Chalets</h1>
-<a href="{{ url('bookings/test-page?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">testpagina</a>
+
 @if (Auth::check())
    <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
 @foreach ($chaletData as $chalet)
-
+<a href="{{ url('bookings/test-page?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">testpagina</a>
   <div class="card w-100 chalet-card">
     <div class="card-body">
       <div class="chalet-text">
