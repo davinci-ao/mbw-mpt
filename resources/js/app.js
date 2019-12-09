@@ -16,7 +16,7 @@ new Vue({
     return {
       items: [
         {
-          src: 'images/slide1.jpg',
+          src: '/images/slide1.jpg',
         },
       ],
     }

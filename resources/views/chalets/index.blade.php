@@ -129,7 +129,9 @@
       <div class="chalet-text">
         <h5 class="card-title chalet-title">Chaletnaam: {{ $chalet->name }}</h5>
         <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
-        <p class="card-text">Prijs: {{ $chalet->price}}</p>
+
+        <p class="card-text">Dagprijs: €{{$dayPrice[$chalet->id]}}</p>
+
         <p class="card-text">Straat: {{ $chalet->street}}</p>
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
         <p class="card-text">Plaats: {{ $chalet->place}}</p>
@@ -144,6 +146,8 @@
     $street  = $chalet->street;
     $place = $chalet->place;
   ?>
+
+
 
       <div class="maps">
         <iframe width="100%" height="350" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
