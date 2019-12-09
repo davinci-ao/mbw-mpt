@@ -108,7 +108,7 @@ class BookingController extends Controller
 
         $chalet = Chalet::find($chaletId);
 
-        $data = $request->validate([
+        $request->validate([
             'firstname'=> 'required',
             'lastname'=> 'required',
             'email'=> 'required|email',
@@ -117,8 +117,6 @@ class BookingController extends Controller
             'departure' =>'required',
             'people'=> 'required|numeric',
             'pets' => 'nullable',
-            'price' => 'required',
-            'chalet' => 'required'
         ]);
 
         $booking = new Booking([
@@ -134,6 +132,19 @@ class BookingController extends Controller
             'chalet' => $chalet->name
         ]);
 
+        $data = [
+            'firstname' => $request->get('firstname'),
+            'lastname' => $request->get('lastname'),
+            'email' => $request->get('email'),
+            'telephone_number' => $request->get('telephone_number'),
+            'arrival'=> $request->get('arrival'),
+            'departure'=> $request->get('departure'),
+            'people'=> $request->get('people'),
+            'pets'=> $request->get('pets'),
+            'price' => $calcPrice,
+            'chalet' => $chalet->name
+        ];
+
         $subject = 'Bevestiginsmail';
         $view = 'confirmation_email_template';
 
@@ -142,7 +153,7 @@ class BookingController extends Controller
         $booking->save();
         return redirect('/chalets')->with('Gelukt!', 'de boeking is toegevoegd');
     }
-
+    
     /**
      * Display the specified resource.
      *
