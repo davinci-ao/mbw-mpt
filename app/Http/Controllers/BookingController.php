@@ -102,7 +102,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-
+        $calcPrice = $request->get('calcPrice');
         $chaletId = $request->get('chaletId');
 
         $chalet = Chalet::find($chaletId);
@@ -127,7 +127,7 @@ class BookingController extends Controller
             'departure'=> $request->get('departure'),
             'people'=> $request->get('people'),
             'pets'=> $request->get('pets'),
-            'price' => $chalet->price,
+            'price' => $calcPrice,
             'chalet' => $chalet->name
         ]);
 

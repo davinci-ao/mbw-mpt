@@ -103,7 +103,8 @@ input[type=number] {
           <label for="huisdieren">Huisdieren</label>
           <input type="text" class="form-control" name="pets" value="{{ old('pets') }}"/>
       </div> 
-      <input type="hidden" name="chaletId" value="{{ $chalet }}">
+      <input type="hidden" name="chaletId" value="{{ $chalet->id }}">
+      <input type="hidden" name="calcPrice" value="{{$showPrice[$currentPeriod]}}">
                         
       <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary" >boeken</button>
     </form>
