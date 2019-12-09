@@ -1,6 +1,7 @@
 @extends('templates.layout')
 
 @section('head_js')
+
     <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <script src="/js/datepicker.min.js"></script>
 
@@ -12,17 +13,16 @@
 
 @section('content')
 
-<h1>tkalender</h1>
 
 <form>
-	<input style="border: 1px solid red;" id=datepick1 name=datepick type='text' class="datepicker-here" data-language='nl' data-position="right top" />
-
-    <br>
+<label for="">Datum</label>
+	<input style="border: 1px solid black;" id=datepick1 name=datepick1 type='text' class="datepicker-here" class="form-control" data-language='nl' data-position="right top" />
+</form>
     <br>
     <h4>kalender</h4>
     <div class="datepicker-here" data-language='nl'></div>
 
-</form>
+
 
 
     
@@ -31,23 +31,37 @@
 @section('bottom_js')
 <script>
 
-	// Initialization
-    $('#datepick1').datepicker({
-    onRenderCell: function (date, cellType) {
-        
-        language: 'nl',
-        if (cellType == 'day') {
-            var day = date.getDay(),
-                isDisabled = true;
+  // Initialization
 
-            return {
-                disabled: isDisabled
+
+var disabledDates = ["2019-12-23","2019-12-24","2019-12-25"];
+
+$('#datepick1').datepicker({
+    language: 'nl',
+    onRenderCell: function (date, cellType) {
+        if (cellType == 'day') {
+            var day = date.getDate();
+            var monthIndex = 1+date.getMonth();
+            var year = date.getFullYear();
+            var currentCellDate = year +"-"+monthIndex+"-"+day;
+            var isDisabled= $.inArray(currentCellDate, disabledDates) > -1;
+            var today = new Date();
+            var isPastDay = date < today;
+            
+            if (isDisabled == true | isPastDay == true) {
+                return {disabled: true}
+            } else {
+                return {disabled: false}
             }
+            
         }
-    }
+    }   
 })
+ 
+
+   
     // Access instance of plugin
-    //$('#datepick1').data('datepicker')
+    $('#datepick1').data('datepicker')
         
 </script>
 @endsection
