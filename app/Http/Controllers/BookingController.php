@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use DB;
 use validate;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 
 class BookingController extends Controller
 {
@@ -146,9 +147,35 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(Request $request)
     {
-        //
+        $chalet = $request->get('chalet');
+
+        //  $chalet = Chalet::find($chalet);
+        
+        $arrival = DB::table('bookings')
+                                ->where('chalet', $chalet)
+                                ->value('arrival');
+
+        $departure = DB::table('bookings')
+                                ->where('chalet', $chalet)
+                                ->value('departure');
+
+        $from = Carbon::parse($arrival);
+        $to = Carbon::parse($departure);
+
+        $dates = [];
+
+        for($d = $from; $d->lte($to); $d->addDay()) {
+            // $dates[] = $d->format('Y-m-d');
+            $dates[] = $d->format('d-m-Y');
+        }
+        // dd($dates);
+
+        // $bookings = DB::table('bookings')->find($chalet->id);
+
+         
+        return view('bookings.test-page', ['chalet' => $chalet],['bookings' => $dates]);
     }
 
     /**

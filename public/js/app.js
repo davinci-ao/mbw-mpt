@@ -144,9 +144,10 @@ new Vue({
       events: [{
         name: 'Verblijf Chalet Zee',
         details: 'gereseveerd door ',
-        start: '2019-10-7',
-        end: '2019-10-12',
-        color: 'blue'
+        start: '2019-11-7',
+        end: '2019-11-12',
+        color: 'blue',
+        backgroundColor: 'red'
       }, {
         name: 'Verblijf Chalet Strand',
         start: '2019-10-8 22:00',
@@ -164,6 +165,12 @@ new Vue({
         start: '2019-10-14',
         end: '2019-10-26',
         color: 'blue'
+      }, {
+        name: 'Verblijf Chalet Zee',
+        details: 'gereseveerd door ',
+        start: '2019-12-3',
+        end: '2019-12-5',
+        color: '#e01f1f'
       }]
     };
   },
@@ -334,8 +341,8 @@ new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/mbw-mpt/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/mbw-mpt/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\mbw-mpt\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
