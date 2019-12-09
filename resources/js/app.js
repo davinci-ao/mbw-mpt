@@ -16,7 +16,7 @@ new Vue({
     return {
       items: [
         {
-          src: 'images/slide1.jpg',
+          src: '/images/slide1.jpg',
         },
       ],
     }
@@ -57,9 +57,10 @@ new Vue({
       {
         name: 'Verblijf Chalet Zee',
         details: 'gereseveerd door ',
-        start: '2019-10-7',
-        end: '2019-10-12',
+        start: '2019-11-7',
+        end: '2019-11-12',
         color: 'blue',
+        backgroundColor:'red' ,
       },
       {
         name: 'Verblijf Chalet Strand',
@@ -80,6 +81,14 @@ new Vue({
         start: '2019-10-14',
         end: '2019-10-26',
         color: 'blue',
+      },
+      {
+        name: 'Verblijf Chalet Zee',
+        details: 'gereseveerd door ',
+        start: '2019-12-3',
+        end: '2019-12-5',
+        color: '#e01f1f',
+        
       },
     ],
   }),
