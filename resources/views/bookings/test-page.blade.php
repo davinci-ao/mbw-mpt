@@ -16,11 +16,11 @@
 
 <form>
 <label for="">Datum</label>
-	<input style="border: 1px solid black;" id=datepick1 name=datepick1 type='text' class="datepicker-here" class="form-control" data-language='nl' data-position="right top" />
+	<input style="border: 1px solid black;" id=datepicker name=datepicker type='text' class="datepicker-here" class="form-control" data-language='nl' data-position="right top" />
 </form>
     <br>
     <h4>kalender</h4>
-    <div class="datepicker-here" data-language='nl'></div>
+    <div class="datepicker-here" id="datepicker" name= "datepicker" data-language='nl'></div>
 
 
 
@@ -36,7 +36,7 @@
 
 var disabledDates = ["2019-12-23","2019-12-24","2019-12-25"];
 
-$('#datepick1').datepicker({
+$('#datepicker').datepicker({
     language: 'nl',
     onRenderCell: function (date, cellType) {
         if (cellType == 'day') {
