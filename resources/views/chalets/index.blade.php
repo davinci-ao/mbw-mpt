@@ -130,7 +130,7 @@
         <h5 class="card-title chalet-title">Chaletnaam: {{ $chalet->name }}</h5>
         <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
 
-        <p class="card-text">Prijs: €{{$dayPrice[$chalet->id]}}</p>
+        <p class="card-text">Dagprijs: €{{$dayPrice[$chalet->id]}}</p>
 
         <p class="card-text">Straat: {{ $chalet->street}}</p>
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
