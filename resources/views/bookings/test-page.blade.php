@@ -20,7 +20,7 @@
 </form>
     <br>
     <h4>kalender</h4>
-    <div class="datepicker-here" id="datepicker" name= "datepicker" data-language='nl'></div>
+    <div class="datepicker-here" id="datepicker" data-language='nl'></div>
 
 
 
