@@ -122,6 +122,12 @@
    <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
+<div class="filter">
+  <p>Sorteer op:</p>
+  <a href="{{ route('chalets.index', ['holidaypark'=>$holidayparkid, 'sort' => 'asc']) }}">Naam</a>&nbsp;|&nbsp;
+  <a href="{{ route('chalets.index', ['holidaypark'=>$holidayparkid, 'sortprice' => 'asc']) }}">Prijs</a>
+</div>
+
 @foreach ($chaletData as $chalet)
 
   <div class="card w-100 chalet-card">
@@ -176,6 +182,7 @@
   </div>
 
 @endforeach
+
 @endsection
 
 
