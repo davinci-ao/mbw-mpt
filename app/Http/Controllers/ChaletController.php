@@ -22,11 +22,20 @@ class ChaletController extends Controller
 
         $id = $request->get('holidaypark');
 
+        $holidayparks = Holidaypark::all();
         $chalets = Chalet::all();
         if ($id !== null) {
             $chalets = DB::table('chalets')->where('holidaypark_id', $id)->get();
         }
 
+        if (request()->has('sort')) {
+            $chalets = $chalets->sortBy('name');
+        }
+
+        if (request()->has('sortprice')) {
+            $chalets = $chalets->sortBy('price');
+        }
+       
         $now = Carbon::now();
         $year = Carbon::now()->year;
 
@@ -62,7 +71,7 @@ class ChaletController extends Controller
             $dayPrice[$chalet->id] = $chalet->price * $periodMultiplier;
         }
 
-        return view('chalets.index',['chaletData' => $chalets, 'dayPrice' => $dayPrice]);
+        return view('chalets.index',['chaletData' => $chalets, 'holidayparks' => $holidayparks, 'holidayparkid' => $id, 'dayPrice' => $dayPrice]);
     }
 
     /**

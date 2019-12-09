@@ -100,17 +100,17 @@ class HolidayparkController extends Controller
         }
 
         $request->validate([
-            'name'=>'required',
+            'holidaypark_name'=>'required',
             'description'=>'required',
         ]);
 
         $holidaypark = Holidaypark::find($id); 
-        $holidaypark->name = $request->get('name');
+        $holidaypark->holidaypark_name = $request->get('holidaypark_name');
         $holidaypark->description = $request->get('description');
 
         $holidaypark->save();
 
-        return redirect('/holidayparks')->with('gelukt!', 'Vakantiepark:'. $holidaypark->name .'is succesvol bijgwerkt');
+        return redirect('/holidayparks')->with('gelukt!', 'Vakantiepark:'. $holidaypark->holidaypark_name .'is succesvol bijgwerkt');
     }
 
     /**
