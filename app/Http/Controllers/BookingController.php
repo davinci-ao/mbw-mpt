@@ -117,6 +117,8 @@ class BookingController extends Controller
             'departure' =>'required',
             'people'=> 'required|numeric',
             'pets' => 'nullable',
+            'price' => 'required',
+            'chalet' => 'required'
         ]);
 
         $booking = new Booking([
