@@ -38,7 +38,7 @@
             <td>{{ $data->people }}</td>
             <td>{{ $data->pets }}</td>
             <td>€55</td>
-            <td>Zeezicht</td>
+            <td>{{ $data->chalet }}</td>
             <td><a style="color: orange;" href="{{ route('bookings.edit',$data->id)}}">bewerk</a></td>
             <td><a style="color: red;" onclick="return confirm('Weet je het zeker dat je deze boeking wil verwijderen?');" href="{{ url('booking/delete?booking=' . $data->id) }}">Verwijderen</a></td>
         </tr>
