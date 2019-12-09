@@ -115,7 +115,7 @@ class BookingController extends Controller
             'arrival'=> 'required',
             'departure' =>'required',
             'people'=> 'required|numeric',
-            'pets' => 'nullable'
+            'pets' => 'nullable',
         ]);
 
         $booking = new Booking([
