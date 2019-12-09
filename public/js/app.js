@@ -108,7 +108,7 @@ new Vue({
   data: function data() {
     return {
       items: [{
-        src: 'images/slide1.jpg'
+        src: '/images/slide1.jpg'
       }]
     };
   }

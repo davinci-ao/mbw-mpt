@@ -129,14 +129,8 @@
       <div class="chalet-text">
         <h5 class="card-title chalet-title">Chaletnaam: {{ $chalet->name }}</h5>
         <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
-        <form>
-          <select onchange="this.form.submit()" name="periodSelect" class="form-control" style="margin-bottom: 15px; width: 120px;">
-            <option value="weekend_{{$chalet->id}}">Weekend</option>
-            <option value="midweek_{{$chalet->id}}">Midweek</option>
-            <option value="week_{{$chalet->id}}">Week</option>
-          </select>
-        </form>
-        <p class="card-text">Prijs: {{$showPrice[$chalet->id]}}</p>
+
+        <p class="card-text">Prijs: €{{$dayPrice[$chalet->id]}}</p>
 
         <p class="card-text">Straat: {{ $chalet->street}}</p>
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>

@@ -36,13 +36,6 @@ class BookingController extends Controller
      */
     public function create(Request $request)
     {
-        $chaletId = $request->get('chalet');
-        $chalet = Chalet::find($chaletId);
-
-        $price = $chalet->price;
-
-        $period = $request->get('periodSelect');
-
         $now = Carbon::now();
         $year = Carbon::now()->year;
 
@@ -73,10 +66,32 @@ class BookingController extends Controller
             $periodMultiplier = 1.2;
         }
 
+        $currentPeriod = null;
+        $price = null;
+        if ($request->get('periodSelect')) {
 
-        $showPrice = $price * $period * $periodMultiplier;
+            $periodSelect = $request->get('periodSelect');
+            $explode = explode("_",$periodSelect);
 
-        return view('bookings.create', ['chalet' => $chalet, 'showPrice' => $showPrice]);
+            $currentPeriod = $explode[0];
+            $chaletId = $explode[1];
+
+            $chalet = Chalet::find($chaletId);
+            $price = $chalet->price;
+
+        }else{
+            $chaletId = $request->get('chalet');
+            $chalet = Chalet::find($chaletId);
+
+            $currentPeriod = 'weekend';
+            $price = $chalet->price;
+        }
+
+        $showPrice['weekend'] = $price * 2 * $periodMultiplier;
+        $showPrice['midweek'] = $price * 5 * $periodMultiplier;
+        $showPrice['week'] = $price * 7 * $periodMultiplier;
+
+        return view('bookings.create', ['chalet' => $chalet, 'showPrice' => $showPrice, 'currentPeriod' => $currentPeriod]);
     }
 
     /**
