@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chalet;
 use App\Holidaypark;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use validate;
 use DB;
 
@@ -21,12 +22,56 @@ class ChaletController extends Controller
 
         $id = $request->get('holidaypark');
 
+        $holidayparks = Holidaypark::all();
         $chalets = Chalet::all();
         if ($id !== null) {
             $chalets = DB::table('chalets')->where('holidaypark_id', $id)->get();
         }
-        
-        return view('chalets.index',['chaletData' => $chalets]);
+
+        if (request()->has('sort')) {
+            $chalets = $chalets->sortBy('name');
+        }
+
+        if (request()->has('sortprice')) {
+            $chalets = $chalets->sortBy('price');
+        }
+       
+        $now = Carbon::now();
+        $year = Carbon::now()->year;
+
+        $winter = Carbon::create($year, 12, 21);
+        $lente = Carbon::create($year, 3, 21);
+        $zomer = Carbon::create($year, 6, 21);
+        $herfst = Carbon::create($year, 9, 21);
+
+        $periodMultiplier = null;
+
+        //Herfst
+        if ($now >= $herfst && $now < $winter) {
+            $periodMultiplier = 0.75;
+        }
+
+        //Winter
+        if ($now >= $winter && $now < $lente) {
+            $periodMultiplier = 1;
+        }
+
+        //Lente
+        if ($now >= $lente && $now < $zomer) {
+            $periodMultiplier = 1.5;
+        }
+
+        //Zomer
+        if ($now >= $zomer && $now < $herfst) {
+            $periodMultiplier = 1.2;
+        }
+
+        $dayPrice;
+        foreach ($chalets as $chalet) {
+            $dayPrice[$chalet->id] = $chalet->price * $periodMultiplier;
+        }
+
+        return view('chalets.index',['chaletData' => $chalets, 'holidayparks' => $holidayparks, 'holidayparkid' => $id, 'dayPrice' => $dayPrice]);
     }
 
     /**

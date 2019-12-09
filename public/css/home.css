@@ -226,7 +226,7 @@ header {
 }
 
 .holidaypark-description {
-    height: 50px;
+    height: 100px;
 }
 
 .chalet-text {
@@ -274,4 +274,13 @@ header {
 
 .card {
     border-radius: 10px !important;
+}
+
+.filter {
+    float: right;
+}
+
+.filter p {
+    display: inline-block;
+    padding-right: 10px;
 }

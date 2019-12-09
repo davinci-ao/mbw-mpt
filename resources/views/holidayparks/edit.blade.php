@@ -40,7 +40,7 @@
         @csrf
           <div class="form-group">
                <label for="name">Naam vakantiepark: </label>
-              <input type="text" class="form-control" name="name" value="{{ $holidaypark->name }}" />
+              <input type="text" class="form-control" name="holidaypark_name" value="{{ $holidaypark->holidaypark_name }}" />
           </div>
           <div class="form-group">
               <label for="description">Beschrijving vakantiepark:</label>

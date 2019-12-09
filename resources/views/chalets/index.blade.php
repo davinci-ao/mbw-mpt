@@ -15,6 +15,12 @@
    <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
 
+<div class="filter">
+  <p>Sorteer op:</p>
+  <a href="{{ route('chalets.index', ['holidaypark'=>$holidayparkid, 'sort' => 'asc']) }}">Naam</a>&nbsp;|&nbsp;
+  <a href="{{ route('chalets.index', ['holidaypark'=>$holidayparkid, 'sortprice' => 'asc']) }}">Prijs</a>
+</div>
+
 @foreach ($chaletData as $chalet)
 <a href="{{ url('bookings/test-page?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">testpagina</a>
   <div class="card w-100 chalet-card">
@@ -22,7 +28,9 @@
       <div class="chalet-text">
         <h4 class="card-title chalet-title">{{ $chalet->name }}</h4>
         <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
-        <p class="card-text">Prijs: {{ $chalet->price}}</p>
+
+        <p class="card-text">Dagprijs: €{{$dayPrice[$chalet->id]}}</p>
+
         <p class="card-text">Straat: {{ $chalet->street}}</p>
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
         <p class="card-text">Plaats: {{ $chalet->place}}</p>
@@ -37,6 +45,8 @@
     $street  = $chalet->street;
     $place = $chalet->place;
   ?>
+
+
 
       <div class="maps">
         <iframe width="100%" height="350" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
@@ -69,7 +79,10 @@
   </div>
 
 @endforeach
+
 @endsection
+
+<!-- test -->
 
 
 
