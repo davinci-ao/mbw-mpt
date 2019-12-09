@@ -9,6 +9,8 @@ use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use DB;
 use validate;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 
 class BookingController extends Controller
 {
@@ -35,9 +37,62 @@ class BookingController extends Controller
      */
     public function create(Request $request)
     {
-        $chalet = $request->get('chalet');
+        $now = Carbon::now();
+        $year = Carbon::now()->year;
 
-        return view('bookings.create', ['chalet' => $chalet]);
+        $winter = Carbon::create($year, 12, 21);
+        $lente = Carbon::create($year, 3, 21);
+        $zomer = Carbon::create($year, 6, 21);
+        $herfst = Carbon::create($year, 9, 21);
+
+        $periodMultiplier = null;
+
+        //Herfst
+        if ($now >= $herfst && $now < $winter) {
+            $periodMultiplier = 0.75;
+        }
+
+        //Winter
+        if ($now >= $winter && $now < $lente) {
+            $periodMultiplier = 1;
+        }
+
+        //Lente
+        if ($now >= $lente && $now < $zomer) {
+            $periodMultiplier = 1.5;
+        }
+
+        //Zomer
+        if ($now >= $zomer && $now < $herfst) {
+            $periodMultiplier = 1.2;
+        }
+
+        $currentPeriod = null;
+        $price = null;
+        if ($request->get('periodSelect')) {
+
+            $periodSelect = $request->get('periodSelect');
+            $explode = explode("_",$periodSelect);
+
+            $currentPeriod = $explode[0];
+            $chaletId = $explode[1];
+
+            $chalet = Chalet::find($chaletId);
+            $price = $chalet->price;
+
+        }else{
+            $chaletId = $request->get('chalet');
+            $chalet = Chalet::find($chaletId);
+
+            $currentPeriod = 'weekend';
+            $price = $chalet->price;
+        }
+
+        $showPrice['weekend'] = $price * 2 * $periodMultiplier;
+        $showPrice['midweek'] = $price * 5 * $periodMultiplier;
+        $showPrice['week'] = $price * 7 * $periodMultiplier;
+
+        return view('bookings.create', ['chalet' => $chalet, 'showPrice' => $showPrice, 'currentPeriod' => $currentPeriod]);
     }
 
     /**
@@ -48,7 +103,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-
+        $calcPrice = $request->get('calcPrice');
         $chaletId = $request->get('chaletId');
 
         $chalet = Chalet::find($chaletId);
@@ -61,7 +116,7 @@ class BookingController extends Controller
             'arrival'=> 'required',
             'departure' =>'required',
             'people'=> 'required|numeric',
-            'pets' => 'nullable'
+            'pets' => 'nullable',
         ]);
 
         $booking = new Booking([
@@ -73,7 +128,7 @@ class BookingController extends Controller
             'departure'=> $request->get('departure'),
             'people'=> $request->get('people'),
             'pets'=> $request->get('pets'),
-            'price' => $chalet->price,
+            'price' => $calcPrice,
             'chalet' => $chalet->name
         ]);
 
@@ -92,9 +147,35 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(Request $request)
     {
-        //
+        $chalet = $request->get('chalet');
+
+        //  $chalet = Chalet::find($chalet);
+        
+        $arrival = DB::table('bookings')
+                                ->where('chalet', $chalet)
+                                ->value('arrival');
+
+        $departure = DB::table('bookings')
+                                ->where('chalet', $chalet)
+                                ->value('departure');
+
+        $from = Carbon::parse($arrival);
+        $to = Carbon::parse($departure);
+
+        $dates = [];
+
+        for($d = $from; $d->lte($to); $d->addDay()) {
+            // $dates[] = $d->format('Y-m-d');
+            $dates[] = $d->format('d-m-Y');
+        }
+        // dd($dates);
+
+        // $bookings = DB::table('bookings')->find($chalet->id);
+
+         
+        return view('bookings.test-page', ['chalet' => $chalet],['bookings' => $dates]);
     }
 
     /**
