@@ -132,6 +132,7 @@ class BookingController extends Controller
             'chalet' => $chalet->name
         ]);
 
+
         $data = [
             'firstname' => $request->get('firstname'),
             'lastname' => $request->get('lastname'),
