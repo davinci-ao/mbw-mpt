@@ -71,7 +71,7 @@
 
 
 <!-- CONTENT -->
-<div class="content_container">
+<div class="content_container custom-padding-top">
 
 @yield('content')
 
