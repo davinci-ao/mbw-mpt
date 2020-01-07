@@ -19,6 +19,13 @@ class BookingController extends Controller
 {
 
     public function admin(Request $request)
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     { 
         if (!$request->user()) {
             return redirect()->route('login');
