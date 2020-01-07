@@ -20,11 +20,18 @@ h1::after {
     top: -20px;
 }
 
+.container-fluid{
+    width: 100%;
+    /* padding-right: 50px !important;
+    padding-left: 50px !important; */
+    margin-right: auto;
+    margin-left: auto;
+}
 h4::after {
     content: url(../icon/blue-line-small.png);
     display: block;
     position: relative;
-    top: -20px;
+    top: -6px;
 }
 
 .controls {
@@ -88,11 +95,11 @@ position: relative;
 }
 
 .v-carousel__controls {
-	display: none !important;
+    display: none !important;
 }
 
 .v-carousel {
-	height: 700px !important;
+    height: 700px !important;
 }
 
 .v-window__container {
@@ -104,22 +111,27 @@ position: relative;
 }
 
 .v-responsive {
-    height: 700px !important;	
+    height: 700px !important;   
 }
 
 .v-image__image--cover {
-	background-position: top !important;
+    background-position: top !important;
 }
 
 .v-application--wrap {
-	min-height: unset !important;
+    min-height: unset !important;
 }
 
 #menu {
-	position: absolute;
+    position: absolute;
     top: 0;
     z-index: 1;
     width: 100%;
+    height: 90px;
+}
+
+.custom-title {
+    top: 0px !important;
 }
 
 .contact_form {
@@ -132,6 +144,10 @@ position: relative;
 
 .v-counter {
     color: #2196F3 !important;
+}
+
+.v-toolbar__content {
+    height: 90px !important;
 }
 
 .default-button {
@@ -162,6 +178,9 @@ position: relative;
     background: transparent;
 }
 
+.ce_menu span {
+    color: #2196F3;
+}
 header {
     background: transparent;
 }
@@ -181,7 +200,7 @@ header {
 }
 
 .content_container {
-    padding: 25px;
+    padding: 50px;
 }
 
 .holidaypark-title {
@@ -283,4 +302,27 @@ header {
 .filter p {
     display: inline-block;
     padding-right: 10px;
+}
+
+.detail-image {
+    display: block;
+    width: 300px;
+    height: 200px;
+}
+
+.noPadding {
+    padding: 0px;
+}
+
+.carousel-item img {
+    height: 425px !important;
+    object-position: center !important;
+}
+
+.custom-menu {
+    position: fixed !important;
+}
+
+.footer-item {
+    margin-right: 15px;
 }

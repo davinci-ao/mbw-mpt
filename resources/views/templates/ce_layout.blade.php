@@ -46,18 +46,18 @@
 
 <body>
 
-<div id="menu" class="main-color custom-menu">
+<div id="menu">
   <v-app id="inspire" class="header-menu">
     <div>
-      <v-toolbar class="header-menu">
-        <v-toolbar-title class="header-title custom-title"><a style="color: white; text-decoration: none;" href="{{ url('home') }}">Mooiplekjetexel.nl</a></v-toolbar-title>
+      <v-toolbar class="header-menu" style="color: white; text-decoration: none;">
+        <v-toolbar-title class="header-title"><a  href="{{ url('home') }}">Mooiplekjetexel.nl</a></v-toolbar-title>
   
         <div class="flex-grow-1"></div>
   
-        <v-toolbar-items>
-          <v-btn text class="menu-items" href="{{ url('home') }}">Home</v-btn>
-          <v-btn text class="menu-items" href="{{ url('holidayparks') }}">Vakantieparken</v-btn>
-          <v-btn text class="menu-items" href="{{ url('contact') }}">Contact</v-btn>
+        <v-toolbar-items style="color: black; text-decoration: none;">
+          <v-btn text class="menu-items ce_menu" href="{{ url('home') }}">Home</v-btn>
+          <v-btn text class="menu-items ce_menu" href="{{ url('holidayparks') }}">Vakantieparken</v-btn>
+          <v-btn text class="menu-items ce_menu" href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
           <v-btn text href="{{ url('account') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>         
           <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
@@ -69,16 +69,9 @@
   </v-app>
 </div>
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="/images/meeuwen.png" alt="First slide">
-    </div>
-  </div>
-</div>
 
 <!-- CONTENT -->
-<div class="content_container custom_margin">
+<div class="content_container">
 
 @yield('content')
 
@@ -95,9 +88,9 @@
         justify="center"
         no-gutters
       >
-        <v-btn class="my-2 primary footer-item" href="/home" rounded white--text>Home</v-btn>
-        <v-btn class="my-2 primary footer-item" href="/holidayparks" rounded>Vakantieparken</v-btn>
-        <v-btn class="my-2 primary footer-item" href="/contact" rounded>Contact</v-btn>
+        <v-btn class="my-2 primary" href="/home" rounded white--text>Home</v-btn>
+        <v-btn class="my-2 primary" href="/holidayparks" rounded>Vakantieparken</v-btn>
+        <v-btn class="my-2 primary" href="/contact" rounded>Contact</v-btn>
         <v-col
           class="main-color lighten-2 py-4 text-center white--text"
           cols="12"

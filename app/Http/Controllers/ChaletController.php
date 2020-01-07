@@ -175,7 +175,11 @@ class ChaletController extends Controller
             'housenr'=> 'bail|required|numeric',
             'addition' => 'nullable|alpha',
             'street' =>'bail|required',
-            'place' => 'bail|required'
+            'place' => 'bail|required',
+            'photo1' => 'required',
+            'photo2' => 'required',
+            'photo3' => 'required',
+            'photo4' => 'required'
         ]);
 
         $filterArray = array();
@@ -198,6 +202,16 @@ class ChaletController extends Controller
         $longitude = $lng;
         $latitude = $ltd;
 
+        $image = $request->file('photo1');
+        $image1 = $request->file('photo2');
+        $image2 = $request->file('photo3');
+        $image3 = $request->file('photo4');
+
+        $image->move(public_path("chaletsafbeeldingen"));
+        $image1->move(public_path("chaletsafbeeldingen"));
+        $image2->move(public_path("chaletsafbeeldingen"));
+        $image3->move(public_path("chaletsafbeeldingen"));
+
         $chalet = new Chalet([
             'name' => $request->get('name'),
             'holidaypark_id' => $request->input('holidaypark_id'),
@@ -211,10 +225,14 @@ class ChaletController extends Controller
             'place'=> $request->get('place'),
             'longitude' => $longitude,
             'latitude' => $latitude,
-
+            'photo1' => $photo1 . '.png', 
+            'photo2' => $photo2 . '.png',
+            'photo3' => $photo3 . '.png',
+            'photo4' => $photo4 . '.png'
         ]);
 
         $chalet->save();
+
         return redirect('/holidayparks')->with('Gelukt!', 'de Chalet is toegevoegd');     
     }
 
@@ -275,7 +293,11 @@ class ChaletController extends Controller
             'housenr'=> 'required|numeric',
             'addition' => 'nullable|alpha',
             'street' =>'required',
-            'place' => 'required'
+            'place' => 'required',
+            'photo1' =>'required|image',
+            'photo2' =>'required|image',
+            'photo3' =>'required|image',
+            'photo4' =>'required|image'
         ]);
 
         $chalet = Chalet::find($id); 
@@ -287,6 +309,10 @@ class ChaletController extends Controller
         $chalet->addition = $request->get('addition');
         $chalet->street = $request->get('street');
         $chalet->place = $request->get('place');
+        $chalet->photo1 = $request->get('photo1');
+        $chalet->photo2 = $request->get('photo2');
+        $chalet->photo3 = $request->get('photo3');
+        $chalet->photo4 = $request->get('photo4');
 
         $housenr =  $chalet->housenr;
         $street = urlencode($chalet->street);

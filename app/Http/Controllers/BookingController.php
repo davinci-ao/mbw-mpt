@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Booking;
 use App\Chalet;
+use App\User;
+use App\Holidaypark;
+use App\Message;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
@@ -24,10 +27,20 @@ class BookingController extends Controller
         if (!$request->user()) {
             return redirect()->route('login');
         }
+        $chalets = DB::table('chalets')->paginate(5,['*'], 'page_chalets');
+        $users = DB::table('users')->paginate(5,['*'], 'page_users');
+        $holidays = DB::table('holidayparks')->paginate(5,['*'], 'page_holidays');
+        $bookings = DB::table('bookings')->orderBy('created_at','desc')->paginate(5,['*'], 'page_bookings');
+        $messages = DB::table('messages')->paginate(5,['*'], 'page_messages');
 
-        $bookings = DB::table('bookings')->paginate(10);
-
-        return view('bookings.index',['bookingData' => $bookings]);
+        return view('bookings.index',[
+            'bookingData' => $bookings,
+            'chaletData' => $chalets,
+            'userData'=> $users,
+            'holidayData' => $holidays,
+            'holidayData' => $holidays,
+            'messageData' => $messages
+            ]);
     }
 
     /**

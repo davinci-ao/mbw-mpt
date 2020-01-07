@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('title', 'Edit chalet')
 @section('content')
@@ -70,7 +70,23 @@
           <div class="form-group">
               <label for="place">Plaats</label>
               <input type="text" class="form-control" name="place" value="{{ $chaletData->place }}" />
-          </div>           
+          </div>
+          <div class="form-group">
+              <label for="photo1">Foto 1</label>
+              <input type="file" class="form-control" name="photo1" value="{{ old('photo1') }}"/>
+          </div>
+          <div class="form-group">
+              <label for="photo2">Foto 2</label>
+              <input type="file" class="form-control" name="photo2" value="{{ old('photo2') }}"/>
+          </div>
+          <div class="form-group">
+              <label for="photo3">Foto 3</label>
+              <input type="file" class="form-control" name="photo3" value="{{ old('photo3') }}"/>
+          </div>
+          <div class="form-group">
+              <label for="photo4">Foto 4</label>
+              <input type="file" class="form-control" name="photo4" value="{{ old('photo4') }}"/>
+          </div>            
           <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary">Opslaan</button>
       </form>
   </div>
