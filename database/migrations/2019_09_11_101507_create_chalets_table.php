@@ -18,6 +18,7 @@ class CreateChaletsTable extends Migration
             $table->string('name');
             $table->integer('holidaypark_id');
             $table->text('description'); 
+            $table->text('characteristics'); 
             $table->decimal('price');
             $table->string('country');
             $table->integer('housenr');
@@ -26,6 +27,10 @@ class CreateChaletsTable extends Migration
             $table->string('place');
             $table->float('longitude', 8, 6);
             $table->float('latitude', 8, 6);
+            $table->string('photo1');
+            $table->string('photo2');
+            $table->string('photo3');
+            $table->string('photo4');
             $table->timestamps();
             
         });

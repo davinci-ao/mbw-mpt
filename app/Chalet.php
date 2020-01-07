@@ -11,6 +11,7 @@ class Chalet extends Model
         'holidaypark_id',
       	'name',
       	'description',
+        'characteristics',
         'price',
         'country',
         'housenr',
@@ -18,7 +19,11 @@ class Chalet extends Model
         'street',
         'place',
         'longitude',
-        'latitude'
+        'latitude',
+        'photo1',
+        'photo2',
+        'photo3',
+        'photo4'
       ];
       
       public function chalet()
