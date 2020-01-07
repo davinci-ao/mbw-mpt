@@ -17,12 +17,15 @@ use Carbon\CarbonInterval;
 
 class BookingController extends Controller
 {
+
+    public function admin(Request $request)
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
     { 
         if (!$request->user()) {
             return redirect()->route('login');

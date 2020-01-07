@@ -59,7 +59,9 @@
           <v-btn text class="menu-items" href="{{ url('holidayparks') }}">Vakantieparken</v-btn>
           <v-btn text class="menu-items" href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
-          <v-btn text href="{{ url('account') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>         
+
+          <v-btn text href="{{ url('admin') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>         
+
           <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
           @endif
 

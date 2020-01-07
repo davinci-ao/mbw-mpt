@@ -7,11 +7,13 @@ use App\Chalet;
 Use Auth;
 use Illuminate\Support\Facades\Hash;
 Use App\User;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
 
 
 class HomeController extends Controller
 {
+
     public function accountAction(Request $request)
     {
         //DEV PAGE

@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('title', 'Create chalet')
 @section('content')      
@@ -47,7 +47,9 @@ input[type=number] {
   <div class="card-body">
   
       <form method="post" action="{{ route('chalets.store') }}" enctype='multipart/form-data'>
-      <div style="width: 60%; float: left;">
+
+        <div style="width: 60%; float: left;">
+
           <div class="form-group">
               @csrf
                <label for="name">Chaletnaam</label>
@@ -93,6 +95,7 @@ input[type=number] {
           </div> 
           <div class="form-group">
               <label for="photo1">Foto 1</label>
+
               <input type="file" class="form-control" name="photo1" value="{{ old('photo1') }}"/>
           </div>
           <div class="form-group">
@@ -110,6 +113,7 @@ input[type=number] {
           <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
           
           <div style="width: 40%; float: right; padding-left: 30px;">
+
         <h5 style="margin-bottom: 25px;"><b>Kenmerken</b></h5>
 
         <div style="width: 50%; float: left;">

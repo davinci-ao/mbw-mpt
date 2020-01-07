@@ -54,18 +54,7 @@
   
         <v-toolbar-items>
           @if (Auth::check())
-          <div class="dropdown" style="padding-top: 13px;">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Acties
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="{{ url('home') }}">Home</a>
-              <a class="dropdown-item" href="{{ url('contact/list') }}">Berichten</a>
-              <a class="dropdown-item" href="{{ url('bookings') }}">Boekingen</a>
-              <a class="dropdown-item" href="{{ url('#') }}">Actie log</a>
-            </div>
-          </div>
-            <v-btn text href="{{ url('account') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>  
+            <v-btn text href="{{ url('admin') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>  
             <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>   
           @else
             <v-btn text href="{{ url('home') }}">Home</v-btn>

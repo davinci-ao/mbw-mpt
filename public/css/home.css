@@ -163,7 +163,7 @@ position: relative;
 
 .header-title {
     position: relative;
-    top: 10px;
+    top: 0px;
     left: 5px;
     color: white;
     font-size: 3.2rem;
@@ -325,4 +325,10 @@ header {
 
 .footer-item {
     margin-right: 15px;
+
+}
+
+.custom-padding-top {
+    padding: 100px 25px 25px 25px !important;
+
 }
