@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('title', 'Create vakantiepark')
 @section('content')
@@ -21,11 +21,11 @@
           <div class="form-group">
               @csrf
               <label for="holidaypark_name">Naam vakantiepark:</label>
-              <input type="text" class="form-control" name="holidaypark_name"/>
+              <input type="text" value="{{ old('holidaypark_name') }}" class="form-control" name="holidaypark_name"/>
           </div>
           <div class="form-group">
               <label for="price">Beschrijving vakantiepark:</label>
-              <input type="text" class="form-control" name="description"/>
+              <textarea class="form-control" name="description">{{ old('description') }}</textarea>
           </div>
           <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
       </form>

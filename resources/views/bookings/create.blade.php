@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('content')      
 <style>
@@ -42,7 +42,7 @@ input[type=number] {
   @endif   
 
   <div class="card-body">
-    <label for="">Boekingsperiode</label>
+
     <form>
       <select onchange="this.form.submit()" id="periodSelect" name="periodSelect" class="form-control" style="margin-bottom: 15px; width: 120px;">
 

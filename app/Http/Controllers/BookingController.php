@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Booking;
 use App\Chalet;
+use App\User;
+use App\Holidaypark;
+use App\Message;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
@@ -14,20 +17,26 @@ use Carbon\CarbonInterval;
 
 class BookingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
+
+    public function admin(Request $request)
+    { 
         if (!$request->user()) {
             return redirect()->route('login');
         }
+        $chalets = DB::table('chalets')->paginate(5,['*'], 'page_chalets');
+        $users = DB::table('users')->paginate(5,['*'], 'page_users');
+        $holidays = DB::table('holidayparks')->paginate(5,['*'], 'page_holidays');
+        $bookings = DB::table('bookings')->orderBy('created_at','desc')->paginate(5,['*'], 'page_bookings');
+        $messages = DB::table('messages')->paginate(5,['*'], 'page_messages');
 
-        $bookings = DB::table('bookings')->paginate(10);
-
-        return view('bookings.index',['bookingData' => $bookings]);
+        return view('bookings.index',[
+            'bookingData' => $bookings,
+            'chaletData' => $chalets,
+            'userData'=> $users,
+            'holidayData' => $holidays,
+            'holidayData' => $holidays,
+            'messageData' => $messages
+            ]);
     }
 
     /**
@@ -45,27 +54,29 @@ class BookingController extends Controller
         $zomer = Carbon::create($year, 6, 21);
         $herfst = Carbon::create($year, 9, 21);
 
-        $periodMultiplier = null;
+        //TEMP, klopte nog niet met jaarwisseling
 
-        //Herfst
-        if ($now >= $herfst && $now < $winter) {
-            $periodMultiplier = 0.75;
-        }
+        $periodMultiplier = 1;
 
-        //Winter
-        if ($now >= $winter && $now < $lente) {
-            $periodMultiplier = 1;
-        }
+        // //Herfst
+        // if ($now >= $herfst && $now < $winter) {
+        //     $periodMultiplier = 0.75;
+        // }
 
-        //Lente
-        if ($now >= $lente && $now < $zomer) {
-            $periodMultiplier = 1.5;
-        }
+        // //Winter
+        // if ($now >= $winter && $now < $lente) {
+        //     $periodMultiplier = 1;
+        // }
 
-        //Zomer
-        if ($now >= $zomer && $now < $herfst) {
-            $periodMultiplier = 1.2;
-        }
+        // //Lente
+        // if ($now >= $lente && $now < $zomer) {
+        //     $periodMultiplier = 1.5;
+        // }
+
+        // //Zomer
+        // if ($now >= $zomer && $now < $herfst) {
+        //     $periodMultiplier = 1.2;
+        // }
 
         $currentPeriod = null;
         $price = null;
@@ -132,7 +143,6 @@ class BookingController extends Controller
             'chalet' => $chalet->name
         ]);
 
-
         $data = [
             'firstname' => $request->get('firstname'),
             'lastname' => $request->get('lastname'),
@@ -152,7 +162,7 @@ class BookingController extends Controller
         Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
 
         $booking->save();
-        return redirect('/chalets')->with('Gelukt!', 'de boeking is toegevoegd');
+        return redirect('/holidayparks')->with('Gelukt!', 'de boeking is toegevoegd');
     }
     
     /**

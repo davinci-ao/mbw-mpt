@@ -14,6 +14,9 @@
 // Route::get('/{any}', 'SinglePageController@index')->where('any', '.*'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'BookingController@admin')->name('admin');
+
+
 Route::get('/account', 'HomeController@accountAction')->name('account');
 Route::get('/account/edit', 'HomeController@editAccount')->name('editAccount');
 Route::post('/account/delete', 'HomeController@deleteAccount')->name('deleteAccount');
@@ -43,6 +46,7 @@ Route::resource('/holidayparks', 'HolidayparkController');
 
 // bookings
 Route::resource('/bookings', 'BookingController');
+
 Route::get('/booking/delete', 'BookingController@destroy')->name('bookingDelete');
 
 // chalet detail

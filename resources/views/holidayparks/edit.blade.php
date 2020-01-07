@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('title', 'Edit vakantiepark')
 @section('content')
@@ -44,7 +44,7 @@
           </div>
           <div class="form-group">
               <label for="description">Beschrijving vakantiepark:</label>
-              <input type="text" class="form-control" name="description" value="{{ $holidaypark->description }}" />
+              <textarea class="form-control" name="description">{{ $holidaypark->description }}</textarea>
           </div>        
           <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Werk bij</button>
       </form>

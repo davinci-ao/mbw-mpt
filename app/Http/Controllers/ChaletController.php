@@ -19,23 +19,72 @@ class ChaletController extends Controller
     public function index(Request $request)
     {
         //USER PAGE
-
+    
         $id = $request->get('holidaypark');
-
         $holidayparks = Holidaypark::all();
-        $chalets = Chalet::all();
-        if ($id !== null) {
-            $chalets = DB::table('chalets')->where('holidaypark_id', $id)->get();
+
+        $sort = 'name';
+        $direction = 'asc';     
+
+        //SORT
+
+        $currentSort = 'nameAsc';
+        if ($request->get('sortSelect') == 'nameAsc') {
+            $sort = 'name';
+            $direction = 'asc';
+            $currentSort = 'nameAsc';
         }
 
-        if (request()->has('sort')) {
-            $chalets = $chalets->sortBy('name');
+        if ($request->get('sortSelect') == 'nameDesc') {
+            $sort = 'name';
+            $direction = 'desc';
+            $currentSort = 'nameDesc';
         }
 
-        if (request()->has('sortprice')) {
-            $chalets = $chalets->sortBy('price');
+        if ($request->get('sortSelect') == 'priceAsc') {
+            $sort = 'price';
+            $direction = 'asc';
+            $currentSort = 'priceAsc';
         }
-       
+
+        if ($request->get('sortSelect') == 'priceDesc') {
+            $sort = 'price';
+            $direction = 'desc';
+            $currentSort = 'priceDesc';
+        }
+
+        if ($request->get('sortSelect') == 'createdAt') {
+            $sort = 'created_at';
+            $direction = 'desc';
+            $currentSort = 'createdAt';
+        }
+
+        //FILTER
+
+        $chalets = DB::table('chalets')->orderBy($sort, $direction)->where('holidaypark_id', $id);
+
+        $selectedFilters = array();
+        if ($request->get('submitFilters')) {
+            $submitFilters = json_decode($request->get('submitFilters'), true);
+            foreach ($submitFilters as $filter) {
+                $chalets->where('characteristics', 'LIKE', '%' . $filter . '%');
+                $selectedFilters[$filter] = $filter;
+            }
+        } else {
+            if ($request->get('filter')) {
+                foreach ($request->get('filter') as $filter) {
+                    $chalets->where('characteristics', 'LIKE', '%' . $filter . '%');
+                    $selectedFilters[$filter] = $filter;
+                }
+            }   
+        }
+
+        $encodedFilters = json_encode($selectedFilters);
+
+        $chalets = $chalets->get();
+
+        // SEASONS
+
         $now = Carbon::now();
         $year = Carbon::now()->year;
 
@@ -44,34 +93,44 @@ class ChaletController extends Controller
         $zomer = Carbon::create($year, 6, 21);
         $herfst = Carbon::create($year, 9, 21);
 
-        $periodMultiplier = null;
+        //TEMP, klopte nog niet met jaarwisseling
 
-        //Herfst
-        if ($now >= $herfst && $now < $winter) {
-            $periodMultiplier = 0.75;
-        }
+        $periodMultiplier = 1;
 
-        //Winter
-        if ($now >= $winter && $now < $lente) {
-            $periodMultiplier = 1;
-        }
+        // //Herfst
+        // if ($now >= $herfst && $now < $winter) {
+        //     $periodMultiplier = 0.75;
+        // }
 
-        //Lente
-        if ($now >= $lente && $now < $zomer) {
-            $periodMultiplier = 1.5;
-        }
+        // //Winter
+        // if ($now >= $winter && $now < $lente) {
+        //     $periodMultiplier = 1;
+        // }
 
-        //Zomer
-        if ($now >= $zomer && $now < $herfst) {
-            $periodMultiplier = 1.2;
-        }
+        // //Lente
+        // if ($now >= $lente && $now < $zomer) {
+        //     $periodMultiplier = 1.5;
+        // }
 
-        $dayPrice;
+        // //Zomer
+        // if ($now >= $zomer && $now < $herfst) {
+        //     $periodMultiplier = 1.2;
+        // }
+
+        $dayPrice = null;
         foreach ($chalets as $chalet) {
             $dayPrice[$chalet->id] = $chalet->price * $periodMultiplier;
         }
 
-        return view('chalets.index',['chaletData' => $chalets, 'holidayparks' => $holidayparks, 'holidayparkid' => $id, 'dayPrice' => $dayPrice]);
+        return view('chalets.index',[
+            'chaletData' => $chalets, 
+            'holidayparks' => $holidayparks, 
+            'holidayparkid' => $id, 
+            'dayPrice' => $dayPrice,
+            'currentSort' => $currentSort,
+            'selectedFilters' => $selectedFilters,
+            'encodedFilters' => $encodedFilters
+        ]);
     }
 
     /**
@@ -100,6 +159,7 @@ class ChaletController extends Controller
      */
     public function store(Request $request)
     {
+
         //DEV PAGE
 
         if (!$request->user()) {
@@ -110,6 +170,7 @@ class ChaletController extends Controller
             'name'=>'bail|required',
             'holidaypark_id'=>'bail|required',
             'description'=>'bail|required',
+            'characteristics' =>'bail|required',
             'price'=> 'bail|required|numeric',
             'country' =>'bail|required|alpha',
             'housenr'=> 'bail|required|numeric',
@@ -121,6 +182,13 @@ class ChaletController extends Controller
             'photo3' => 'required',
             'photo4' => 'required'
         ]);
+
+        $filterArray = array();
+        if ($request->get('characteristics')) {
+            foreach ($request->get('characteristics') as $characteristic) {
+                $filterArray[$characteristic] = $characteristic;
+            }
+        }
 
         $housenr = $request->get('housenr');
         $street = urlencode($request->get('street'));
@@ -140,15 +208,26 @@ class ChaletController extends Controller
         $image2 = $request->file('photo3');
         $image3 = $request->file('photo4');
 
-        $image->move(public_path("chaletsafbeeldingen"));
-        $image1->move(public_path("chaletsafbeeldingen"));
-        $image2->move(public_path("chaletsafbeeldingen"));
-        $image3->move(public_path("chaletsafbeeldingen"));
+        $extension = $image->getClientOriginalExtension();
+        $extension1 = $image1->getClientOriginalExtension();
+        $extension2 = $image2->getClientOriginalExtension();
+        $extension3 = $image3->getClientOriginalExtension();
+
+        $imagename = rand();
+        $image1name = rand();
+        $image2name = rand();
+        $image3name = rand();
+
+        $image->move(public_path("chaletsafbeeldingen"), $imagename .'.'. $extension);
+        $image1->move(public_path("chaletsafbeeldingen"), $image1name .'.'. $extension1);
+        $image2->move(public_path("chaletsafbeeldingen"), $image2name .'.'. $extension2);
+        $image3->move(public_path("chaletsafbeeldingen"), $image3name .'.'. $extension3);
 
         $chalet = new Chalet([
             'name' => $request->get('name'),
             'holidaypark_id' => $request->input('holidaypark_id'),
             'description'=> $request->get('description'),
+            'characteristics' => implode("|",$filterArray),
             'price'=> $request->get('price'),
             'country'=> $request->get('country'),
             'housenr'=> $request->get('housenr'),
@@ -157,10 +236,10 @@ class ChaletController extends Controller
             'place'=> $request->get('place'),
             'longitude' => $longitude,
             'latitude' => $latitude,
-            'photo1' => $photo1 . '.png', 
-            'photo2' => $photo2 . '.png',
-            'photo3' => $photo3 . '.png',
-            'photo4' => $photo4 . '.png'
+            'photo1' => $imagename .'.'. $extension, 
+            'photo2' => $image1name .'.'. $extension1,
+            'photo3' => $image2name .'.'. $extension2,
+            'photo4' => $image3name .'.'. $extension3
         ]);
 
         $chalet->save();

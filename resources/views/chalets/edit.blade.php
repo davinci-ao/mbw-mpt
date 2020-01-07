@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('title', 'Edit chalet')
 @section('content')
@@ -45,7 +45,7 @@
           </div>
           <div class="form-group">
               <label for="description">Beschrijving</label>
-              <input type="text" class="form-control" name="description" value="{{ $chaletData->description }}" />
+              <textarea class="form-control" name="description">{{ $chaletData->description }}</textarea>
           </div>
           <div class="form-group">
               <label for="prijs">Prijs</label>

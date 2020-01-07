@@ -11,6 +11,7 @@ class Chalet extends Model
         'holidaypark_id',
       	'name',
       	'description',
+        'characteristics',
         'price',
         'country',
         'housenr',
