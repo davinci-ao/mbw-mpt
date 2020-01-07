@@ -45,8 +45,6 @@
     
   </div>
 
-<h1>Chalets</h1>
-
 <div>
 
 <div style="width: 25%; padding-top: 20px; float: left;">

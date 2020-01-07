@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates.ce_layout')
 
 @section('title', 'Create vakantiepark')
 @section('content')

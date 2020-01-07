@@ -159,6 +159,7 @@ class ChaletController extends Controller
      */
     public function store(Request $request)
     {
+
         //DEV PAGE
 
         if (!$request->user()) {
@@ -207,10 +208,20 @@ class ChaletController extends Controller
         $image2 = $request->file('photo3');
         $image3 = $request->file('photo4');
 
-        $image->move(public_path("chaletsafbeeldingen"));
-        $image1->move(public_path("chaletsafbeeldingen"));
-        $image2->move(public_path("chaletsafbeeldingen"));
-        $image3->move(public_path("chaletsafbeeldingen"));
+        $extension = $image->getClientOriginalExtension();
+        $extension1 = $image1->getClientOriginalExtension();
+        $extension2 = $image2->getClientOriginalExtension();
+        $extension3 = $image3->getClientOriginalExtension();
+
+        $imagename = rand();
+        $image1name = rand();
+        $image2name = rand();
+        $image3name = rand();
+
+        $image->move(public_path("chaletsafbeeldingen"), $imagename .'.'. $extension);
+        $image1->move(public_path("chaletsafbeeldingen"), $image1name .'.'. $extension1);
+        $image2->move(public_path("chaletsafbeeldingen"), $image2name .'.'. $extension2);
+        $image3->move(public_path("chaletsafbeeldingen"), $image3name .'.'. $extension3);
 
         $chalet = new Chalet([
             'name' => $request->get('name'),
@@ -225,10 +236,10 @@ class ChaletController extends Controller
             'place'=> $request->get('place'),
             'longitude' => $longitude,
             'latitude' => $latitude,
-            'photo1' => $photo1 . '.png', 
-            'photo2' => $photo2 . '.png',
-            'photo3' => $photo3 . '.png',
-            'photo4' => $photo4 . '.png'
+            'photo1' => $imagename .'.'. $extension, 
+            'photo2' => $image1name .'.'. $extension1,
+            'photo3' => $image2name .'.'. $extension2,
+            'photo4' => $image3name .'.'. $extension3
         ]);
 
         $chalet->save();
