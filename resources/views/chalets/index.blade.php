@@ -9,11 +9,11 @@
         </div>
     @endif
 
-<h1>Chalets</h1>
-
 @if (Auth::check())
    <a class="btn btn-primary add-btn-chalets" href="{{ URL::to('chalets/create') }}">Voeg chalet toe</a>
 @endif
+
+<h1>Chalets</h1>
 
 <div class="filter">
   <p>Sorteer op:</p>
@@ -34,7 +34,7 @@
         <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
         <p class="card-text">Plaats: {{ $chalet->place}}</p>
         <p class="card-text">Land: {{ $chalet->country}}</p>
-        <a href="{{ url('bookings/create?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">Boeken</a>
+        <a href="{{ route('detail.show', $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">Meer info</a>
       </div>
 
       <?php

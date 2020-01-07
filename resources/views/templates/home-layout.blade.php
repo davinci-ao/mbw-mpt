@@ -46,11 +46,11 @@
 
 <body>
 
-<div id="menu" class="main-color custom-menu">
+<div id="menu">
   <v-app id="inspire" class="header-menu">
     <div>
       <v-toolbar class="header-menu">
-        <v-toolbar-title class="header-title custom-title"><a style="color: white; text-decoration: none;" href="{{ url('home') }}">Mooiplekjetexel.nl</a></v-toolbar-title>
+        <v-toolbar-title class="header-title"><a style="color: white; text-decoration: none;" href="{{ url('home') }}">Mooiplekjetexel.nl</a></v-toolbar-title>
   
         <div class="flex-grow-1"></div>
   
@@ -69,16 +69,20 @@
   </v-app>
 </div>
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="/images/meeuwen.png" alt="First slide">
-    </div>
-  </div>
+<div id="slider">
+  <v-app id="inspire">
+    <v-carousel>
+      <v-carousel-item
+        v-for="(item,i) in items"
+        :key="i"
+        :src="item.src"
+      ></v-carousel-item>
+    </v-carousel>
+  </v-app>
 </div>
 
 <!-- CONTENT -->
-<div class="content_container custom_margin">
+<div class="content_container">
 
 @yield('content')
 

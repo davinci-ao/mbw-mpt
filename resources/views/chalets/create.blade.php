@@ -42,7 +42,7 @@ input[type=number] {
           <br /> 
       @endif
   <div class="card-body">
-      <form method="post" action="{{ route('chalets.store') }}">
+      <form method="post" action="{{ route('chalets.store') }}" enctype='multipart/form-data'>
           <div class="form-group">
               @csrf
                <label for="name">Chaletnaam</label>
@@ -52,12 +52,8 @@ input[type=number] {
           <div class="form-group">
               <label for="sel1">Vakantiepark</label>
               <select class="form-control" name="holidaypark_id" id="sel1">
-
-
                 @foreach($holidayparks as $holidaypark)
-
                   <option value="{{ $holidaypark->id }}">{{ $holidaypark->holidaypark_name }}</option>
-
                 @endforeach
               </select>
           </div> 
@@ -89,7 +85,23 @@ input[type=number] {
           <div class="form-group">
               <label for="plaats">Plaats</label>
               <input type="text" class="form-control" name="place" value="{{ old('place') }}"/>
-          </div>                                                                                                          
+          </div> 
+          <div class="form-group">
+              <label for="photo1">Foto 1</label>
+              <input type="file" class="form-control" name="photo1" value="{{ old('photo1') }}"/>
+          </div>
+          <div class="form-group">
+              <label for="photo2">Foto 2</label>
+              <input type="file" class="form-control" name="photo2" value="{{ old('photo2') }}"/>
+          </div>
+          <div class="form-group">
+              <label for="photo3">Foto 3</label>
+              <input type="file" class="form-control" name="photo3" value="{{ old('photo3') }}"/>
+          </div>
+          <div class="form-group">
+              <label for="photo4">Foto 4</label>
+              <input type="file" class="form-control" name="photo4" value="{{ old('photo4') }}"/>
+          </div>                                                                                                         
           <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
       </form>
   </div>
