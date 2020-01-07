@@ -41,6 +41,9 @@ Route::resource('/holidayparks', 'HolidayparkController');
 // Route::post('/store', "HolidayparkController@store");
 // Route::patch('/holidayparks/create', ['as' => 'holidayparks.create', 'uses' => 'HolidayparkController@create']);
 
-//bookings
+// bookings
 Route::resource('/bookings', 'BookingController');
 Route::get('/booking/delete', 'BookingController@destroy')->name('bookingDelete');
+
+// chalet detail
+Route::resource('/detail', 'ChaletDetailController');

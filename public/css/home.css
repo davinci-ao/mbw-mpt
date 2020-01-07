@@ -120,6 +120,11 @@ position: relative;
     top: 0;
     z-index: 1;
     width: 100%;
+    height: 90px;
+}
+
+.custom-title {
+    top: 0px !important;
 }
 
 .contact_form {
@@ -132,6 +137,10 @@ position: relative;
 
 .v-counter {
     color: #2196F3 !important;
+}
+
+.v-toolbar__content {
+    height: 90px !important;
 }
 
 .default-button {
@@ -181,7 +190,7 @@ header {
 }
 
 .content_container {
-    padding: 25px;
+    padding: 50px;
 }
 
 .holidaypark-title {
@@ -283,4 +292,27 @@ header {
 .filter p {
     display: inline-block;
     padding-right: 10px;
+}
+
+.detail-image {
+    display: block;
+    width: 300px;
+    height: 200px;
+}
+
+.noPadding {
+    padding: 0px;
+}
+
+.carousel-item img {
+    height: 425px !important;
+    object-position: center !important;
+}
+
+.custom-menu {
+    position: fixed !important;
+}
+
+.footer-item {
+    margin-right: 15px;
 }

@@ -18,7 +18,11 @@ class Chalet extends Model
         'street',
         'place',
         'longitude',
-        'latitude'
+        'latitude',
+        'photo1',
+        'photo2',
+        'photo3',
+        'photo4'
       ];
       
       public function chalet()
