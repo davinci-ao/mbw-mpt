@@ -9,7 +9,7 @@
     <script src="/js/i18n/datepicker.nl.js"></script>
 @endsection
 
-@section('title', 'Kalender | MPT')
+@section('title', 'calendar | mpt')
 
 @section('content')
 
@@ -19,7 +19,7 @@
 	<input style="border: 1px solid black;" id=datepicker name=datepicker type='text' class="datepicker-here" class="form-control" data-language='nl' data-position="right top" />
 </form>
     <br>
-    <h4>Kalender</h4>
+    <h4>kalender</h4>
     <div class="datepicker-here" id="datepicker" data-language='nl'></div>
 
 
