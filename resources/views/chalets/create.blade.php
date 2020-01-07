@@ -46,7 +46,7 @@ input[type=number] {
           <div class="form-group">
               @csrf
                <label for="name">Chaletnaam</label>
-              <input type="text" class="form-control" name="name"/>
+              <input type="text" class="form-control" name="name" value="{{ old('name') }}"/>
           </div>
 
           <div class="form-group">
