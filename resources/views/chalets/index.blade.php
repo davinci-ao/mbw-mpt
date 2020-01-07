@@ -22,11 +22,10 @@
 </div>
 
 @foreach ($chaletData as $chalet)
-<a href="{{ url('bookings/test-page?chalet=' . $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">testpagina</a>
   <div class="card w-100 chalet-card">
     <div class="card-body">
       <div class="chalet-text">
-        <h4 class="card-title chalet-title">{{ $chalet->name }}</h4>
+        <h4 class="card-title chalet-title">{{ $chalet->name }}  @if (Auth::check()) <a href="{{ route('chalets.edit',$chalet->id)}}" ><small><i class="fas fa-edit"></i></small></a> @endif</h4>
         <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
 
         <p class="card-text">Dagprijs: €{{$dayPrice[$chalet->id]}}</p>
@@ -60,9 +59,9 @@
 
     <div class="chalet-buttons">
 
-      @if (Auth::check())
+      <!-- @if (Auth::check())
         <a href="{{ route('chalets.edit',$chalet->id)}}" class="btn btn-primary chalet-edit-btn">Edit</a>
-      @endif  
+      @endif   -->
 
   <!-- only show delete button when logged in -->
 
@@ -70,7 +69,7 @@
         <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
           @csrf
           @method('DELETE') 
-          <button class="btn btn-danger chalet-delete-btn" type="submit">Delete</button>
+          <button style=" font-size: 20px; margin: 5px; float: right;" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');"  type="submit"><i class="fas fa-trash-alt"></i></button>
         </form>
       @endif
       </div>
