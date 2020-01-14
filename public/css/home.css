@@ -328,7 +328,7 @@ header {
 }
 
 .custom-padding-top {
-    padding: 70px 25px 25px 25px !important;
+    padding: 65px 25px 25px 25px !important;
 }
 
 .table-earning thead th {
@@ -337,4 +337,12 @@ header {
 
 .table-earning tbody td {
     padding: 12px 10px !important;
+}
+
+.add-btn {
+    float: right;
+    position: relative;
+    top: 0px;
+    right: 10px;
+    color: #39d045;
 }
