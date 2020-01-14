@@ -169,8 +169,8 @@ class BookingController extends Controller
         Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
 
         $booking->save();
-        // return redirect('/holidayparks')->with('Gelukt!', 'de boeking is toegevoegd');
-        return redirect()->back();
+        return redirect('/holidayparks')->with('Gelukt!', 'de boeking is toegevoegd');
+    
     }
     
     /**
