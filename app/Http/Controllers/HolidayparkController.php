@@ -55,7 +55,7 @@ class HolidayparkController extends Controller
         ]);
 
         $holidaypark->save();
-        return redirect('/holidayparks')->with('Gelukt!', 'het vakantiepark is toegevoegd');  
+        return redirect('/admin')->with('Gelukt!', 'het vakantiepark is toegevoegd');  
     }
 
     /**
@@ -110,7 +110,7 @@ class HolidayparkController extends Controller
 
         $holidaypark->save();
 
-        return redirect('/holidayparks')->with('gelukt!', 'Vakantiepark:'. $holidaypark->holidaypark_name .'is succesvol bijgwerkt');
+        return redirect('/admin')->with('gelukt!', 'Vakantiepark:'. $holidaypark->holidaypark_name .'is succesvol bijgwerkt');
     }
 
     /**
@@ -128,6 +128,6 @@ class HolidayparkController extends Controller
         $holidaypark = Holidaypark::find($id);
         $holidaypark->delete();
 
-        return redirect('/holidayparks')->with('Gelukt', 'Het vakantiepark is verwijderd!');
+        return redirect('/admin')->with('Gelukt', 'Het vakantiepark is verwijderd!');
     }
 }

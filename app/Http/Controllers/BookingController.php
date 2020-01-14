@@ -65,25 +65,25 @@ class BookingController extends Controller
 
         $periodMultiplier = 1;
 
-        // //Herfst
-        // if ($now >= $herfst && $now < $winter) {
-        //     $periodMultiplier = 0.75;
-        // }
+        //Herfst
+        if ($now >= $herfst && $now < $winter) {
+            $periodMultiplier = 0.75;
+        }
 
-        // //Winter
-        // if ($now >= $winter && $now < $lente) {
-        //     $periodMultiplier = 1;
-        // }
+        //Winter
+        if ($now >= $winter && $now < $lente) {
+            $periodMultiplier = 1;
+        }
 
-        // //Lente
-        // if ($now >= $lente && $now < $zomer) {
-        //     $periodMultiplier = 1.5;
-        // }
+        //Lente
+        if ($now >= $lente && $now < $zomer) {
+            $periodMultiplier = 1.5;
+        }
 
-        // //Zomer
-        // if ($now >= $zomer && $now < $herfst) {
-        //     $periodMultiplier = 1.2;
-        // }
+        //Zomer
+        if ($now >= $zomer && $now < $herfst) {
+            $periodMultiplier = 1.2;
+        }
 
         $currentPeriod = null;
         $price = null;
@@ -169,7 +169,8 @@ class BookingController extends Controller
         Mail::to($request->get('email'))->send(new ContactMail($data,$subject,$view));
 
         $booking->save();
-        return redirect('/holidayparks')->with('Gelukt!', 'de boeking is toegevoegd');
+        // return redirect('/holidayparks')->with('Gelukt!', 'de boeking is toegevoegd');
+        return redirect()->back();
     }
     
     /**
@@ -262,7 +263,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        return redirect('/bookings')->with('gelukt!', 'Boeking is bijgewerkt');
+        return redirect('/admin')->with('gelukt!', 'Boeking is bijgewerkt');
     }
 
     /**
@@ -281,6 +282,6 @@ class BookingController extends Controller
         $booking = Booking::find($id);
         $booking->delete();
    
-        return redirect('/bookings')->with('gelukt!', 'de boeking is succesvol verwijderd');
+        return redirect('/admin')->with('gelukt!', 'de boeking is succesvol verwijderd');
     }
 }

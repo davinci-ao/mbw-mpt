@@ -249,7 +249,7 @@ class ChaletController extends Controller
 
         $chalet->save();
 
-        return redirect('/holidayparks')->with('Gelukt!', 'de Chalet is toegevoegd');     
+        return redirect('/admin')->with('Gelukt!', 'de Chalet is toegevoegd');     
     }
 
     /**
@@ -348,7 +348,7 @@ class ChaletController extends Controller
 
         $chalet->save();
 
-        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
+        return redirect('/admin')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
     }
 
     /**
@@ -368,6 +368,6 @@ class ChaletController extends Controller
         $chalet = Chalet::find($id);
         $chalet->delete();
    
-        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol verwijderd');
+        return redirect('/admin')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol verwijderd');
     }
 }

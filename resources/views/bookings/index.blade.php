@@ -1,4 +1,4 @@
-@extends('templates.dev_layout')
+@extends('templates.ce_layout')
 @section('title', 'Beheerpagina | MPT')
 @section('content')
 
@@ -8,7 +8,6 @@
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
         <div class="modal fade" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
