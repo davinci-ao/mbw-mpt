@@ -7,6 +7,4 @@
 <p>Op deze website kunt u chalets boeken en bekijken</p>
 <p>Klik op deze <a href="/holidayparks">link</a> om vakantieparken te bekijken.</p>
 
-<p>Test commit</p>
-
 @endsection

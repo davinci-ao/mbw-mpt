@@ -128,7 +128,7 @@
                                                             <td>
                                                                 <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
                                                                     @csrf @method('DELETE')
-                                                                    <button style=" color: red; font-size: 20px; margin: 5px; float: right;" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                                    <button style=" color: red; font-size: 20px; margin: 5px; float: left;" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -162,7 +162,7 @@
                                                                     <td>
                                                                         <form action="{{ route('holidayparks.destroy',$holiday->id)}}" method="post">
                                                                             @csrf @method('DELETE')
-                                                                            <button style="color: red; margin: 5px; font-size: 20px; float: right;" onclick="return confirm('Weet je het zeker dat je dit vakantiepark wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                                            <button style="color: red; margin: 5px; font-size: 20px; float: left;" onclick="return confirm('Weet je het zeker dat je dit vakantiepark wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                                         </form>
                                                                     </td>
                                                                 </tr>

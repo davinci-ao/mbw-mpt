@@ -330,3 +330,11 @@ header {
 .custom-padding-top {
     padding: 100px 25px 25px 25px !important;
 }
+
+.table-earning thead th {
+    padding: 12px 10px !important;
+}
+
+.table-earning tbody td {
+    padding: 12px 10px !important;
+}
