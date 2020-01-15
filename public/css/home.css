@@ -245,7 +245,7 @@ header {
 }
 
 .holidaypark-description {
-    height: 100px;
+    height: 70px;
 }
 
 .chalet-text {
@@ -367,4 +367,24 @@ header {
 
 .no-flex {
     flex: inherit !important;
+}
+
+.edit-holidaypark-btn {
+    font-size: 20px;
+}
+
+.holidaypark-btns {
+    display: inline-block;
+    float: right;
+    padding-top: 14px;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+.holidaypark-cards {
+    display: block !important;
+    width: 22.5%;
+    margin-bottom: 25px !important;
 }
