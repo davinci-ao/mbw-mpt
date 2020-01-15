@@ -388,3 +388,13 @@ header {
     width: 22.5%;
     margin-bottom: 25px !important;
 }
+
+.custom-chalet-width {
+    width: 47%;
+    display: block;
+    margin-bottom: 25px !important;
+}
+
+.custom-chalet-width:nth-child(2n+0) {
+    margin-right: 0 !important;
+}

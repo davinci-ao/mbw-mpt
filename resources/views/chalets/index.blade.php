@@ -123,7 +123,7 @@
 
 <div class="card-deck">
 @foreach ($chaletData as $chalet)
-  <div class="card w-50 no-flex">
+  <div class="card custom-chalet-width no-flex">
     <img src="{{ asset('chaletsafbeeldingen/'.$chalet->photo1) }}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ $chalet->name }}  @if (Auth::check()) <a href="{{ route('chalets.edit',$chalet->id)}}" ><small class="chalet-edit-btn1"><i class="fas fa-edit"></i></small></a> @endif</h5>
