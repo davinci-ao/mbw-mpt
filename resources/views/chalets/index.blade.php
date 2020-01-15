@@ -121,67 +121,33 @@
 
 <div style="float: right; width: 75%;">
 
+<div class="card-deck">
 @foreach ($chaletData as $chalet)
-  <div class="card w-100 chalet-card">
+  <div class="card w-50 no-flex">
+    <img src="{{ asset('chaletsafbeeldingen/'.$chalet->photo1) }}" class="card-img-top" alt="...">
     <div class="card-body">
-      <div class="chalet-text">
-        <h4 class="card-title chalet-title">{{ $chalet->name }}  @if (Auth::check()) <a href="{{ route('chalets.edit',$chalet->id)}}" ><small><i class="fas fa-edit"></i></small></a> @endif</h4>
-        <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
-        <p class="card-text">Kenmerken: {{ $chalet->characteristics}}</p>
+      <h5 class="card-title">{{ $chalet->name }}  @if (Auth::check()) <a href="{{ route('chalets.edit',$chalet->id)}}" ><small class="chalet-edit-btn1"><i class="fas fa-edit"></i></small></a> @endif</h5>
+      <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
+      <a href="{{ route('detail.show', $chalet->id) }}" class="btn btn-primary chalet-info-btn">Meer info</a>
 
-        <p class="card-text">Dagprijs: €{{$dayPrice[$chalet->id]}}</p>
-
-        <p class="card-text">Straat: {{ $chalet->street}}</p>
-        <p class="card-text">Nummer: {{ $chalet->housenr}}</p>
-        <p class="card-text">Plaats: {{ $chalet->place}}</p>
-        <p class="card-text">Land: {{ $chalet->country}}</p>
-        <a href="{{ route('detail.show', $chalet->id) }}" class="btn btn-primary" style="margin-top: 10px;">Meer info</a>
-      </div>
-
-      <?php
-    $name = $chalet->name;
-    $country = $chalet->country;
-    $housenr = $chalet->housenr;
-    $street  = $chalet->street;
-    $place = $chalet->place;
-  ?>
-
-
-
-      <div class="maps">
-        <iframe width="100%" height="350" src="https://maps.google.com/maps?width=720&height=600&hl=nl&q=<?=$street ?? ''?>%20<?=$housenr ?? ''?>%2C%20<?=$place ?? ''?>%2C%20<?=$country ?? ''?>s+(<?=$name ?? ''?>)&ie=UTF8&t=&z=18&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-        </iframe>
-      </div>
-
-        <!-- Code voor het Google maps kaartje -->   
-
-
-  <!-- only show edit button when logged in -->
-
-    <div class="chalet-buttons">
-
-      <!-- @if (Auth::check())
-        <a href="{{ route('chalets.edit',$chalet->id)}}" class="btn btn-primary chalet-edit-btn">Edit</a>
-      @endif   -->
-
-  <!-- only show delete button when logged in -->
+          <div class="chalet-buttons">
 
       @if (Auth::check())
         <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
           @csrf
           @method('DELETE') 
-          <button style=" font-size: 20px; margin: 5px; float: right;" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');"  type="submit"><i class="fas fa-trash-alt"></i></button>
+          <button class="delete-chalet-btn" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');"  type="submit"><i class="fas fa-trash-alt"></i></button>
         </form>
       @endif
       </div>
-
     </div>
   </div>
 
 @endforeach
-
 </div>
 
+</div>
+      </div>
 </div>
 
 <script>

@@ -258,12 +258,12 @@ header {
     float: right;
 }
 
-.chalet-buttons {
+/* .chalet-buttons {
     width: 50%;
     float: left;
     display: block;
     margin-top: 25px;
-}
+} */
 
 .chalet-edit-btn {
     width: 46%;
@@ -345,4 +345,26 @@ header {
     top: 0px;
     right: 10px;
     color: #39d045;
+}
+
+.delete-chalet-btn {
+    position: relative;
+    float: right;
+}
+
+.card-img-top {
+    height: 280px;
+}
+
+.chalet-info-btn {
+    position: relative;
+    bottom: -25px;
+}
+
+.chalet-edit-btn1 {
+    padding-left: 25px;
+}
+
+.no-flex {
+    flex: inherit !important;
 }
