@@ -14,6 +14,7 @@
 // Route::get('/{any}', 'SinglePageController@index')->where('any', '.*'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin', 'BookingController@admin')->name('admin');
 
 

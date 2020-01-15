@@ -5,10 +5,6 @@
 
 <h1>Vakantieparken</h1>
 
-@if (Auth::check())
-    <a href="{{ URL::to('holidayparks/create') }}" class="btn btn-primary chalet-add-btn" style="margin-bottom: 10px;">Voeg een vakantiepark toe</a>
-@endif
-
 <div class="card-deck">
 
 @foreach ($holidayparks as $holidaypark)
@@ -16,7 +12,7 @@
   <div class="card holidaypark-cards no-flex">
       <div class="card-body">
         <h5 class="card-title">{{ $holidaypark->holidaypark_name }}</h5>
-        <p class="card-text">{{ $holidaypark->description }}</p>
+        <p class="card-text holidaypark-description">{{ $holidaypark->description }}</p>
         <a href="{{ url('chalets?holidaypark=' . $holidaypark->id)}}" class="btn btn-primary holidaypark-btn">Bekijken</a>
 
         <div class="holidaypark-btns">
