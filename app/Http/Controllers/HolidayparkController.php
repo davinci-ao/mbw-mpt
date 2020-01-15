@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Holidaypark;
 use Illuminate\Http\Request;
+use DB;
 
 class HolidayparkController extends Controller
 {
@@ -124,10 +125,13 @@ class HolidayparkController extends Controller
         if (!$request->user()) {
             return redirect()->route('login');
         }  
-
         $holidaypark = Holidaypark::find($id);
+        $chalets = DB::table('chalets')->where('holidaypark_id', $id);
+        $chalets->delete();
         $holidaypark->delete();
 
+
         return redirect('/admin')->with('Gelukt', 'Het vakantiepark is verwijderd!');
+
     }
 }

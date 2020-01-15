@@ -67,7 +67,7 @@ input[type=number] {
 
           <div class="form-group">
               <label for="description">Beschrijving</label>
-              <input type="text" class="form-control" name="description" value="{{ old('description') }}"/>
+              <textarea class="form-control" name="description" value="{{ old('description') }}"></textarea>
           </div>
           <div class="form-group">
               <label for="prijs">Prijs</label>
