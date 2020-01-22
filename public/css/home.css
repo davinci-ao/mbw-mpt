@@ -358,7 +358,7 @@ header {
 
 .chalet-info-btn {
     position: relative;
-    bottom: -25px;
+    top: 10px;
 }
 
 .chalet-edit-btn1 {
@@ -385,8 +385,12 @@ header {
 
 .holidaypark-cards {
     display: block !important;
-    width: 22.5%;
+    width: 22.9%;
     margin-bottom: 25px !important;
+}
+
+.holidaypark-cards:nth-child(4n+0) {
+    margin-right: 0 !important;
 }
 
 .custom-chalet-width {
@@ -397,4 +401,13 @@ header {
 
 .custom-chalet-width:nth-child(2n+0) {
     margin-right: 0 !important;
+}
+
+.chalet-description {
+    height: 60px;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

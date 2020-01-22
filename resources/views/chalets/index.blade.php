@@ -126,17 +126,19 @@
   <div class="card custom-chalet-width no-flex">
     <img src="{{ asset('chaletsafbeeldingen/'.$chalet->photo1) }}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{ $chalet->name }}  @if (Auth::check()) <a href="{{ route('chalets.edit',$chalet->id)}}" ><small class="chalet-edit-btn1"><i class="fas fa-edit"></i></small></a> @endif</h5>
-      <p class="card-text">Beschrijving: {{ $chalet->description}}</p>
+      <h5 class="card-title">{{ $chalet->name }}</h5>
+      <p class="card-text chalet-description">Beschrijving: {{ $chalet->description}}</p>
       <a href="{{ route('detail.show', $chalet->id) }}" class="btn btn-primary chalet-info-btn">Meer info</a>
 
-          <div class="chalet-buttons">
+          <div class="holidaypark-btns">
+
+          @if (Auth::check()) <a class="edit-holidaypark-btn" href="{{ route('chalets.edit',$chalet->id)}}" ><small><i class="fas fa-edit"></i></small></a> @endif
 
       @if (Auth::check())
-        <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
+        <form class="inline-form" action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
           @csrf
           @method('DELETE') 
-          <button class="delete-chalet-btn" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');"  type="submit"><i class="fas fa-trash-alt"></i></button>
+          <button onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');"  type="submit"><i class="fas fa-trash-alt"></i></button>
         </form>
       @endif
       </div>

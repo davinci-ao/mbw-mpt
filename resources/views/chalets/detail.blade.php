@@ -21,7 +21,7 @@
             <h1>Sfeerimpressie</h1>
             <div class="row">
                 <div class="col-sm-6">
-                    <img src="{{ asset('chaletsafbeeldingen/'.$chalet->photo1) }}" alt="" class="detail-image">
+                    <img src="{{ asset('chaletsafbeeldingen/'.$chalet->photo1) }}" fancybox alt="" class="detail-image">
                 </div>
             <div class="col-sm-6">
                 <img src="{{ asset('chaletsafbeeldingen/'.$chalet->photo2) }}" alt="" class="detail-image">
