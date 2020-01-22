@@ -4,19 +4,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-sm-6 noPadding">
-        <div class="detail-text">
-            <h1>{{ $chalet->name }}</h1>
-            <p>Beschrijving: {{ $chalet->description }}</p>
-            <p>Waar is chalet {{ $chalet->name }} te vinden?</p>
-            <p>Straat: {{ $chalet->street }}</p>
-            <p>Nummer: {{ $chalet->housenr }}</p>
-            <p>Plaats: {{ $chalet->place }}</p>
-            <p>Land: {{ $chalet->country }}</p>
-        </div>
-    </div>
-
-    <div class="col-sm-6 noPadding">
+<div class="col-sm-6 noPadding">
         <div class="detail-images">
             <h1>Sfeerimpressie</h1>
             <div class="row">
@@ -37,12 +25,16 @@
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-sm-4 noPadding">
-        <h1>Chalet {{ $chalet->name }} boeken?</h1>
-        <a href="{{ url('bookings/create?chalet=' . $chalet->id) }}" class="btn btn-primary">Boeken</a>
+    <div class="col-sm-6 noPadding">
+        <div class="detail-text">
+            <h1>{{ $chalet->name }}</h1>
+            <p>{{ $chalet->description }}</p>
+            <p><b>Waar is chalet {{ $chalet->name }} te vinden?</b></p>
+            <p>{{ $chalet->street }} {{ $chalet->housenr }}, {{ $chalet->place }}</p>
+            <p>{{ $chalet->country }}</p>
+            <a href="{{ url('bookings/create?chalet=' . $chalet->id) }}" class="btn btn-success booking-btn">Boeken</a>
+        </div>
     </div>
 </div>
 

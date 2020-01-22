@@ -5,6 +5,7 @@
 
 body {
     font-family: 'Nunito', sans-serif !important;
+    transition: all .25s;
 }
 
 h1 {
@@ -387,6 +388,7 @@ header {
     display: block !important;
     width: 22.9%;
     margin-bottom: 25px !important;
+    transition: all .25s;
 }
 
 .holidaypark-cards:nth-child(4n+0) {
@@ -410,4 +412,8 @@ header {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.booking-btn {
+    font-size: 35px !important;
 }
