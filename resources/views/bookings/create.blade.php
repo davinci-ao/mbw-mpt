@@ -29,18 +29,6 @@ input[type=number] {
     </div>
   @endif
 
-  <!-- validation errors -->
-
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-  @endif   
-
   <div class="card-body">
 
     <form>
@@ -72,36 +60,60 @@ input[type=number] {
     @csrf   
 
       <div class="form-group">           
-           <label for="voornaam">Voornaam</label>
+          <label for="voornaam">Voornaam <span class="starSpan">*</span></label>
           <input type="text" class="form-control" name="firstname" value="{{ old('firstname') }}"/>
+              @if ($errors->first('firstname'))
+                <small class="smallError">{{$errors->first('firstname')}}</small>
+              @endif
       </div>
       <div class="form-group">
-          <label for="achternaam">Achternaam</label>
+          <label for="achternaam">Achternaam <span class="starSpan">*</span></label>
           <input type="text" class="form-control" name="lastname" value="{{ old('lastname') }}"/>
+              @if ($errors->first('lastname'))
+                <small class="smallError">{{$errors->first('lastname')}}</small>
+              @endif
       </div> 
       <div class="form-group">
-          <label for="mail">E-mail adres</label>
+          <label for="mail">E-mail adres <span class="starSpan">*</span></label>
           <input type="text" class="form-control" name="email" value="{{ old('email') }}"/>
+              @if ($errors->first('email'))
+                <small class="smallError">{{$errors->first('email')}}</small>
+              @endif
       </div> 
       <div class="form-group">
-          <label for="nummer">Telefoonnummer</label>
+          <label for="nummer">Telefoonnummer <span class="starSpan">*</span></label>
           <input type="text" class="form-control" name="telephone_number" value="{{ old('telephone_number') }}"/>
+              @if ($errors->first('telephone_number'))
+                <small class="smallError">{{$errors->first('telephone_number')}}</small>
+              @endif
       </div> 
       <div class="form-group">
-          <label for="aankomst">Aankomst</label>
+          <label for="aankomst">Aankomst <span class="starSpan">*</span></label>
           <input type="date" class="form-control" name="arrival" value="{{ old('arrival') }}"/>
+              @if ($errors->first('arrival'))
+                <small class="smallError">{{$errors->first('arrival')}}</small>
+              @endif    
       </div>
       <div class="form-group">
-          <label for="vertrek">Vertrek</label>
+          <label for="vertrek">Vertrek <span class="starSpan">*</span></label>
           <input type="date" class="form-control" name="departure" value="{{ old('departure') }}"/>
+              @if ($errors->first('departure'))
+                <small class="smallError">{{$errors->first('departure')}}</small>
+              @endif
       </div>
       <div class="form-group">
-          <label for="personen">Aantal personen</label>
+          <label for="personen">Aantal personen <span class="starSpan">*</span></label>
           <input type="text" class="form-control" name="people" value="{{ old('people') }}"/>
+              @if ($errors->first('people'))
+                <small class="smallError">{{$errors->first('people')}}</small>
+              @endif
       </div>
       <div class="form-group">
-          <label for="huisdieren">Huisdieren</label>
+          <label for="huisdieren">Huisdieren <span class="starSpan">*</span></label>
           <input type="text" class="form-control" name="pets" value="{{ old('pets') }}"/>
+              @if ($errors->first('pets'))
+                <small class="smallError">{{$errors->first('pets')}}</small>
+              @endif
       </div> 
       <input type="hidden" name="chaletId" value="{{ $chalet->id }}">
       <input type="hidden" name="calcPrice" value="{{$showPrice[$currentPeriod]}}">

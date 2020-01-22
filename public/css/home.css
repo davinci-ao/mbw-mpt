@@ -330,3 +330,11 @@ header {
 .custom-padding-top {
     padding: 100px 25px 25px 25px !important;
 }
+
+.starSpan {
+    color: red;
+}
+
+.smallError{
+    color: darkred;
+}

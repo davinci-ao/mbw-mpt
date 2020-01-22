@@ -65,7 +65,7 @@ class BookingController extends Controller
 
         // //Winter
         // if ($now >= $winter && $now < $lente) {
-        //     $periodMultiplier = 1;
+        //     $periodMultiplier = 5;
         // }
 
         // //Lente
