@@ -21,7 +21,7 @@ input[type=number] {
 
 <div class="card uper">
   <div class="card-header">
-    <h1>Voeg een Chalet toe</h1>
+    <h1>Voeg een chalet toe</h1>
   </div>
       <!-- success message -->
 
@@ -34,7 +34,9 @@ input[type=number] {
   <div class="card-body">
   
       <form method="post" action="{{ route('chalets.store') }}" enctype='multipart/form-data'>
+
         <div style="width: 60%; float: left;">
+
           <div class="form-group">
               @csrf
               <label for="name">Chaletnaam <span class="starSpan">*</span></label>
@@ -58,6 +60,7 @@ input[type=number] {
           </div> 
 
           <div class="form-group">
+
               <label for="description">Beschrijving <span class="starSpan">*</span></label>
               <input type="text" class="form-control" name="description" value="{{ old('description') }}"/>
               @if ($errors->first('description'))
@@ -107,6 +110,7 @@ input[type=number] {
               @endif
           </div> 
           <div class="form-group">
+
               <label for="photo1">Foto 1 <span style="color: red">*</span></label>
               <input type="file" class="form-control" name="photo1"/>
               @if ($errors->first('photo1'))
@@ -135,7 +139,8 @@ input[type=number] {
               @endif
           </div>                                                                                                         
           <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
-        </div>
+          
+          <div style="width: 40%; float: right; padding-left: 30px;">
 
         <div style="width: 40%; float: right; padding-left: 30px;">
         <h5 style="margin-bottom: 25px;"><b>Kenmerken</b><span style="color: red"> *</span></h5>

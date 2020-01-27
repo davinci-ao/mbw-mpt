@@ -1,4 +1,4 @@
-@extends('templates.dev_layout')
+@extends('templates.ce_layout')
 
 @section('content')
 
