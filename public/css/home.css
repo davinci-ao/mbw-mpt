@@ -18,7 +18,7 @@ h1::after {
     content: url(../icon/blue-line-small.png);
     display: block;
     position: relative;
-    top: -20px;
+    top: 0px;
 }
 
 .container-fluid{
@@ -415,5 +415,9 @@ header {
 }
 
 .booking-btn {
-    font-size: 35px !important;
+    font-size: 30px !important;
+}
+
+.noMargin {
+    margin: 0;
 }
