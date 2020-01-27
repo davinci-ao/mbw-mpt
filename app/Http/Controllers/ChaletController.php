@@ -368,6 +368,6 @@ class ChaletController extends Controller
         $chalet = Chalet::find($id);
         $chalet->delete();
    
-        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol verwijderd');
+        return redirect('/admin')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol verwijderd');
     }
 }
