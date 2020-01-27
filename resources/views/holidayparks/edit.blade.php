@@ -20,31 +20,24 @@
           </div>
       @endif
 
- <!-- validation errors -->
-
-      @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-          <br /> 
-      @endif
-
 
   <div class="card-body">
       <form method="post" action="{{ route('holidayparks.update', $holidaypark->id) }}">
         @method('PATCH')
         @csrf
           <div class="form-group">
-               <label for="name">Naam vakantiepark: </label>
+               <label for="name">Naam vakantiepark <span class="starSpan">*</span></label>
               <input type="text" class="form-control" name="holidaypark_name" value="{{ $holidaypark->holidaypark_name }}" />
+              @if ($errors->first('holidaypark_name'))
+                <small class="smallError">{{$errors->first('holidaypark_name')}}</small>
+              @endif
           </div>
           <div class="form-group">
-              <label for="description">Beschrijving vakantiepark:</label>
+              <label for="description">Beschrijving vakantiepark <span class="starSpan">*</span></label>
               <textarea class="form-control" name="description">{{ $holidaypark->description }}</textarea>
+              @if ($errors->first('description'))
+                <small class="smallError">{{$errors->first('description')}}</small>
+              @endif
           </div>        
           <button onclick="checkSubmit(this)" type="button" class="btn btn-primary">Werk bij</button>
       </form>

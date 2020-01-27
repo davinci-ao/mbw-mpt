@@ -108,7 +108,7 @@ class HomeController extends Controller
 
         $account->save();
 
-        return redirect('/account')->with('alertSuccess', 'Account: '. $account->name .' is succesvol bijgwerkt');
+        return redirect('/admin')->with('alertSuccess', 'Account: '. $account->name .' is succesvol bijgwerkt');
     }
 
 
@@ -134,7 +134,7 @@ class HomeController extends Controller
                 $account->password = Hash::make($newPass1);
                 $account->save();
 
-                return redirect('/account')->with('alertSuccess', 'account: '. $account->name .' is succesvol bijgwerkt');
+                return redirect('/admin')->with('alertSuccess', 'account: '. $account->name .' is succesvol bijgwerkt');
             } else {
                 return redirect('/account/edit?account=' . $accountId)->with('alertDanger', 'De nieuw ingevoerde wachtwoorden komen niet overeen!');
             }

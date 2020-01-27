@@ -33,6 +33,13 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Fancybox -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
     <!-- FONTAWESOME -->
 
     <script src="https://kit.fontawesome.com/a1912e8d76.js" crossorigin="anonymous"></script>
@@ -59,7 +66,7 @@
           <v-btn text class="menu-items ce_menu" href="{{ url('holidayparks') }}">Vakantieparken</v-btn>
           <v-btn text class="menu-items ce_menu" href="{{ url('contact') }}">Contact</v-btn>
           @if (Auth::check())
-          <v-btn text href="{{ url('account') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>         
+          <v-btn text href="{{ url('admin') }}">{{ Auth::user()->name }} &nbsp;<i class="far fa-user-circle"></i></v-btn>         
           <v-btn text href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i></v-btn>
           @endif
 
