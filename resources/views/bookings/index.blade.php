@@ -1,4 +1,4 @@
-@extends('templates.dev_layout')
+@extends('templates.ce_layout')
 @section('title', 'Beheerpagina | MPT')
 @section('content')
 
@@ -8,7 +8,6 @@
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
         <div class="modal fade" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -62,7 +61,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- MAIN CONTENT-->
-        <div class="main-content" style="">
+        <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <h1>Accounts <a href="{{ url('/register') }}"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
