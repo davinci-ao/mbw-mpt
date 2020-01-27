@@ -97,26 +97,26 @@ class ChaletController extends Controller
 
         $periodMultiplier = 1;
 
-        // //Herfst
-        // if ($now >= $herfst && $now < $winter) {
-        //     $periodMultiplier = 0.75;
-        // }
+        //Herfst
+        if ($now >= $herfst && $now < $winter) {
+            $periodMultiplier = 0.75;
+        }
 
-        // //Winter
-        // if ($now >= $winter && $now < $lente) {
-        //     $periodMultiplier = 1;
-        // }
+        //Winter
+        if ($now >= $winter && $now < $lente) {
+            $periodMultiplier = 1;
+        }
 
-        // //Lente
-        // if ($now >= $lente && $now < $zomer) {
-        //     $periodMultiplier = 1.5;
-        // }
+        //Lente
+        if ($now >= $lente && $now < $zomer) {
+            $periodMultiplier = 1.5;
+        }
 
 
-        // //Zomer
-        // if ($now >= $zomer && $now < $herfst) {
-        //     $periodMultiplier = 1.2;
-        // }
+        //Zomer
+        if ($now >= $zomer && $now < $herfst) {
+            $periodMultiplier = 1.2;
+        }
 
         $dayPrice = null;
         foreach ($chalets as $chalet) {
@@ -249,7 +249,7 @@ class ChaletController extends Controller
 
         $chalet->save();
 
-        return redirect('/holidayparks')->with('Gelukt!', 'de Chalet is toegevoegd');     
+        return redirect('/admin')->with('Gelukt!', 'de Chalet is toegevoegd');     
     }
 
     /**
@@ -348,7 +348,7 @@ class ChaletController extends Controller
 
         $chalet->save();
 
-        return redirect('/chalets')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
+        return redirect('/admin')->with('gelukt!', 'chalet:'. $chalet->name .'is succesvol bijgwerkt');
     }
 
     /**

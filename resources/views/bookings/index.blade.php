@@ -60,7 +60,7 @@
         <!-- END HEADER DESKTOP-->
 
         <!-- MAIN CONTENT-->
-        <div class="main-content" style="">
+        <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <h2>Accounts <a href="{{ url('/register') }}" class="add-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></h2>

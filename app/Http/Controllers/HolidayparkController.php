@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Holidaypark;
 use Illuminate\Http\Request;
+use DB;
 
 class HolidayparkController extends Controller
 {
@@ -55,7 +56,7 @@ class HolidayparkController extends Controller
         ]);
 
         $holidaypark->save();
-        return redirect('/holidayparks')->with('Gelukt!', 'het vakantiepark is toegevoegd');  
+        return redirect('/admin')->with('Gelukt!', 'het vakantiepark is toegevoegd');  
     }
 
     /**
@@ -110,7 +111,7 @@ class HolidayparkController extends Controller
 
         $holidaypark->save();
 
-        return redirect('/holidayparks')->with('gelukt!', 'Vakantiepark:'. $holidaypark->holidaypark_name .'is succesvol bijgwerkt');
+        return redirect('/admin')->with('gelukt!', 'Vakantiepark:'. $holidaypark->holidaypark_name .'is succesvol bijgwerkt');
     }
 
     /**
@@ -124,10 +125,13 @@ class HolidayparkController extends Controller
         if (!$request->user()) {
             return redirect()->route('login');
         }  
-
         $holidaypark = Holidaypark::find($id);
+        $chalets = DB::table('chalets')->where('holidaypark_id', $id);
+        $chalets->delete();
         $holidaypark->delete();
 
-        return redirect('/holidayparks')->with('Gelukt', 'Het vakantiepark is verwijderd!');
+
+        return redirect('/admin')->with('Gelukt', 'Het vakantiepark is verwijderd!');
+
     }
 }
