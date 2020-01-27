@@ -326,6 +326,7 @@ header {
 
 .footer-item {
     margin-right: 15px;
+
 }
 
 .custom-padding-top {
@@ -420,4 +421,5 @@ header {
 
 .noMargin {
     margin: 0;
+    padding: 100px 25px 25px 25px !important;
 }

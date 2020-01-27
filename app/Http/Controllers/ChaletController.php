@@ -112,6 +112,7 @@ class ChaletController extends Controller
         //     $periodMultiplier = 1.5;
         // }
 
+
         // //Zomer
         // if ($now >= $zomer && $now < $herfst) {
         //     $periodMultiplier = 1.2;
@@ -208,6 +209,7 @@ class ChaletController extends Controller
         $image2 = $request->file('photo3');
         $image3 = $request->file('photo4');
 
+
         $extension = $image->getClientOriginalExtension();
         $extension1 = $image1->getClientOriginalExtension();
         $extension2 = $image2->getClientOriginalExtension();
@@ -223,6 +225,7 @@ class ChaletController extends Controller
         $image2->move(public_path("chaletsafbeeldingen"), $image2name .'.'. $extension2);
         $image3->move(public_path("chaletsafbeeldingen"), $image3name .'.'. $extension3);
 
+
         $chalet = new Chalet([
             'name' => $request->get('name'),
             'holidaypark_id' => $request->input('holidaypark_id'),
@@ -236,10 +239,12 @@ class ChaletController extends Controller
             'place'=> $request->get('place'),
             'longitude' => $longitude,
             'latitude' => $latitude,
+
             'photo1' => $imagename .'.'. $extension, 
             'photo2' => $image1name .'.'. $extension1,
             'photo3' => $image2name .'.'. $extension2,
             'photo4' => $image3name .'.'. $extension3
+
         ]);
 
         $chalet->save();
