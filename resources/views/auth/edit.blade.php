@@ -33,15 +33,22 @@
 	    @csrf
 	      	<v-text-field 
 	      		value="{{$account->name}}" 
-	      		label="Naam" 
+	      		label="Naam *" 
 	      		name="name">		
 	      	</v-text-field>
+              @if ($errors->first('name'))
+                <small class="smallError">{{$errors->first('name')}}</small>
+              @endif
 
 	      	<v-text-field 
 	      		value="{{$account->email}}" 
-	      		label="Email" 
+	      		label="Email *" 
 	      		name="email">		
 	      	</v-text-field>
+
+              @if ($errors->first('email'))
+                <small class="smallError">{{$errors->first('email')}}</small>
+              @endif
 
       		<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
     	</v-form>
@@ -55,20 +62,30 @@
 			<v-text-field 
 				type="password" 
 				name="oldPass" 
-				label="Oud wachtwoord">
+				label="Oud wachtwoord *">
 			</v-text-field>
+              @if ($errors->first('oldPass'))
+                <small class="smallError">{{$errors->first('oldPass')}}</small>
+              @endif
 
 			<v-text-field 
 				type="password" 
 				name="newPass1" 
-				label="Nieuw wachtwoord">
+				label="Nieuw wachtwoord *">
 			</v-text-field>
+
+              @if ($errors->first('newPass1'))
+                <small class="smallError">{{$errors->first('newPass1')}}</small>
+              @endif
 
 			<v-text-field 
 				type="password"
 				name="newPass2" 
-				label="Herhaal nieuw wachtwoord">
+				label="Herhaal nieuw wachtwoord *">
 			</v-text-field>
+              @if ($errors->first('newPass2'))
+                <small class="smallError">{{$errors->first('newPass2')}}</small>
+              @endif
 
 			<v-btn onclick="checkSubmit(this)" class="default-button" type="button">Wijzig</v-btn>
 		</v-form>
