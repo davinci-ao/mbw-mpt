@@ -28,7 +28,6 @@
                             <button type="submit" class="btn btn-danger" name="delete">Verwijderen</button>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -64,7 +63,7 @@
         <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
-                    <h1>Accounts <a href="{{ url('/register') }}"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
+                    <h2>Accounts <a href="{{ url('/register') }}" class="add-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></h2>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive table--no-card m-b-30">
@@ -83,7 +82,7 @@
                                         <tr>
                                             <td>{{ $user->name}}</td>
                                             <td>{{ $user->email}}</td>
-                                            <td><a href="{{ url('account/edit?account=' . $user->id) }}" style="color:orange; font-size: 20px; cursor: pointer;"><i class="fas fa-edit"></i></a></td>
+                                            <td><a href="{{ url('account/edit?account=' . $user->id) }}" style="font-size: 20px; cursor: pointer;"><i class="fas fa-edit"></i></a></td>
                                             <td><a onclick="hiddenValue({{ $user->id }})" style="color: red; font-size:20px; cursor: pointer;" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i></a></td>
                                         </tr>
                                         @endforeach
@@ -94,7 +93,7 @@
                         </div>
                         
                                 <div class="container-fluid">
-                                    <h1>Chalets <a  href="{{ URL::to('chalets/create') }}"><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
+                                    <h2>Chalets <a href="{{ URL::to('chalets/create') }}" class="add-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></h2>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="table-responsive table--no-card m-b-30">
@@ -123,11 +122,11 @@
                                                             <td>{{ $chalet->housenr}}</td>
                                                             <td>{{ $chalet->street }}</td>
                                                             <td>{{ $chalet->place}}</td>
-                                                            <td><a style="color: orange; font-size: 20px;" href="{{ route('chalets.edit',$chalet->id)}}"><i class="fas fa-edit"></i></a></td>
+                                                            <td><a style="font-size: 20px;" href="{{ route('chalets.edit',$chalet->id)}}"><i class="fas fa-edit"></i></a></td>
                                                             <td>
                                                                 <form action="{{ route('chalets.destroy',$chalet->id)}}" method="post">
                                                                     @csrf @method('DELETE')
-                                                                    <button style=" color: red; font-size: 20px; margin: 5px; float: right;" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                                    <button style=" color: red; font-size: 20px; margin: 5px; float: left;" onclick="return confirm('Weet je het zeker dat je deze chalet wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -139,7 +138,7 @@
                                         </div>
 
                                         <div class="container-fluid">
-                                            <h1>Vakantieparken <a href="{{ URL::to('holidayparks/create') }}"  ><i class="fa fa-plus" aria-hidden="true"></i></a></h1>
+                                            <h2>Vakantieparken <a href="{{ URL::to('holidayparks/create') }}" class="add-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></h2>
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="table-responsive table--no-card m-b-30">
@@ -157,11 +156,11 @@
                                                                 <tr>
                                                                     <td>{{ $holiday->holidaypark_name}}</td>
                                                                     <td>{{ $holiday->description }}</td>
-                                                                    <td><a style=" font-size: 20px; color:orange; padding: 5px;" href="{{ route('holidayparks.edit',$holiday->id)}}"><i class="fas fa-edit"></i></a> </td>
+                                                                    <td><a style=" font-size: 20px; padding: 5px;" href="{{ route('holidayparks.edit',$holiday->id)}}"><i class="fas fa-edit"></i></a> </td>
                                                                     <td>
                                                                         <form action="{{ route('holidayparks.destroy',$holiday->id)}}" method="post">
                                                                             @csrf @method('DELETE')
-                                                                            <button style="color: red; margin: 5px; font-size: 20px; float: right;" onclick="return confirm('Weet je het zeker dat je dit vakantiepark wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                                                            <button style="color: red; margin: 5px; font-size: 20px; float: left;" onclick="return confirm('Weet je het zeker dat je dit vakantiepark wil verwijderen?');" type="submit"><i class="fas fa-trash-alt"></i></button>
                                                                         </form>
                                                                     </td>
                                                                 </tr>
@@ -173,7 +172,7 @@
                                                 </div>
                               <hr>
                              <div class="container-fluid">
-                            <h1>Boekingen</h1>
+                            <h2>Boekingen</h2>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive table--no-card m-b-30">
@@ -211,7 +210,7 @@
                                                     <td>{{ $data->pets }}</td>
                                                     <td>{{ $data->price }}</td>
                                                     <td>{{ $data->chalet }}</td>
-                                                    <td><a style="color: orange; font-size: 20px;" href="{{ route('bookings.edit',$data->id)}}"><i class="fas fa-edit"></i></a></td>
+                                                    <td><a style="font-size: 20px;" href="{{ route('bookings.edit',$data->id)}}"><i class="fas fa-edit"></i></a></td>
                                                     <td><a style="color: red;font-size: 20px;" onclick="return confirm('Weet je het zeker dat je deze boeking wil verwijderen?');" href="{{ url('booking/delete?booking=' . $data->id) }}"><i class="fas fa-trash-alt"></i></a></td>
                                                 </tr>
                                                 @endforeach
@@ -221,7 +220,7 @@
                                     {{ $bookingData->links() }}
                                 </div>
                             <div class="container-fluid">
-                            <h1>Berichten</h1>
+                            <h2>Berichten</h2>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="table-responsive table--no-card m-b-30">
@@ -252,6 +251,7 @@
                                     </div>
                                     {{ $messageData->links() }}
                                 </div>
+                            </div>
                                 
 </body>
 <script>

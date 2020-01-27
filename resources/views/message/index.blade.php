@@ -11,17 +11,6 @@
         </div>
     @endif
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul style="margin-bottom: 0;">
-                @foreach ($errors->all() as $error)
-                <li style="list-style-type: none;">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        <br /> 
-    @endif
-
 	<h1>Neem contact met ons op</h1>
 
   <div id="form">
@@ -35,35 +24,50 @@
         <v-text-field
           value="{{ old('firstname') }}"
           :counter="50"
-          label="Voornaam"
+          label="Voornaam *"
           name="firstname"
         ></v-text-field>
+        @if ($errors->first('firstname'))
+          <small style="color: darkred;">{{$errors->first('firstname')}}</small>
+        @endif
 
         <v-text-field
           value="{{ old('lastname') }}"
           :counter="50"
-          label="Achternaam"
+          label="Achternaam *"
           name="lastname"
         ></v-text-field>
+        @if ($errors->first('lastname'))
+          <small style="color: darkred;">{{$errors->first('lastname')}}</small>
+        @endif
 
         <v-text-field
           value="{{ old('email') }}"
-          label="E-mail"
+          label="E-mail *"
           name="email"
         ></v-text-field>
+        @if ($errors->first('email'))
+          <small style="color: darkred;">{{$errors->first('email')}}</small>
+        @endif
 
         <v-text-field
           value="{{ old('phonenumber') }}"
-          label="Telefoonnummer"
+          label="Telefoonnummer *"
           name="phonenumber"
         ></v-text-field>
+        @if ($errors->first('phonenumber'))
+          <small style="color: darkred;">{{$errors->first('phonenumber')}}</small>
+        @endif
 
         <v-textarea
           value="{{ old('message') }}"
           :counter="300"
-          label="Onderwerp"
+          label="Bericht *"
           name="message"
         ></v-textarea>
+        @if ($errors->first('message'))
+          <small style="color: darkred;">{{$errors->first('message')}}</small><br><br><br>
+        @endif
   	
         <v-btn onclick="checkSubmit(this)" class="default-button" type="button">Versturen</v-btn>
     </v-form>
