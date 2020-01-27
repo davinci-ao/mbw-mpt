@@ -139,12 +139,9 @@ input[type=number] {
               @endif
           </div>                                                                                                         
           <button  onclick="checkSubmit(this)" type="button" class="btn btn-primary">Voeg toe</button>
-          
-          <div style="width: 40%; float: right; padding-left: 30px;">
 
-        <div style="width: 40%; float: right; padding-left: 30px;">
-        <h5 style="margin-bottom: 25px;"><b>Kenmerken</b><span style="color: red"> *</span></h5>
-
+        <div> 
+        <h5 style="margin-bottom: 25px;" class="mt-3"><b>Kenmerken</b><span style="color: red"> *</span></h5>
         <div style="width: 50%; float: left;">
 
           <h6 class="text-primary"><b>Ligging</b></h6>
@@ -217,6 +214,7 @@ input[type=number] {
       </div>
                   
       </form>
+  </div>
   </div>
 </div>
 
